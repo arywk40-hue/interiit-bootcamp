@@ -1,0 +1,345 @@
+{
+  "selection_split": "dev",
+  "selection_rule": "lowest p95 batch-one latency among models within the configured macro-F1 tolerance of the best dev score",
+  "macro_f1_tolerance": 0.002,
+  "eligible_models": [
+    "char_tfidf",
+    "word_char_tfidf"
+  ],
+  "selected_model": "char_tfidf",
+  "seed": 42,
+  "models": {
+    "char_tfidf": {
+      "fit_seconds": 7.26192137299995,
+      "dev": {
+        "accuracy": 0.608,
+        "macro_f1": 0.6105430716972365,
+        "weighted_f1": 0.6048122145630043,
+        "expected_calibration_error_10_bins": 0.025036144485807654,
+        "per_class": {
+          "negative": {
+            "precision": 0.6069306930693069,
+            "recall": 0.6887640449438203,
+            "f1-score": 0.6452631578947369,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.5517241379310345,
+            "recall": 0.48226950354609927,
+            "f1-score": 0.5146641438032167,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6643426294820717,
+            "recall": 0.6792260692464358,
+            "f1-score": 0.6717019133937563,
+            "support": 982.0
+          },
+          "accuracy": 0.608,
+          "macro avg": {
+            "precision": 0.6076658201608044,
+            "recall": 0.6167532059121185,
+            "f1-score": 0.6105430716972365,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.6049658688564282,
+            "recall": 0.608,
+            "f1-score": 0.6048122145630043,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "negative",
+            "neutral",
+            "positive"
+          ],
+          "values": [
+            [
+              613,
+              219,
+              58
+            ],
+            [
+              305,
+              544,
+              279
+            ],
+            [
+              92,
+              223,
+              667
+            ]
+          ]
+        }
+      },
+      "latency": {
+        "warmup_runs": 30,
+        "measured_runs": 500,
+        "p50_ms": 0.5875165,
+        "p95_ms": 0.724239,
+        "p99_ms": 0.9462518699999997,
+        "mean_ms": 0.5897711999999999,
+        "sequential_throughput_per_second": 1695.5727916181734,
+        "scope": "end_to_end_vectorization_plus_prediction_batch_size_1",
+        "hardware": {
+          "processor": "x86_64",
+          "machine": "x86_64",
+          "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+          "python": "3.12.14"
+        }
+      },
+      "artifact_bytes": 5538263
+    },
+    "word_char_tfidf": {
+      "fit_seconds": 9.874712976999945,
+      "dev": {
+        "accuracy": 0.6073333333333333,
+        "macro_f1": 0.6105943461464274,
+        "weighted_f1": 0.6047543850903939,
+        "expected_calibration_error_10_bins": 0.03946101826489271,
+        "per_class": {
+          "negative": {
+            "precision": 0.6161515453639083,
+            "recall": 0.6943820224719102,
+            "f1-score": 0.652931854199683,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.5463510848126233,
+            "recall": 0.49113475177304966,
+            "f1-score": 0.5172735760971056,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6612410986775178,
+            "recall": 0.6619144602851323,
+            "f1-score": 0.6615776081424937,
+            "support": 982.0
+          },
+          "accuracy": 0.6073333333333333,
+          "macro avg": {
+            "precision": 0.6079145762846832,
+            "recall": 0.6158104115100308,
+            "f1-score": 0.6105943461464274,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.6046658859812799,
+            "recall": 0.6073333333333333,
+            "f1-score": 0.6047543850903939,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "negative",
+            "neutral",
+            "positive"
+          ],
+          "values": [
+            [
+              618,
+              215,
+              57
+            ],
+            [
+              298,
+              554,
+              276
+            ],
+            [
+              87,
+              245,
+              650
+            ]
+          ]
+        }
+      },
+      "latency": {
+        "warmup_runs": 30,
+        "measured_runs": 500,
+        "p50_ms": 1.1536810000000002,
+        "p95_ms": 1.4937596499999997,
+        "p99_ms": 1.9009863499999995,
+        "mean_ms": 1.204898494,
+        "sequential_throughput_per_second": 829.9454310713081,
+        "scope": "end_to_end_vectorization_plus_prediction_batch_size_1",
+        "hardware": {
+          "processor": "x86_64",
+          "machine": "x86_64",
+          "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+          "python": "3.12.14"
+        }
+      },
+      "artifact_bytes": 6899441
+    },
+    "raw_canonical_char_tfidf": {
+      "fit_seconds": 16.254222543000196,
+      "dev": {
+        "accuracy": 0.5956666666666667,
+        "macro_f1": 0.5990643387193794,
+        "weighted_f1": 0.5931885009240275,
+        "expected_calibration_error_10_bins": 0.04520005206045562,
+        "per_class": {
+          "negative": {
+            "precision": 0.6063072227873856,
+            "recall": 0.6696629213483146,
+            "f1-score": 0.6364121729845168,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.5284313725490196,
+            "recall": 0.4778368794326241,
+            "f1-score": 0.5018621973929237,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6539618856569709,
+            "recall": 0.6639511201629328,
+            "f1-score": 0.6589186457806974,
+            "support": 982.0
+          },
+          "accuracy": 0.5956666666666667,
+          "macro avg": {
+            "precision": 0.5962334936644587,
+            "recall": 0.6038169736479572,
+            "f1-score": 0.5990643387193794,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.5926248627437376,
+            "recall": 0.5956666666666667,
+            "f1-score": 0.5931885009240275,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "negative",
+            "neutral",
+            "positive"
+          ],
+          "values": [
+            [
+              596,
+              238,
+              56
+            ],
+            [
+              300,
+              539,
+              289
+            ],
+            [
+              87,
+              243,
+              652
+            ]
+          ]
+        }
+      },
+      "latency": {
+        "warmup_runs": 30,
+        "measured_runs": 500,
+        "p50_ms": 1.4956450000000001,
+        "p95_ms": 1.9190438499999989,
+        "p99_ms": 2.467045069999999,
+        "mean_ms": 1.532175242,
+        "sequential_throughput_per_second": 652.666857281068,
+        "scope": "end_to_end_vectorization_plus_prediction_batch_size_1",
+        "hardware": {
+          "processor": "x86_64",
+          "machine": "x86_64",
+          "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+          "python": "3.12.14"
+        }
+      },
+      "artifact_bytes": 7487242
+    },
+    "char_symbol_tfidf": {
+      "fit_seconds": 17.878367374999925,
+      "dev": {
+        "accuracy": 0.594,
+        "macro_f1": 0.5967070494220387,
+        "weighted_f1": 0.5903254737026614,
+        "expected_calibration_error_10_bins": 0.020080497856475393,
+        "per_class": {
+          "negative": {
+            "precision": 0.6030977734753146,
+            "recall": 0.7,
+            "f1-score": 0.6479459178367135,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.5351681957186545,
+            "recall": 0.4654255319148936,
+            "f1-score": 0.49786628733997157,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6430020283975659,
+            "recall": 0.6456211812627292,
+            "f1-score": 0.6443089430894309,
+            "support": 982.0
+          },
+          "accuracy": 0.594,
+          "macro avg": {
+            "precision": 0.5937559991971784,
+            "recall": 0.6036822377258743,
+            "f1-score": 0.5967070494220387,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.590618245016694,
+            "recall": 0.594,
+            "f1-score": 0.5903254737026614,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "negative",
+            "neutral",
+            "positive"
+          ],
+          "values": [
+            [
+              623,
+              208,
+              59
+            ],
+            [
+              310,
+              525,
+              293
+            ],
+            [
+              100,
+              248,
+              634
+            ]
+          ]
+        }
+      },
+      "latency": {
+        "warmup_runs": 30,
+        "measured_runs": 500,
+        "p50_ms": 1.203972,
+        "p95_ms": 1.40726255,
+        "p99_ms": 1.61440525,
+        "mean_ms": 1.2151991,
+        "sequential_throughput_per_second": 822.9104185478742,
+        "scope": "end_to_end_vectorization_plus_prediction_batch_size_1",
+        "hardware": {
+          "processor": "x86_64",
+          "machine": "x86_64",
+          "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+          "python": "3.12.14"
+        }
+      },
+      "artifact_bytes": 5606982
+    }
+  }
+}

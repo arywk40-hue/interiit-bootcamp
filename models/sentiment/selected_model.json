@@ -1,0 +1,9 @@
+{
+  "artifact": "final_model.joblib",
+  "model": "char_tfidf",
+  "classes": [
+    "negative",
+    "neutral",
+    "positive"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "splits": {
+    "train": {
+      "examples": 13997,
+      "mean_source_tokens": 26.109952132599844,
+      "p95_source_tokens": 34.0,
+      "mean_characters": 127.02064728156033,
+      "p95_characters": 151.0,
+      "emoji_examples": 2675,
+      "punctuation_examples": 13828,
+      "code_mixed_hin_eng_examples": 13996
+    },
+    "dev": {
+      "examples": 3000,
+      "mean_source_tokens": 26.226,
+      "p95_source_tokens": 34.0,
+      "mean_characters": 127.688,
+      "p95_characters": 151.0,
+      "emoji_examples": 567,
+      "punctuation_examples": 2961,
+      "code_mixed_hin_eng_examples": 3000
+    },
+    "test": {
+      "examples": 3000,
+      "mean_source_tokens": 26.119666666666667,
+      "p95_source_tokens": 34.0,
+      "mean_characters": 126.92766666666667,
+      "p95_characters": 151.0,
+      "emoji_examples": 599,
+      "punctuation_examples": 2966,
+      "code_mixed_hin_eng_examples": 3000
+    }
+  },
+  "coverage_against_train": {
+    "dev": {
+      "word_token_oov_rate": 0.09849004804392587,
+      "character_oov_rate": 0.0003550320573063509,
+      "unique_train_word_tokens": 50180,
+      "unique_train_characters": 861,
+      "unique_oov_word_tokens": 7406
+    },
+    "test": {
+      "word_token_oov_rate": 0.09512627777281486,
+      "character_oov_rate": 0.0005409905379179218,
+      "unique_train_word_tokens": 50180,
+      "unique_train_characters": 861,
+      "unique_oov_word_tokens": 7077
+    }
+  },
+  "interpretation": "Word OOV counts exact case-folded source tokens. Character OOV counts exact Unicode characters. These are corpus coverage diagnostics, not BPE fragmentation."
+}

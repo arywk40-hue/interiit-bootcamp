@@ -1,0 +1,88 @@
+{
+  "model": "char_symbol_tfidf",
+  "training_split": "cleaned_train_plus_dev",
+  "purpose": "preregistered secondary contrast-set candidate; not selected as final clean-set model",
+  "seed": 42,
+  "fit_seconds": 21.799784613000156,
+  "test": {
+    "accuracy": 0.6636666666666666,
+    "macro_f1": 0.6672357256389239,
+    "weighted_f1": 0.663472911264103,
+    "expected_calibration_error_10_bins": 0.04833672412689758,
+    "per_class": {
+      "negative": {
+        "precision": 0.6827438370846731,
+        "recall": 0.7077777777777777,
+        "f1-score": 0.6950354609929078,
+        "support": 900.0
+      },
+      "neutral": {
+        "precision": 0.5861751152073733,
+        "recall": 0.5781818181818181,
+        "f1-score": 0.5821510297482837,
+        "support": 1100.0
+      },
+      "positive": {
+        "precision": 0.7311608961303462,
+        "recall": 0.718,
+        "f1-score": 0.7245206861755802,
+        "support": 1000.0
+      },
+      "accuracy": 0.6636666666666666,
+      "macro avg": {
+        "precision": 0.6666932828074641,
+        "recall": 0.667986531986532,
+        "f1-score": 0.6672357256389239,
+        "support": 3000.0
+      },
+      "weighted avg": {
+        "precision": 0.6634743254115543,
+        "recall": 0.6636666666666666,
+        "f1-score": 0.663472911264103,
+        "support": 3000.0
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "negative",
+        "neutral",
+        "positive"
+      ],
+      "values": [
+        [
+          637,
+          211,
+          52
+        ],
+        [
+          252,
+          636,
+          212
+        ],
+        [
+          44,
+          238,
+          718
+        ]
+      ]
+    }
+  },
+  "latency": {
+    "warmup_runs": 30,
+    "measured_runs": 500,
+    "p50_ms": 1.2024145,
+    "p95_ms": 1.363031,
+    "p99_ms": 1.6725000599999997,
+    "mean_ms": 1.213857844,
+    "sequential_throughput_per_second": 823.8196959742181,
+    "scope": "end_to_end_vectorization_plus_prediction_batch_size_1",
+    "hardware": {
+      "processor": "x86_64",
+      "machine": "x86_64",
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "python": "3.12.14"
+    }
+  },
+  "artifact": "char_symbol_tfidf_train_dev.joblib",
+  "artifact_bytes": 5662554
+}

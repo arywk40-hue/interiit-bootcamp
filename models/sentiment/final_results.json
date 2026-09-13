@@ -1,0 +1,92 @@
+{
+  "model": "char_tfidf",
+  "training_split": "cleaned_train_plus_dev",
+  "evaluation_split": "test_once_after_dev_selection",
+  "seed": 42,
+  "fit_seconds": 9.506293715000083,
+  "test": {
+    "accuracy": 0.682,
+    "macro_f1": 0.6857326839777299,
+    "weighted_f1": 0.6817324260852565,
+    "expected_calibration_error_10_bins": 0.07926696475590213,
+    "per_class": {
+      "negative": {
+        "precision": 0.7065101387406617,
+        "recall": 0.7355555555555555,
+        "f1-score": 0.7207403375068046,
+        "support": 900.0
+      },
+      "neutral": {
+        "precision": 0.6051660516605166,
+        "recall": 0.5963636363636363,
+        "f1-score": 0.6007326007326007,
+        "support": 1100.0
+      },
+      "positive": {
+        "precision": 0.7436159346271706,
+        "recall": 0.728,
+        "f1-score": 0.7357251136937848,
+        "support": 1000.0
+      },
+      "accuracy": 0.682,
+      "macro avg": {
+        "precision": 0.6850973750094496,
+        "recall": 0.6866397306397305,
+        "f1-score": 0.6857326839777299,
+        "support": 3000.0
+      },
+      "weighted avg": {
+        "precision": 0.6817192387734448,
+        "recall": 0.682,
+        "f1-score": 0.6817324260852565,
+        "support": 3000.0
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "negative",
+        "neutral",
+        "positive"
+      ],
+      "values": [
+        [
+          662,
+          194,
+          44
+        ],
+        [
+          237,
+          656,
+          207
+        ],
+        [
+          38,
+          234,
+          728
+        ]
+      ]
+    }
+  },
+  "latency": {
+    "warmup_runs": 30,
+    "measured_runs": 500,
+    "p50_ms": 0.589755,
+    "p95_ms": 0.8324961499999989,
+    "p99_ms": 1.03558986,
+    "mean_ms": 0.611472216,
+    "sequential_throughput_per_second": 1635.397281893835,
+    "scope": "end_to_end_vectorization_plus_prediction_batch_size_1",
+    "hardware": {
+      "processor": "x86_64",
+      "machine": "x86_64",
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "python": "3.12.14"
+    }
+  },
+  "artifact_bytes": 5585545,
+  "classes": [
+    "negative",
+    "neutral",
+    "positive"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-13T04:13:57Z",
+  "status": "created_before_human_pair_text_or_labels",
+  "external_timestamp_status": "local file only; commit and push this file before annotation for externally verifiable timing",
+  "models": {
+    "character_primary": {
+      "file": "models/sentiment/final_model.joblib",
+      "sha256": "9117e318a5a90fdadda356aae960f73ddc34aa455813fcf6bf7e5e0b85844a94",
+      "bytes": 5585545,
+      "role": "selected primary model"
+    },
+    "character_symbol_secondary": {
+      "file": "models/sentiment/char_symbol_tfidf_train_dev.joblib",
+      "sha256": "e520b6a130e1a8d7c8a217f8ef8770977c66661c00ef7dabc35ec917fee6fa64",
+      "bytes": 5662554,
+      "role": "preregistered emoji/punctuation signal-path comparison"
+    }
+  },
+  "configuration": {
+    "file": "configs/sentiment.json",
+    "sha256": "005de3d028f29dadbd4f064383340fc5506599e144c0515831f4bb9cf6cb8eee"
+  },
+  "evaluation_protocol": {
+    "implementation": "src/rinlu/evaluation/contrast_set.py",
+    "implementation_sha256": "9d15e558ce72405d12347746433b96ea61702b853fc3db834d1045313ca771bd",
+    "annotation_protocol": "data/challenge/README.md",
+    "annotation_protocol_sha256": "3ae4c4075e374e80b6c7a431b59455cd8e652c31aed3a25cd93156a5a383dae4"
+  },
+  "metrics": [
+    "three_class_sentiment_cohen_kappa",
+    "same_vs_flip_relation_cohen_kappa",
+    "individual_message_macro_f1",
+    "pair_exact_accuracy",
+    "flip_sensitivity_on_gold_flip_pairs",
+    "directional_flip_accuracy",
+    "stability_on_gold_same_pairs",
+    "bootstrap_95_percent_confidence_intervals_by_pair"
+  ],
+  "decision_rule": "The character-symbol model is useful only if it materially improves directional flip accuracy or flip sensitivity; its lower clean test macro-F1 and higher latency remain reported.",
+  "post_label_rule": "Do not alter either preregistered model after labels are opened. Any later model iteration requires a new untouched contrast set."
+}

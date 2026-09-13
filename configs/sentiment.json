@@ -1,0 +1,33 @@
+{
+  "seed": 42,
+  "selection_split": "dev",
+  "selection_metric": "macro_f1",
+  "selection_tolerance": 0.002,
+  "selection_tiebreaker": "lowest_batch_one_p95_latency",
+  "candidate_models": [
+    "char_tfidf",
+    "word_char_tfidf",
+    "raw_canonical_char_tfidf",
+    "char_symbol_tfidf"
+  ],
+  "character_features": {
+    "analyzer": "char",
+    "ngram_range": [3, 5],
+    "min_df": 2,
+    "max_features": 180000,
+    "sublinear_tf": true
+  },
+  "symbol_features": {
+    "unicode_categories": ["P", "S"],
+    "ngram_range": [1, 3],
+    "max_features": 10000,
+    "weight": 2.0
+  },
+  "classifier": {
+    "type": "one_vs_rest_logistic_regression",
+    "C": 4.0,
+    "solver": "liblinear",
+    "class_weight": "balanced",
+    "max_iter": 500
+  }
+}
