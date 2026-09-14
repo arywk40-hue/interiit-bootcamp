@@ -1,7 +1,9 @@
 # Human Sentiment Contrast Set Protocol
 
-This directory intentionally contains no AI-written examples. The contrast set
-must be written and labelled by the team or other consenting human writers.
+`human_contrasts.csv` intentionally contains no model-written evaluation rows.
+The separately named `model_drafts_pending_review.jsonl` contains 120 supplied
+model drafts. They are candidate prompts for human editing and cannot be scored,
+frozen, or described as human evidence in their current form.
 
 ## Target
 
@@ -34,6 +36,36 @@ start from one template and mechanically replace words.
 
 Enter the unlabelled pair text in `human_contrasts.csv`. Do not put labels in
 that file.
+
+## Review the supplied model drafts
+
+`draft_human_review.csv` omits every model-proposed sentiment and relation label.
+A consenting human editor must fill `decision` with `accept`, `rewrite`, or
+`reject`, supply an anonymous `human_reviewer_id`, and explain ambiguous cases in
+`review_notes`. For `rewrite`, both `reviewed_text_a` and `reviewed_text_b` are
+required. Reject forced ellipsis sarcasm or emoji changes whose meaning is unclear.
+
+The blank review form is reproducible with:
+
+```bash
+PYTHONPATH=src python -m rinlu.evaluation.contrast_set prepare-draft-review \
+  --drafts data/challenge/model_drafts_pending_review.jsonl \
+  --output data/challenge/draft_human_review.csv
+```
+
+After all 120 decisions are complete, validate and convert the accepted rows:
+
+```bash
+PYTHONPATH=src python -m rinlu.evaluation.contrast_set finalize-draft-review \
+  --review data/challenge/draft_human_review.csv \
+  --output data/challenge/human_contrasts.csv \
+  --min-pairs 100
+```
+
+Accepted rows retain `human-reviewed model draft` provenance in their notes.
+They must be reported as human-reviewed model drafts. Rows a person fully rewrites
+can additionally be counted as human-edited. This editing stage does not supply
+gold sentiment labels; the two blind annotators below still label each message.
 
 ## Freeze and blind the set
 

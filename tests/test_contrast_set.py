@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,14 +12,53 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
 from rinlu.evaluation.contrast_set import (
+    finalize_draft_review,
     freeze_pairs,
     prepare_adjudication,
+    prepare_draft_review,
     score_contrast_set,
     verify_freeze,
 )
 
 
 class ContrastSetTests(unittest.TestCase):
+    def test_model_drafts_require_human_review_before_freezing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); drafts = root / "drafts.jsonl"
+            values = [
+                ("e1", "emoji_flip", "bahut accha 😄", "bahut accha 😒"),
+                ("p1", "punctuation_context_flip", "great!", "great..."),
+                ("c1", "punctuation_context_flip", "plan accha tha.",
+                 "plan accha tha, lekin teen ghante late."),
+            ]
+            rows = [{"pair_id": pair_id, "category": category, "text_a": left,
+                     "text_b": right, "surface_variation": "draft",
+                     "provenance": "model_drafted_pending_human_review",
+                     "sentiment_a": "positive", "sentiment_b": "negative",
+                     "annotator_1_label": None, "annotator_2_label": None,
+                     "adjudicated_label": None}
+                    for pair_id, category, left, right in values]
+            drafts.write_text("\n".join(json.dumps(row) for row in rows))
+            review = root / "review.csv"
+            self.assertEqual(prepare_draft_review(drafts, review), 3)
+            with review.open(newline="", encoding="utf-8") as handle:
+                reader = csv.DictReader(handle); review_rows = list(reader)
+                self.assertNotIn("sentiment_a", reader.fieldnames)
+            for row in review_rows:
+                row["decision"] = "accept"; row["human_reviewer_id"] = "human-1"
+            with review.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=review_rows[0].keys())
+                writer.writeheader(); writer.writerows(review_rows)
+            pairs = root / "pairs.csv"
+            pairs.write_text("existing human data\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "requires at least 4 pairs"):
+                finalize_draft_review(review, pairs, min_pairs=4)
+            self.assertEqual(pairs.read_text(encoding="utf-8"), "existing human data\n")
+            self.assertEqual(finalize_draft_review(review, pairs, min_pairs=3), 3)
+            with pairs.open(newline="", encoding="utf-8") as handle:
+                variants = {row["variant_type"] for row in csv.DictReader(handle)}
+            self.assertEqual(variants, {"emoji_flip", "punctuation_flip", "context_flip"})
+
     def _write_pairs(self, path: Path):
         with path.open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(

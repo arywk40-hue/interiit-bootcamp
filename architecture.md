@@ -372,6 +372,9 @@ uses two blind annotators and third-person adjudication, and reports pair accura
 flip sensitivity, directional flip accuracy, and pair-bootstrap confidence intervals.
 An empty CSV cannot produce that evidence. Historical preregistration hashes refer
 to older artifacts; freeze new hashes before collecting labels for this run.
+The supplied 120-pair bank is explicitly model-drafted. Its label-free human
+editing form is prepared, but none of those rows counts as evaluated human
+evidence until editing, freezing, two-person blind labelling and adjudication finish.
 
 To defend the work, explain: the representation and why it is fast; the source of
 each label; the split boundary; the candidate selection rule; exact timing scope;

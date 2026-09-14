@@ -6,6 +6,7 @@ import hashlib
 import json
 import random
 import shutil
+import tempfile
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -22,6 +23,10 @@ from rinlu.sentiment.features import symbol_view
 
 PAIR_FIELDS = ("pair_id", "variant_type", "text_a", "text_b", "writer_id", "notes")
 ANNOTATION_FIELDS = ("item_id", "text", "label")
+DRAFT_REVIEW_FIELDS = (
+    "pair_id", "category", "draft_text_a", "draft_text_b", "surface_variation",
+    "decision", "reviewed_text_a", "reviewed_text_b", "human_reviewer_id", "review_notes",
+)
 ALLOWED_VARIANTS = {
     "spelling_same",
     "shorthand_same",
@@ -29,6 +34,7 @@ ALLOWED_VARIANTS = {
     "emoji_same",
     "punctuation_flip",
     "punctuation_same",
+    "context_flip",
 }
 
 
@@ -90,6 +96,8 @@ def read_pairs(path: Path, min_pairs: int = 100) -> list[dict]:
                 raise ValueError(
                     f"{path}: {pair_id}: punctuation pair changes non-punctuation content"
                 )
+        elif variant == "context_flip":
+            pass
         elif symbol_view(text_a) != symbol_view(text_b):
             raise ValueError(
                 f"{path}: {pair_id}: spelling/shorthand pair also changes symbols"
@@ -97,10 +105,102 @@ def read_pairs(path: Path, min_pairs: int = 100) -> list[dict]:
     return rows
 
 
+def prepare_draft_review(drafts_path: Path, output: Path) -> int:
+    """Create a label-free human editing sheet from explicitly model-drafted pairs."""
+    rows, ids, pairs = [], set(), set()
+    allowed_categories = {"spelling_preserving", "shorthand_preserving",
+                          "emoji_flip", "punctuation_context_flip"}
+    for line_number, line in enumerate(drafts_path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        required = {"pair_id", "category", "text_a", "text_b", "surface_variation",
+                    "provenance", "annotator_1_label", "annotator_2_label",
+                    "adjudicated_label"}
+        if required - row.keys():
+            raise ValueError(f"draft row {line_number} is missing {sorted(required - row.keys())}")
+        if row["provenance"] != "model_drafted_pending_human_review":
+            raise ValueError(f"draft row {line_number} has unsupported provenance")
+        if any(row[field] is not None for field in
+               ("annotator_1_label", "annotator_2_label", "adjudicated_label")):
+            raise ValueError(f"draft row {line_number} already contains purported human labels")
+        pair_id = str(row["pair_id"]).strip()
+        pair = (row["text_a"].strip(), row["text_b"].strip())
+        if not pair_id or pair_id in ids or pair in pairs or pair[0] == pair[1]:
+            raise ValueError(f"draft row {line_number} has duplicate/invalid pair content")
+        if row["category"] not in allowed_categories:
+            raise ValueError(f"draft row {line_number} has unsupported category")
+        ids.add(pair_id); pairs.add(pair)
+        rows.append({"pair_id": pair_id, "category": row["category"],
+                     "draft_text_a": pair[0], "draft_text_b": pair[1],
+                     "surface_variation": row["surface_variation"], "decision": "",
+                     "reviewed_text_a": "", "reviewed_text_b": "",
+                     "human_reviewer_id": "", "review_notes": ""})
+    _write_csv(output, DRAFT_REVIEW_FIELDS, rows)
+    return len(rows)
+
+
+def finalize_draft_review(review_path: Path, output: Path, min_pairs: int = 100) -> int:
+    """Convert completed human editing decisions to the existing freeze input schema."""
+    with review_path.open("r", encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if tuple(reader.fieldnames or ()) != DRAFT_REVIEW_FIELDS:
+            raise ValueError(f"{review_path}: unexpected review columns")
+        reviewed = [{field: row[field].strip() for field in DRAFT_REVIEW_FIELDS}
+                    for row in reader]
+    output_rows = []
+    base_variants = {"spelling_preserving": "spelling_same",
+                     "shorthand_preserving": "shorthand_same",
+                     "emoji_flip": "emoji_flip"}
+    for row in reviewed:
+        if row["decision"] not in {"accept", "rewrite", "reject"}:
+            raise ValueError(f"{row['pair_id']}: decision must be accept, rewrite or reject")
+        if not row["human_reviewer_id"]:
+            raise ValueError(f"{row['pair_id']}: human_reviewer_id is required")
+        if row["decision"] == "reject":
+            continue
+        if row["decision"] == "rewrite":
+            text_a, text_b = row["reviewed_text_a"], row["reviewed_text_b"]
+            if not text_a or not text_b:
+                raise ValueError(f"{row['pair_id']}: rewritten texts are required")
+        else:
+            text_a, text_b = row["draft_text_a"], row["draft_text_b"]
+        if row["category"] == "punctuation_context_flip":
+            variant = ("punctuation_flip" if _normalized_space(remove_punctuation(text_a))
+                       == _normalized_space(remove_punctuation(text_b)) else "context_flip")
+        else:
+            variant = base_variants.get(row["category"])
+        if not variant:
+            raise ValueError(f"{row['pair_id']}: unsupported category")
+        output_rows.append({"pair_id": row["pair_id"], "variant_type": variant,
+                            "text_a": text_a, "text_b": text_b,
+                            "writer_id": row["human_reviewer_id"],
+                            "notes": ("human-reviewed model draft; " + row["decision"]
+                                      + ("; " + row["review_notes"] if row["review_notes"] else ""))})
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            dir=output.parent,
+            prefix=f".{output.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as temporary:
+            temporary_path = Path(temporary.name)
+        _write_csv(temporary_path, PAIR_FIELDS, output_rows)
+        read_pairs(temporary_path, min_pairs=min_pairs)
+        temporary_path.replace(output)
+        temporary_path = None
+    finally:
+        if temporary_path is not None:
+            temporary_path.unlink(missing_ok=True)
+    return len(output_rows)
+
+
 def _write_csv(path: Path, fields: tuple[str, ...], rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -427,6 +527,15 @@ def main() -> None:
     freeze_parser.add_argument("--config", action="append", type=Path, default=[])
     freeze_parser.add_argument("--min-pairs", type=int, default=100)
 
+    draft_parser = subparsers.add_parser("prepare-draft-review")
+    draft_parser.add_argument("--drafts", type=Path, required=True)
+    draft_parser.add_argument("--output", type=Path, required=True)
+
+    finalize_parser = subparsers.add_parser("finalize-draft-review")
+    finalize_parser.add_argument("--review", type=Path, required=True)
+    finalize_parser.add_argument("--output", type=Path, required=True)
+    finalize_parser.add_argument("--min-pairs", type=int, default=100)
+
     verify_parser = subparsers.add_parser("verify")
     verify_parser.add_argument("--frozen-dir", type=Path, required=True)
 
@@ -445,7 +554,11 @@ def main() -> None:
     score_parser.add_argument("--output-dir", type=Path, required=True)
 
     args = parser.parse_args()
-    if args.command == "freeze":
+    if args.command == "prepare-draft-review":
+        print(f"drafts={prepare_draft_review(args.drafts, args.output)}")
+    elif args.command == "finalize-draft-review":
+        print(f"accepted={finalize_draft_review(args.review, args.output, args.min_pairs)}")
+    elif args.command == "freeze":
         manifest = freeze_pairs(
             args.pairs,
             args.output_dir,

@@ -210,6 +210,12 @@ label natural spelling and emoji-flip pairs. Tests written by an AI cannot estab
 human pragmatic accuracy. The existing contrast CSV is empty and must stay an
 honest record of what has actually been collected.
 
+The supplied 120-row candidate bank is stored separately as
+`model_drafts_pending_review.jsonl`, with its model-drafted provenance intact.
+`draft_human_review.csv` contains no proposed sentiment labels. Complete the
+human editing decisions described in the challenge README before converting any
+candidate into the freeze input.
+
 After collecting pairs, freeze the **current** `models/current/sentiment.joblib`
 and current configuration before annotation. The old preregistration hashes refer
 to the previous experiment and cannot certify these new artifacts.

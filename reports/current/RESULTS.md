@@ -181,7 +181,9 @@ effect of emoji removal is not evidence of correct emoji-flip interpretation.
 
 - The trained shared byte model is fast but does not beat the compact baselines.
 - GupShup access is needed for real summary training and evaluation.
-- Natural spelling and pragmatic emoji-flip pairs still require human annotation.
+- A 120-pair model-drafted spelling, shorthand, emoji and punctuation/context
+  candidate bank now has a label-free human editing form. It still requires human
+  review, freezing, two-person blind annotation and adjudication before scoring.
 - QA has only 102 usable examples; only two held-out answers fit the bounded reader,
   and its final token-F1 is zero.
 - Intent covers TOP tasks, not the proposed customer-support taxonomy.
@@ -190,4 +192,4 @@ effect of emoji removal is not evidence of correct emoji-flip interpretation.
 Raw answer-containing prediction outputs are generated locally and ignored by Git.
 The historical sentiment results are a separate train+dev experiment and remain
 unchanged. Dataset URLs, revisions and hashes are in `data/source_manifest.json`.
-The final test suite contains 23 passing tests.
+The final test suite contains 29 passing tests.
