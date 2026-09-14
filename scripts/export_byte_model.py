@@ -1,6 +1,8 @@
 """Export the trained byte model to task-specific ONNX graphs and dynamic int8."""
 import argparse
+import hashlib
 import json
+import platform
 import re
 import time
 import unicodedata
@@ -179,7 +181,14 @@ def main():
                                     if key in ByteMultiTaskConfig.__dataclass_fields__})
     model = ByteMultiTaskModel(config).eval(); model.load_state_dict(saved["state_dict"])
     args.output.mkdir(parents=True, exist_ok=True); report = {
-        "checkpoint": str(args.checkpoint), "parameters": model.parameter_report(), "tasks": {}}
+        "checkpoint": str(args.checkpoint),
+        "checkpoint_sha256": hashlib.sha256(args.checkpoint.read_bytes()).hexdigest(),
+        "parameters": model.parameter_report(),
+        "runtime": {"platform": platform.platform(), "python": platform.python_version(),
+                    "torch": torch.__version__, "onnxruntime": ort.__version__,
+                    "intra_op_threads": 1, "inter_op_threads": 1,
+                    "execution": "sequential"},
+        "tasks": {}}
     lengths = {"sentiment": 160, "intent": 160, "qa": 256, "summarization": 160}
     for task, length in lengths.items():
         graph, batch = TaskGraph(model, task).eval(), encoded_example(task, length)
@@ -206,12 +215,10 @@ def main():
                            for left, right in zip(torch_arrays, fp32_arrays))
         int8_error = max(float(np.max(np.abs(left - right)))
                           for left, right in zip(torch_arrays, int8_arrays))
-        samples = []
+        samples, complete = [], []
         for _ in range(args.runs):
             started = time.perf_counter_ns(); arrays = session.run(None, feed); build_output(task, arrays)
             samples.append((time.perf_counter_ns() - started) / 1e6)
-        complete = []
-        for _ in range(args.runs):
             started = time.perf_counter_ns()
             fresh = encoded_example(task, length)
             arrays = session.run(None, feed_dict(fresh)); build_output(task, arrays)
@@ -226,7 +233,9 @@ def main():
             "end_to_end_p99_ms": float(np.percentile(complete, 99)), "runs": args.runs,
             "fp32_max_abs_error_vs_pytorch": fp32_error,
             "int8_max_abs_error_vs_pytorch": int8_error,
-            "scope": "warm batch-one CPU; end-to-end includes byte encoding and output construction; file I/O excluded",
+            "scope": ("warm batch-one CPU; end-to-end includes byte encoding and output "
+                      "construction; file I/O excluded" +
+                      ("; one summary candidate, not a complete dialogue" if task == "summarization" else "")),
             "int8_quality": quality(session, task, length, args.data, saved,
                                     args.quality_limit, args.split)}
         print(json.dumps({"task": task, **report["tasks"][task]}), flush=True)

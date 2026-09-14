@@ -67,9 +67,11 @@ The final neural candidate is `ByteMultiTaskModel` in `src/rinlu/neural.py`:
 - extractive span/turn heads for QA and summarization;
 - no existing model weights and no autoregressive decoding.
 
-The architecture, training objectives, latency gates, and audited Hugging Face
-dataset shortlist are documented in `architecture.md`. The compact fitted models
-remain baselines until this neural candidate has trained quality measurements.
+The architecture, training objectives, latency gates, audited Hugging Face
+dataset shortlist, and final trained measurements are documented in
+`architecture.md` and `reports/current/RESULTS.md`. The neural model meets its
+bounded latency target but trails the compact fitted baselines on quality, so it
+is retained as an experimental result rather than the selected production model.
 
 Train the shared model from random initialization, then export fixed-width ONNX
 graphs with dynamic int8 weights:

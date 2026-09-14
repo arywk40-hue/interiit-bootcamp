@@ -1,7 +1,58 @@
 # Current measured results
 
-Run date: 2026-09-13. macOS ARM64, Python 3.13.0, one numerical-library thread.
+Run date: 2026-09-14. macOS ARM64, Python 3.13.0, one numerical-library thread.
 All fitted models use train only. Test is held out from candidate selection.
+
+## From-scratch shared byte model
+
+The 4,306,511-parameter model was initialized randomly. Masked-byte pretraining
+used 10,000 balanced, deduplicated train-only messages from SentiMix,
+Hinglish-TOP, PHINC, CMQA, public anonymized Gupshup chat and five redacted local
+chat sources. The normalized overlap with downstream development/test text was
+zero. Masked-byte loss was 3.4819 after one epoch. Joint sentiment, intent and QA
+training then ran through epoch 9; the checkpoint was selected by the mean of the
+three development metrics. Total measured CPU training time was 1,788 seconds
+across the initial and resumed runs.
+
+| Neural int8 task | Held-out examples actually read | Quality | End-to-end p95 | End-to-end p99 |
+|---|---:|---:|---:|---:|
+| sentiment, 160 bytes | 3,000 | macro-F1 0.4162; accuracy 0.4200 | 5.55 ms | 9.66 ms |
+| intent, 160 bytes | 6,390 | macro-F1 0.0562; accuracy 0.2704 | 5.18 ms | 7.92 ms |
+| QA, 256 bytes | 2 of 7 | token-F1 0.0000 | 8.81 ms | 9.79 ms |
+| summary candidate score, 160 bytes | — | untrained; no h2h labels | 5.62 ms | 6.65 ms |
+
+These are the final dynamic-int8 test measurements, at least 300 warm sequential
+calls per graph with one ONNX Runtime thread. End-to-end timing includes byte encoding,
+inference and output construction, and excludes graph loading and file I/O. The
+summary number times one candidate score, not a complete multi-turn summary.
+The unified int8 artifact is 5,566,115 bytes and contains one encoder copy plus
+all task heads. FP32 ONNX errors versus PyTorch were at most `2.39e-6`; task-level
+int8 maximum absolute differences were 0.0020–0.0229 on the export inputs.
+
+The trained byte model meets the size and measured p95 gates for the bounded
+graphs, but its quality is substantially below the compact baselines. It should
+remain an experimental architecture. For the positive demonstration
+`service bahut acchi hai 😄`, int8 inference now returns `positive`; this single
+developer-written example is not evaluation evidence. For `delivery kab hogi?`
+with `Order processing complete hai. Delivery kal hogi.`, it returned only `.`,
+which exposes the reader's weak boundary learning.
+
+### Neural robustness diagnostics
+
+| Task | Edit | Changed examples | Macro-F1 delta | Prediction stability |
+|---|---|---:|---:|---:|
+| sentiment | vowel deletion | 2,998 | -0.0002 | 0.7091 |
+| sentiment | letter repetition | 3,000 | +0.0051 | 0.7213 |
+| sentiment | emoji removal | 609 | -0.0369 | 0.6125 |
+| sentiment | punctuation removal | 2,966 | -0.0618 | 0.5091 |
+| intent | vowel deletion | 6,305 | -0.0041 | 0.6090 |
+| intent | letter repetition | 6,390 | -0.0058 | 0.5900 |
+| intent | punctuation removal | 1,924 | -0.0020 | 0.7994 |
+
+Vowel deletion and repetition are synthetic diagnostics. Emoji/punctuation
+removal changes meaning in some messages. Their larger sentiment effects show
+that the byte model uses those channels; they do not establish correct pragmatic
+flips without the preregistered human contrast set.
 
 | Task | Test examples | Quality | p95, ms | Artifact, MB | Learned scalars |
 |---|---:|---|---:|---:|---:|
@@ -102,10 +153,11 @@ effect of emoji removal is not evidence of correct emoji-flip interpretation.
 
 ## What prevents a complete PS claim
 
-- The new 4,306,511-parameter shared byte model is implemented but not yet trained.
+- The trained shared byte model is fast but does not beat the compact baselines.
 - GupShup access is needed for real summary training and evaluation.
 - Natural spelling and pragmatic emoji-flip pairs still require human annotation.
-- QA needs substantially more context-grounded human data and stronger accuracy.
+- QA has only 102 usable examples; only two held-out answers fit the bounded reader,
+  and its final token-F1 is zero.
 - Intent covers TOP tasks, not the proposed customer-support taxonomy.
 - Measurements are corpus/hardware specific; no concurrency or worst-case guarantee.
 

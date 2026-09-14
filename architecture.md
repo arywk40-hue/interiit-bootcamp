@@ -108,6 +108,27 @@ QA, or summary labels.
 - Warm batch-one p95 below 10 ms for each declared input length on the target CPU.
 - Report long-input latency separately instead of extrapolating from short text.
 
+## Trained outcome
+
+The from-scratch experiment is complete. Pretraining used 10,000 balanced
+train-only messages, with zero normalized overlap against downstream development
+or test text. Unicode masking selected full characters, including all bytes of an
+emoji together. Development-only selection chose epoch 9. Dynamic int8 export
+created a 5.57 MB unified model containing one encoder and all heads.
+
+On held-out data, int8 sentiment reached 0.4162 macro-F1, intent reached 0.0562,
+and QA scored 0.0 token-F1 on the two test answers that fit 256 bytes. Measured
+end-to-end p95 was 5.55 ms for sentiment, 5.18 ms for intent, and 8.81 ms for QA.
+The summary candidate head measured 5.62 ms p95 but remains untrained, so this is
+an engineering timing only. `reports/current/RESULTS.md` contains the full timing,
+robustness and comparison tables.
+
+This outcome rejects the shared neural model as the current production choice.
+The character baselines remain much more accurate for sentiment and intent, and
+the linear QA baseline is less poor on its tiny test set. The neural experiment
+still demonstrates compliant random initialization, Unicode-safe byte learning,
+shared weights, bounded int8 serving and honest failure measurement.
+
 The model is in `src/rinlu/neural.py`, training is in
 `scripts/train_from_scratch.py`, and ONNX/int8 export plus measurement is in
 `scripts/export_byte_model.py`. Fixed architecture settings are in
