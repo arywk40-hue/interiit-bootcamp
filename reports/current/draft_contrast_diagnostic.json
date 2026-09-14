@@ -1,0 +1,403 @@
+{
+  "status": "exploratory_only_model_drafted_pairs_and_labels_pending_human_review",
+  "source": "data/challenge/model_drafts_pending_review.jsonl",
+  "pair_count": 120,
+  "message_count": 240,
+  "models": [
+    {
+      "name": "deployed_char_tfidf",
+      "messages": 240,
+      "pairs": 120,
+      "macro_f1_vs_draft_labels": 0.1756446782087808,
+      "message_accuracy_vs_draft_labels": 0.17083333333333334,
+      "pair_exact_accuracy_vs_draft_labels": 0.06666666666666667,
+      "relation_accuracy_vs_draft_labels": 0.425,
+      "online_latency_ms": {
+        "p50": 0.269229,
+        "p95": 0.3592898999999999,
+        "mean": 0.2806593416666667,
+        "runs": 240,
+        "scope": "model preprocessing + predict; warm model; no I/O"
+      },
+      "by_category": {
+        "emoji_flip": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.10939112487100104,
+          "message_accuracy_vs_draft_labels": 0.1,
+          "pair_exact_accuracy_vs_draft_labels": 0.0,
+          "relation_accuracy_vs_draft_labels": 0.0
+        },
+        "punctuation_context_flip": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.17929292929292928,
+          "message_accuracy_vs_draft_labels": 0.2,
+          "pair_exact_accuracy_vs_draft_labels": 0.03333333333333333,
+          "relation_accuracy_vs_draft_labels": 0.06666666666666667
+        },
+        "shorthand_preserving": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.1812865497076023,
+          "message_accuracy_vs_draft_labels": 0.16666666666666666,
+          "pair_exact_accuracy_vs_draft_labels": 0.06666666666666667,
+          "relation_accuracy_vs_draft_labels": 0.7666666666666667
+        },
+        "spelling_preserving": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.21666666666666667,
+          "message_accuracy_vs_draft_labels": 0.21666666666666667,
+          "pair_exact_accuracy_vs_draft_labels": 0.16666666666666666,
+          "relation_accuracy_vs_draft_labels": 0.8666666666666667
+        }
+      },
+      "failure_count": 112,
+      "first_10_pair_failures": [
+        {
+          "pair_id": "SP001",
+          "category": "spelling_preserving",
+          "gold": [
+            "positive",
+            "positive"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Yaar aaj ka khana bahut accha tha",
+          "text_b": "Yaar aaj ka khana bahut acha tha"
+        },
+        {
+          "pair_id": "SP002",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Movie thodi boring thi yaar",
+          "text_b": "Movie thodi boaring thi yaar"
+        },
+        {
+          "pair_id": "SP003",
+          "category": "spelling_preserving",
+          "gold": [
+            "positive",
+            "positive"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Bhai match jeet gaye, kya baat hai!",
+          "text_b": "Bhai match jeet gaye, kya baat h!"
+        },
+        {
+          "pair_id": "SP005",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Traffic mein bahut time waste hua",
+          "text_b": "Traffic me bahut time waste hua"
+        },
+        {
+          "pair_id": "SP006",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Wo restaurant ka service bekar tha",
+          "text_b": "Wo restaurant ka service bekaar tha"
+        },
+        {
+          "pair_id": "SP007",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "neutral",
+            "positive"
+          ],
+          "text_a": "Exam bahut tough tha is baar",
+          "text_b": "Exam bahut tuff tha is baar"
+        },
+        {
+          "pair_id": "SP009",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Yeh phone bilkul faltu nikla",
+          "text_b": "Yeh phone bilkul faaltu nikla"
+        },
+        {
+          "pair_id": "SP011",
+          "category": "spelling_preserving",
+          "gold": [
+            "positive",
+            "positive"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Professor ne lecture achhe se samjhaya",
+          "text_b": "Professor ne lecture ache se samjhaya"
+        },
+        {
+          "pair_id": "SP012",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Ye jagah bilkul khatarnak lag rahi hai raat mein",
+          "text_b": "Ye jagah bilkul khatarnaak lag rahi hai raat mein"
+        },
+        {
+          "pair_id": "SP013",
+          "category": "spelling_preserving",
+          "gold": [
+            "positive",
+            "positive"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Chai ka swaad kamaal ka tha",
+          "text_b": "Chai ka swad kamal ka tha"
+        }
+      ]
+    },
+    {
+      "name": "trained_byte_int8",
+      "messages": 240,
+      "pairs": 120,
+      "macro_f1_vs_draft_labels": 0.26713435974700633,
+      "message_accuracy_vs_draft_labels": 0.4666666666666667,
+      "pair_exact_accuracy_vs_draft_labels": 0.24166666666666667,
+      "relation_accuracy_vs_draft_labels": 0.5,
+      "online_latency_ms": {
+        "p50": 2.216521,
+        "p95": 2.5384482499999996,
+        "mean": 2.2739694333333333,
+        "runs": 240,
+        "scope": "UTF-8 byte encoding + int8 ONNX inference; warm model; no I/O"
+      },
+      "by_category": {
+        "emoji_flip": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.20253164556962025,
+          "message_accuracy_vs_draft_labels": 0.4,
+          "pair_exact_accuracy_vs_draft_labels": 0.0,
+          "relation_accuracy_vs_draft_labels": 0.03333333333333333
+        },
+        "punctuation_context_flip": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.37398937398937404,
+          "message_accuracy_vs_draft_labels": 0.6,
+          "pair_exact_accuracy_vs_draft_labels": 0.23333333333333334,
+          "relation_accuracy_vs_draft_labels": 0.3333333333333333
+        },
+        "shorthand_preserving": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.2596745027124774,
+          "message_accuracy_vs_draft_labels": 0.45,
+          "pair_exact_accuracy_vs_draft_labels": 0.36666666666666664,
+          "relation_accuracy_vs_draft_labels": 0.8
+        },
+        "spelling_preserving": {
+          "messages": 60,
+          "macro_f1_vs_draft_labels": 0.2183641975308642,
+          "message_accuracy_vs_draft_labels": 0.4166666666666667,
+          "pair_exact_accuracy_vs_draft_labels": 0.36666666666666664,
+          "relation_accuracy_vs_draft_labels": 0.8333333333333334
+        }
+      },
+      "failure_count": 91,
+      "first_10_pair_failures": [
+        {
+          "pair_id": "SP001",
+          "category": "spelling_preserving",
+          "gold": [
+            "positive",
+            "positive"
+          ],
+          "prediction": [
+            "negative",
+            "negative"
+          ],
+          "text_a": "Yaar aaj ka khana bahut accha tha",
+          "text_b": "Yaar aaj ka khana bahut acha tha"
+        },
+        {
+          "pair_id": "SP002",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "positive",
+            "positive"
+          ],
+          "text_a": "Movie thodi boring thi yaar",
+          "text_b": "Movie thodi boaring thi yaar"
+        },
+        {
+          "pair_id": "SP005",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "positive",
+            "positive"
+          ],
+          "text_a": "Traffic mein bahut time waste hua",
+          "text_b": "Traffic me bahut time waste hua"
+        },
+        {
+          "pair_id": "SP006",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "positive",
+            "positive"
+          ],
+          "text_a": "Wo restaurant ka service bekar tha",
+          "text_b": "Wo restaurant ka service bekaar tha"
+        },
+        {
+          "pair_id": "SP007",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "positive",
+            "positive"
+          ],
+          "text_a": "Exam bahut tough tha is baar",
+          "text_b": "Exam bahut tuff tha is baar"
+        },
+        {
+          "pair_id": "SP009",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "positive",
+            "positive"
+          ],
+          "text_a": "Yeh phone bilkul faltu nikla",
+          "text_b": "Yeh phone bilkul faaltu nikla"
+        },
+        {
+          "pair_id": "SP012",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "positive",
+            "neutral"
+          ],
+          "text_a": "Ye jagah bilkul khatarnak lag rahi hai raat mein",
+          "text_b": "Ye jagah bilkul khatarnaak lag rahi hai raat mein"
+        },
+        {
+          "pair_id": "SP013",
+          "category": "spelling_preserving",
+          "gold": [
+            "positive",
+            "positive"
+          ],
+          "prediction": [
+            "positive",
+            "neutral"
+          ],
+          "text_a": "Chai ka swaad kamaal ka tha",
+          "text_b": "Chai ka swad kamal ka tha"
+        },
+        {
+          "pair_id": "SP014",
+          "category": "spelling_preserving",
+          "gold": [
+            "negative",
+            "negative"
+          ],
+          "prediction": [
+            "positive",
+            "positive"
+          ],
+          "text_a": "Uska rawaiya bahut ganda tha",
+          "text_b": "Uska rawaiya bahut gandaa tha"
+        },
+        {
+          "pair_id": "SP015",
+          "category": "spelling_preserving",
+          "gold": [
+            "positive",
+            "positive"
+          ],
+          "prediction": [
+            "neutral",
+            "neutral"
+          ],
+          "text_a": "Result dekh ke bohot khushi hui",
+          "text_b": "Result dekh ke bahut khushi hui"
+        }
+      ]
+    }
+  ],
+  "artifacts": {
+    "drafts_sha256": "57aa76d63acb8f5e6edbdfa3a006763495eb6eb4e1dac74357208c89f62e78ce",
+    "deployed_char_tfidf_sha256": "8b3da0c40070a7f929aa1ded2b5a9a26509d91bb3c4b11f74a8bc5b6fe433e08",
+    "trained_byte_int8_sha256": "1346a914f7753b10ace63f971941cb709b75f2b04c53b8e46067df8461c785e5"
+  },
+  "environment": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.11",
+    "onnxruntime": "1.26.0",
+    "threads": 1
+  },
+  "interpretation": "Draft labels and intended relations were supplied by a model and are not human-reviewed ground truth. These measurements guide review and model development only. The draft bank contains no neutral-labelled messages, so it is not a balanced three-class evaluation.",
+  "draft_label_distribution": {
+    "negative": 118,
+    "neutral": 0,
+    "positive": 122
+  }
+}

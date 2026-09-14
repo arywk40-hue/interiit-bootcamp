@@ -54,6 +54,28 @@ removal changes meaning in some messages. Their larger sentiment effects show
 that the byte model uses those channels; they do not establish correct pragmatic
 flips without the preregistered human contrast set.
 
+### Model-drafted contrast diagnostic (not official evaluation)
+
+The supplied 120 pairs contain model-proposed labels which have not been checked
+by people. Testing against those draft labels is useful for finding failures, but
+the resulting numbers are not human-grounded quality evidence and do not replace
+the freeze, blind annotation and adjudication protocol. The drafts contain 122
+positive and 118 negative message labels, with no neutral examples, so this is
+also not a balanced three-class evaluation.
+
+| Model | Draft-label macro-F1 | Message accuracy | Pair exact accuracy | Relation accuracy | Online p95 |
+|---|---:|---:|---:|---:|---:|
+| deployed character baseline | 0.1756 | 0.1708 | 0.0667 | 0.4250 | 0.36 ms |
+| trained byte int8 | 0.2671 | 0.4667 | 0.2417 | 0.5000 | 2.54 ms |
+
+Relation accuracy measures whether predictions preserve or flip sentiment as the
+draft proposes. On spelling and shorthand pairs, it was 0.8667/0.7667 for the
+baseline and 0.8333/0.8000 for the byte model. On proposed emoji flips, it was
+0.0000 and 0.0333; on punctuation/context flips, 0.0667 and 0.3333. The models
+are therefore often invariant to the very cues this challenge targets. Full
+per-category results, artifact hashes and failure examples are in
+`draft_contrast_diagnostic.json`.
+
 ## Sustained concurrent throughput
 
 The focused sentiment setting issued 1,000 in-process requests to one already-loaded
