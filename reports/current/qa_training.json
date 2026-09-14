@@ -1,0 +1,149 @@
+{
+  "task": "qa",
+  "training_split": "train_only",
+  "selected": "linear_span_ranker",
+  "candidates": {
+    "linear_span_ranker": {
+      "dev": {
+        "exact_match": 0.047619047619047616,
+        "token_f1": 0.2694324194324194,
+        "answer_rate": 1.0,
+        "no_answer_quality": "not measured: source has no annotated unanswerable questions",
+        "examples": 21
+      },
+      "latency": {
+        "p50_ms": 1.888042,
+        "p95_ms": 3.2988339499999997,
+        "p99_ms": 3.4804437500000036,
+        "mean_ms": 2.1036429099999996,
+        "sequential_requests_per_second": 475.36584999590076,
+        "measured_runs": 100,
+        "scope": "preprocessing + prediction + output construction; warm model; no I/O",
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.0",
+        "threadpools": [
+          {
+            "user_api": "openmp",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+            "version": null
+          }
+        ]
+      }
+    }
+  },
+  "counts": {
+    "train": 74,
+    "dev": 21,
+    "test": 7
+  },
+  "audit": {
+    "source": "CMQA original train, custom context-disjoint 70/15/15 split",
+    "excluded": {
+      "answer_not_a_contiguous_span": 65,
+      "duplicate_question_context": 4,
+      "other_language": 445,
+      "no_text_context": 774
+    },
+    "context_groups": 25,
+    "group_split": {
+      "ab426015392d089371f3197ff2b6e298bcd0017c557a8a84cc6f2d89c93d4807": "train",
+      "8fda0f612823466795dd1a3e3c5c27ac30459530f53f1cb9662b1b15a9941dc2": "train",
+      "79ec0f7636f60618dade92d68ba6d1ea990ce667f023394ad905ee743ed2027a": "train",
+      "b687889e37527cfba4cebfac476319fbfdbc99522a778e48e8826ae3d7a31fb3": "train",
+      "b41a4c5d52214ec217cae8cab7f6ed3d85e05e37cc538973f12109d7baca8ca7": "train",
+      "63deaa0bf9e522f2a33cf4a201ff952194cf66ee13247be937db4be8db01d6a5": "train",
+      "59c1ccb32259773ba922636ff14b3442fbe363cc9f522fffef63427374799a26": "train",
+      "8c7e4fa41ddbe63ae4c171b1cfd72bced200a208567ad8f2cc8ab24726d350a2": "train",
+      "a20ef0a0ce90b5ec323129f839bee8c59fdf8b3aff566c16ce082068ca675df9": "train",
+      "cade09e5bf15472ec0ba7dad76c92df7913eb760710d68928b9148fa8fc12fdb": "train",
+      "8e44dfb9a4711ae6171092a8ad088e24dcbc087a01f08711cae9c016c51515fc": "train",
+      "ab5c5828c0b083ae3a80c0bb19f2f79f0193d5da679b8dff21a984a881ac0b5c": "train",
+      "0384c2d04a2a79a7289e9bb1c2f6c473facd521b91b098f2b94f3201255c7680": "train",
+      "9e703686653b0c964cafa589e4f1d6e6b72402f708eebc7fa1714ae3cb6f088d": "train",
+      "cc8144adddc464837ba555625c4137edb92006e8bd28f9f2b5a8058d86d3bb9a": "train",
+      "9a1f515b93f2866dbb67bf21762a9f7cc8570b20ce414fa58e258c92799466e5": "train",
+      "12ed945c4a954656687afd321b840b071436a2b658ee4258d2753404add304b2": "train",
+      "d54b24ee24e9066dc7889a49d07de6a71ced1c95fca8d2f76f37926326ecb10c": "dev",
+      "21e9fa5607f291d32baeff01b4c54c4cdf31ed386ebf7571362c3675c2eb6f18": "dev",
+      "eb03e70efb4036d4d9702e5af6e3260487df8663c4a9f792e0b536f279331bea": "dev",
+      "77188c971360bf498b580161bf02472637857b1f3a38f1e3b1257b6df8987132": "dev",
+      "78f3cf8c99b0cbba2d19c818cf6d54766a9f90eb854be85b418c058c0cbcb219": "test",
+      "01df653a308b6d48a593c080abf9c39fc6f55057f4b5c382be2c56e1ea2e20e3": "test",
+      "1d3f1e328145cb0a68d3c74ac6d24f904ba6f6dcd1194d635a217ae8c1d87d3a": "test",
+      "c9ab40f7815d00c6955051dfadf93590f68e2e24c605071885d642bee4857c93": "test"
+    }
+  },
+  "split_sha256": {
+    "train": "25d2846cb6f23b2ce4b34f1e22f53d34ead58ba98acf55d97b4c07c3d611ac82",
+    "dev": "e404558168a7871ccfda0bbdd47faf4fc17dabd4131b5371cf1eceaf9c7cebd7",
+    "test": "74ba478900644a3696ae902023ad1d65c155cfbc66208d4d324b79cfcbd29013"
+  },
+  "artifact_bytes": 1328,
+  "parameters": {
+    "total_learned_scalars": 31
+  },
+  "config": {
+    "seed": 42,
+    "selection_split": "dev",
+    "selection_metric": "macro_f1",
+    "selection_tolerance": 0.002,
+    "selection_tiebreaker": "lowest_batch_one_p95_latency",
+    "candidate_models": [
+      "char_tfidf",
+      "word_char_tfidf",
+      "raw_canonical_char_tfidf",
+      "char_symbol_tfidf"
+    ],
+    "character_features": {
+      "analyzer": "char",
+      "ngram_range": [
+        3,
+        5
+      ],
+      "min_df": 2,
+      "max_features": 180000,
+      "sublinear_tf": true
+    },
+    "symbol_features": {
+      "unicode_categories": [
+        "P",
+        "S"
+      ],
+      "ngram_range": [
+        1,
+        3
+      ],
+      "max_features": 10000,
+      "weight": 2.0
+    },
+    "qa": {
+      "max_answer_words": 8,
+      "top_sentences": 3,
+      "threshold": 0.0
+    },
+    "summarization": {
+      "max_sentences": 3,
+      "max_words": 80,
+      "redundancy": 0.4
+    },
+    "classifier": {
+      "type": "one_vs_rest_logistic_regression",
+      "C": 4.0,
+      "solver": "liblinear",
+      "class_weight": "balanced",
+      "max_iter": 500
+    }
+  },
+  "code_sha256": "ffdb0ad1f51c0578695a81ed0012c726f39cc25f3fe24a72751d159cee387696",
+  "packages": {
+    "numpy": "2.5.2",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.0",
+    "joblib": "1.5.3",
+    "threadpoolctl": "3.6.0"
+  },
+  "artifact_sha256": "75cf7967bbd5da32b488a55f96ec883f9fd479e3326223d9817188fc1d7b1b2a"
+}

@@ -98,7 +98,7 @@ class ContrastSetTests(unittest.TestCase):
                 ["negative", "negative", "neutral", "neutral", "positive", "positive"],
             )
             model_path = root / "model.joblib"
-            joblib.dump(model, model_path)
+            joblib.dump({"task": "sentiment", "model": model}, model_path)
             frozen = root / "frozen"
             freeze_pairs(pairs, frozen, {"model": model_path}, [], min_pairs=2)
 

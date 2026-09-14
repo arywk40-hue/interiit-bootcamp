@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import platform
+import re
 import time
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -80,3 +82,31 @@ def benchmark_batch_one(model, texts: list[str], warmup: int = 30, runs: int = 3
 def artifact_size_bytes(path: Path) -> int:
     return path.stat().st_size
 
+
+def answer_tokens(text: str) -> list[str]:
+    """Case-insensitive lexical tokens for QA/summary overlap (not model preprocessing)."""
+    return re.findall(r"\w+", text.casefold())
+
+
+def token_f1(prediction: str, reference: str) -> float:
+    left, right = Counter(answer_tokens(prediction)), Counter(answer_tokens(reference))
+    if not left or not right:
+        return float(left == right)
+    common = sum((left & right).values())
+    return 2 * common / (sum(left.values()) + sum(right.values()))
+
+
+def rouge_scores(prediction: str, reference: str) -> dict:
+    """ROUGE-1/2/L F1 without stemming, using the same explicit tokenization."""
+    a, b = answer_tokens(prediction), answer_tokens(reference)
+    bigrams_a, bigrams_b = Counter(zip(a, a[1:])), Counter(zip(b, b[1:]))
+    denominator = sum(bigrams_a.values()) + sum(bigrams_b.values())
+    rouge2 = 2 * sum((bigrams_a & bigrams_b).values()) / denominator if denominator else 0.0
+    previous = [0] * (len(b) + 1)
+    for word in a:
+        current = [0]
+        for j, other in enumerate(b, 1):
+            current.append(previous[j - 1] + 1 if word == other else max(previous[j], current[-1]))
+        previous = current
+    rouge_l = 2 * previous[-1] / (len(a) + len(b)) if a or b else 1.0
+    return {"rouge1_f1": token_f1(prediction, reference), "rouge2_f1": rouge2, "rougeL_f1": rouge_l}

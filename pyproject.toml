@@ -5,14 +5,21 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "roman-indic-nlu"
 version = "0.1.0"
-description = "Leakage-aware Hinglish sentiment robustness benchmark"
-requires-python = ">=3.10"
+description = "Explainable Hinglish sentiment, intent, extractive summarization and QA baselines"
+requires-python = ">=3.12"
 dependencies = [
-  "joblib>=1.3",
-  "numpy>=1.24",
-  "scikit-learn>=1.3",
+  "joblib==1.5.3",
+  "numpy==2.5.2",
+  "scikit-learn==1.9.0",
+  "scipy==1.18.0",
+  "threadpoolctl==3.6.0",
+  "torch>=2.2",
+]
+
+[project.optional-dependencies]
+external-baseline = [
+  "transformers>=4.43",
 ]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-

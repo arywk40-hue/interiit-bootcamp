@@ -72,7 +72,7 @@ def _char_vectorizer(max_features: int = 180_000):
     )
 
 
-def build_model(name: str, random_state: int = 42):
+def build_model(name: str, random_state: int = 42, config: dict | None = None):
     if name == "char_tfidf":
         features = _char_vectorizer()
     elif name == "word_char_tfidf":
@@ -136,7 +136,24 @@ def build_model(name: str, random_state: int = 42):
         )
     else:
         raise ValueError(f"unknown model {name!r}")
-    return Pipeline([("features", features), ("classifier", _classifier(random_state))])
+    model = Pipeline([("features", features), ("classifier", _classifier(random_state))])
+    if config is not None:
+        params = {}
+        classifier = config["classifier"]
+        for key in ("C", "solver", "max_iter", "class_weight"):
+            params[f"classifier__estimator__{key}"] = classifier[key]
+        # Apply the same configured character representation to each candidate view.
+        for path, value in model.get_params().items():
+            if isinstance(value, TfidfVectorizer) and value.analyzer == "char":
+                channel = "symbol_features" if "symbol" in path else "character_features"
+                for key in ("ngram_range", "min_df", "max_features", "sublinear_tf"):
+                    if key in config[channel]:
+                        setting = config[channel][key]
+                        params[f"{path}__{key}"] = tuple(setting) if key == "ngram_range" else setting
+        if name == "char_symbol_tfidf":
+            params["features__transformer_weights"] = {"char": 1.0, "symbol": config["symbol_features"]["weight"]}
+        model.set_params(**params)
+    return model
 
 
 MODEL_NAMES = (

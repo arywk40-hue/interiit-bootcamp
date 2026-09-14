@@ -1,0 +1,461 @@
+{
+  "task": "intent",
+  "test": {
+    "accuracy": 0.8241001564945227,
+    "macro_f1": 0.4987661313231072,
+    "per_class": {
+      "ADD_TIME_TIMER": {
+        "precision": 0.8333333333333334,
+        "recall": 0.7936507936507936,
+        "f1-score": 0.8130081300813008,
+        "support": 63.0
+      },
+      "ADD_TO_PLAYLIST_MUSIC": {
+        "precision": 0.8333333333333334,
+        "recall": 0.5882352941176471,
+        "f1-score": 0.6896551724137931,
+        "support": 17.0
+      },
+      "CREATE_ALARM": {
+        "precision": 0.9048387096774193,
+        "recall": 0.9181669394435352,
+        "f1-score": 0.9114541023558083,
+        "support": 611.0
+      },
+      "CREATE_PLAYLIST_MUSIC": {
+        "precision": 0.8571428571428571,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.48,
+        "support": 18.0
+      },
+      "CREATE_REMINDER": {
+        "precision": 0.8615916955017301,
+        "recall": 0.9764705882352941,
+        "f1-score": 0.9154411764705882,
+        "support": 510.0
+      },
+      "CREATE_TIMER": {
+        "precision": 0.645021645021645,
+        "recall": 0.8097826086956522,
+        "f1-score": 0.7180722891566265,
+        "support": 184.0
+      },
+      "DELETE_ALARM": {
+        "precision": 0.8115942028985508,
+        "recall": 0.8682170542635659,
+        "f1-score": 0.8389513108614233,
+        "support": 129.0
+      },
+      "DELETE_REMINDER": {
+        "precision": 0.7906976744186046,
+        "recall": 0.84472049689441,
+        "f1-score": 0.8168168168168168,
+        "support": 161.0
+      },
+      "DELETE_TIMER": {
+        "precision": 0.8125,
+        "recall": 0.52,
+        "f1-score": 0.6341463414634146,
+        "support": 50.0
+      },
+      "DISLIKE_MUSIC": {
+        "precision": 0.4,
+        "recall": 0.2222222222222222,
+        "f1-score": 0.2857142857142857,
+        "support": 18.0
+      },
+      "GET_ALARM": {
+        "precision": 0.8538461538461538,
+        "recall": 0.8538461538461538,
+        "f1-score": 0.8538461538461538,
+        "support": 130.0
+      },
+      "GET_DIRECTIONS": {
+        "precision": 0.7407407407407407,
+        "recall": 0.6521739130434783,
+        "f1-score": 0.6936416184971098,
+        "support": 92.0
+      },
+      "GET_DISTANCE": {
+        "precision": 0.875,
+        "recall": 0.9545454545454546,
+        "f1-score": 0.9130434782608695,
+        "support": 66.0
+      },
+      "GET_ESTIMATED_ARRIVAL": {
+        "precision": 0.782051282051282,
+        "recall": 0.8243243243243243,
+        "f1-score": 0.8026315789473685,
+        "support": 74.0
+      },
+      "GET_ESTIMATED_DEPARTURE": {
+        "precision": 0.8571428571428571,
+        "recall": 0.8571428571428571,
+        "f1-score": 0.8571428571428571,
+        "support": 28.0
+      },
+      "GET_ESTIMATED_DURATION": {
+        "precision": 0.8477157360406091,
+        "recall": 0.893048128342246,
+        "f1-score": 0.8697916666666666,
+        "support": 187.0
+      },
+      "GET_EVENT": {
+        "precision": 0.8726899383983573,
+        "recall": 0.9486607142857143,
+        "f1-score": 0.9090909090909091,
+        "support": 448.0
+      },
+      "GET_EVENT_ORGANIZER": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "GET_INFO_ROAD_CONDITION": {
+        "precision": 0.42857142857142855,
+        "recall": 0.15789473684210525,
+        "f1-score": 0.23076923076923078,
+        "support": 19.0
+      },
+      "GET_INFO_ROUTE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "GET_INFO_TRAFFIC": {
+        "precision": 0.8969298245614035,
+        "recall": 0.910913140311804,
+        "f1-score": 0.9038674033149171,
+        "support": 449.0
+      },
+      "GET_LOCATION": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "GET_MESSAGE": {
+        "precision": 0.9473684210526315,
+        "recall": 0.8571428571428571,
+        "f1-score": 0.9,
+        "support": 63.0
+      },
+      "GET_REMINDER": {
+        "precision": 0.8376623376623377,
+        "recall": 0.8657718120805369,
+        "f1-score": 0.8514851485148515,
+        "support": 149.0
+      },
+      "GET_REMINDER_AMOUNT": {
+        "precision": 0.9090909090909091,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.7692307692307693,
+        "support": 15.0
+      },
+      "GET_REMINDER_DATE_TIME": {
+        "precision": 0.9285714285714286,
+        "recall": 0.40625,
+        "f1-score": 0.5652173913043478,
+        "support": 32.0
+      },
+      "GET_REMINDER_LOCATION": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10.0
+      },
+      "GET_SUNRISE": {
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1-score": 0.8888888888888888,
+        "support": 10.0
+      },
+      "GET_SUNSET": {
+        "precision": 0.6666666666666666,
+        "recall": 0.14285714285714285,
+        "f1-score": 0.23529411764705882,
+        "support": 14.0
+      },
+      "GET_TIMER": {
+        "precision": 0.9166666666666666,
+        "recall": 0.7927927927927928,
+        "f1-score": 0.8502415458937198,
+        "support": 111.0
+      },
+      "GET_WEATHER": {
+        "precision": 0.8888888888888888,
+        "recall": 0.9753914988814317,
+        "f1-score": 0.9301333333333334,
+        "support": 894.0
+      },
+      "HELP_REMINDER": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "IGNORE_MESSAGE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "LIKE_MUSIC": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 19.0
+      },
+      "LOOP_MUSIC": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 16.0
+      },
+      "PAUSE_MUSIC": {
+        "precision": 0.6666666666666666,
+        "recall": 0.8888888888888888,
+        "f1-score": 0.7619047619047619,
+        "support": 18.0
+      },
+      "PAUSE_TIMER": {
+        "precision": 0.5538461538461539,
+        "recall": 0.7058823529411765,
+        "f1-score": 0.6206896551724138,
+        "support": 51.0
+      },
+      "PLAY_MUSIC": {
+        "precision": 0.8,
+        "recall": 0.9553805774278216,
+        "f1-score": 0.8708133971291866,
+        "support": 381.0
+      },
+      "PREVIOUS_TRACK_MUSIC": {
+        "precision": 0.7428571428571429,
+        "recall": 0.7428571428571429,
+        "f1-score": 0.7428571428571429,
+        "support": 35.0
+      },
+      "REACT_MESSAGE": {
+        "precision": 1.0,
+        "recall": 0.4583333333333333,
+        "f1-score": 0.6285714285714286,
+        "support": 24.0
+      },
+      "REMOVE_FROM_PLAYLIST_MUSIC": {
+        "precision": 0.25,
+        "recall": 0.2777777777777778,
+        "f1-score": 0.2631578947368421,
+        "support": 18.0
+      },
+      "REPLAY_MUSIC": {
+        "precision": 0.49122807017543857,
+        "recall": 0.56,
+        "f1-score": 0.5233644859813084,
+        "support": 50.0
+      },
+      "RESTART_TIMER": {
+        "precision": 0.4117647058823529,
+        "recall": 0.28,
+        "f1-score": 0.3333333333333333,
+        "support": 25.0
+      },
+      "RESUME_TIMER": {
+        "precision": 0.6666666666666666,
+        "recall": 0.3829787234042553,
+        "f1-score": 0.4864864864864865,
+        "support": 47.0
+      },
+      "SEND_MESSAGE": {
+        "precision": 0.9097222222222222,
+        "recall": 0.9492753623188406,
+        "f1-score": 0.9290780141843972,
+        "support": 414.0
+      },
+      "SET_DEFAULT_PROVIDER_MUSIC": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10.0
+      },
+      "SILENCE_ALARM": {
+        "precision": 0.5343511450381679,
+        "recall": 0.6306306306306306,
+        "f1-score": 0.5785123966942148,
+        "support": 111.0
+      },
+      "SKIP_TRACK_MUSIC": {
+        "precision": 0.8727272727272727,
+        "recall": 0.8275862068965517,
+        "f1-score": 0.8495575221238938,
+        "support": 58.0
+      },
+      "SNOOZE_ALARM": {
+        "precision": 0.9384615384615385,
+        "recall": 0.8591549295774648,
+        "f1-score": 0.8970588235294118,
+        "support": 71.0
+      },
+      "START_SHUFFLE_MUSIC": {
+        "precision": 1.0,
+        "recall": 0.08333333333333333,
+        "f1-score": 0.15384615384615385,
+        "support": 12.0
+      },
+      "STOP_MUSIC": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 21.0
+      },
+      "SUBTRACT_TIME_TIMER": {
+        "precision": 0.6428571428571429,
+        "recall": 0.45,
+        "f1-score": 0.5294117647058824,
+        "support": 20.0
+      },
+      "UNSUPPORTED_ALARM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 29.0
+      },
+      "UNSUPPORTED_EVENT": {
+        "precision": 1.0,
+        "recall": 0.08333333333333333,
+        "f1-score": 0.15384615384615385,
+        "support": 12.0
+      },
+      "UNSUPPORTED_MUSIC": {
+        "precision": 0.3333333333333333,
+        "recall": 0.07692307692307693,
+        "f1-score": 0.125,
+        "support": 13.0
+      },
+      "UNSUPPORTED_NAVIGATION": {
+        "precision": 0.5151515151515151,
+        "recall": 0.2463768115942029,
+        "f1-score": 0.3333333333333333,
+        "support": 69.0
+      },
+      "UNSUPPORTED_TIMER": {
+        "precision": 0.2553191489361702,
+        "recall": 0.22641509433962265,
+        "f1-score": 0.24,
+        "support": 53.0
+      },
+      "UNSUPPORTED_WEATHER": {
+        "precision": 0.25,
+        "recall": 0.075,
+        "f1-score": 0.11538461538461539,
+        "support": 40.0
+      },
+      "UPDATE_ALARM": {
+        "precision": 0.5882352941176471,
+        "recall": 0.8108108108108109,
+        "f1-score": 0.6818181818181818,
+        "support": 74.0
+      },
+      "UPDATE_DIRECTIONS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 7.0
+      },
+      "UPDATE_REMINDER": {
+        "precision": 0.14285714285714285,
+        "recall": 0.0625,
+        "f1-score": 0.08695652173913043,
+        "support": 16.0
+      },
+      "UPDATE_REMINDER_DATE_TIME": {
+        "precision": 0.5945945945945946,
+        "recall": 0.3728813559322034,
+        "f1-score": 0.4583333333333333,
+        "support": 59.0
+      },
+      "UPDATE_REMINDER_TODO": {
+        "precision": 1.0,
+        "recall": 0.18181818181818182,
+        "f1-score": 0.3076923076923077,
+        "support": 11.0
+      },
+      "UPDATE_TIMER": {
+        "precision": 0.5,
+        "recall": 0.06976744186046512,
+        "f1-score": 0.12244897959183673,
+        "support": 43.0
+      },
+      "accuracy": 0.8241001564945227,
+      "macro avg": {
+        "precision": 0.5884421326198594,
+        "recall": 0.4795644826556427,
+        "f1-score": 0.4987661313231072,
+        "support": 6390.0
+      },
+      "weighted avg": {
+        "precision": 0.8025313268731536,
+        "recall": 0.8241001564945227,
+        "f1-score": 0.804367982675303,
+        "support": 6390.0
+      }
+    },
+    "examples": 6390
+  },
+  "latency": {
+    "p50_ms": 3.5660835,
+    "p95_ms": 3.81843155,
+    "p99_ms": 3.9815446699999995,
+    "mean_ms": 3.596593663333333,
+    "sequential_requests_per_second": 278.04086132799256,
+    "measured_runs": 300,
+    "scope": "preprocessing + prediction + output construction; warm model; no I/O",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.0",
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+        "version": null
+      }
+    ]
+  },
+  "parameters": {
+    "classifier_coefficients_and_intercepts": 1370679,
+    "idf_values": 24046,
+    "total_learned_scalars": 1394725
+  },
+  "robustness_diagnostics": {
+    "vowel_drop": {
+      "changed_inputs": 6305,
+      "metric": "macro_f1",
+      "clean_on_same_inputs": 0.4980719417218063,
+      "perturbed": 0.4419161485796125,
+      "delta": -0.05615579314219382
+    },
+    "repeat_letter": {
+      "changed_inputs": 6390,
+      "metric": "macro_f1",
+      "clean_on_same_inputs": 0.4987661313231072,
+      "perturbed": 0.47565910858128446,
+      "delta": -0.023107022741822747
+    },
+    "emoji_ablation": {
+      "changed_inputs": 0
+    },
+    "punctuation_ablation": {
+      "changed_inputs": 1924,
+      "metric": "macro_f1",
+      "clean_on_same_inputs": 0.5421028025172812,
+      "perturbed": 0.5412078684027959,
+      "delta": -0.0008949341144852685
+    }
+  },
+  "meets_measured_p95_under_10_ms": true,
+  "meets_500m_learned_scalars": true
+}

@@ -1,0 +1,4 @@
+{
+  "summarization": "GupShup h2h not available. Unsupervised inference works; real training and evaluation pending.",
+  "human_contrasts": "No human pairs or annotations collected; do not claim natural robustness or pragmatic flips."
+}

@@ -1,0 +1,99 @@
+{
+  "task": "sentiment",
+  "test": {
+    "accuracy": 0.6773333333333333,
+    "macro_f1": 0.6804582873255125,
+    "per_class": {
+      "negative": {
+        "precision": 0.6855345911949685,
+        "recall": 0.7266666666666667,
+        "f1-score": 0.7055016181229773,
+        "support": 900.0
+      },
+      "neutral": {
+        "precision": 0.6056338028169014,
+        "recall": 0.5863636363636363,
+        "f1-score": 0.5958429561200924,
+        "support": 1100.0
+      },
+      "positive": {
+        "precision": 0.7471967380224261,
+        "recall": 0.733,
+        "f1-score": 0.7400302877334679,
+        "support": 1000.0
+      },
+      "accuracy": 0.6773333333333333,
+      "macro avg": {
+        "precision": 0.6794550440114321,
+        "recall": 0.6820101010101011,
+        "f1-score": 0.6804582873255125,
+        "support": 3000.0
+      },
+      "weighted avg": {
+        "precision": 0.6767916843988299,
+        "recall": 0.6773333333333333,
+        "f1-score": 0.676802998592083,
+        "support": 3000.0
+      }
+    },
+    "examples": 3000
+  },
+  "latency": {
+    "p50_ms": 0.562354,
+    "p95_ms": 0.73381075,
+    "p99_ms": 0.9067481599999988,
+    "mean_ms": 0.5795780566666667,
+    "sequential_requests_per_second": 1725.3931347078776,
+    "measured_runs": 300,
+    "scope": "preprocessing + prediction + output construction; warm model; no I/O",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.0",
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+        "version": null
+      }
+    ]
+  },
+  "parameters": {
+    "classifier_coefficients_and_intercepts": 540003,
+    "idf_values": 180000,
+    "total_learned_scalars": 720003
+  },
+  "robustness_diagnostics": {
+    "vowel_drop": {
+      "changed_inputs": 2998,
+      "metric": "macro_f1",
+      "clean_on_same_inputs": 0.6808912287603595,
+      "perturbed": 0.6795428493929713,
+      "delta": -0.001348379367388186
+    },
+    "repeat_letter": {
+      "changed_inputs": 3000,
+      "metric": "macro_f1",
+      "clean_on_same_inputs": 0.6804582873255125,
+      "perturbed": 0.675140639939582,
+      "delta": -0.005317647385930546
+    },
+    "emoji_ablation": {
+      "changed_inputs": 609,
+      "metric": "macro_f1",
+      "clean_on_same_inputs": 0.6848665227208368,
+      "perturbed": 0.6834807910245718,
+      "delta": -0.0013857316962649913
+    },
+    "punctuation_ablation": {
+      "changed_inputs": 2966,
+      "metric": "macro_f1",
+      "clean_on_same_inputs": 0.680494568053049,
+      "perturbed": 0.6764431859761452,
+      "delta": -0.004051382076903809
+    }
+  },
+  "meets_measured_p95_under_10_ms": true,
+  "meets_500m_learned_scalars": true
+}

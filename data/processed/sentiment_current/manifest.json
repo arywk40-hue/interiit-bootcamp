@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "input_sha256": {
+    "train": "9b1118ad0a3e46a909e0e380bfa289b8fc748f4e7fca24871129e3a22dd36b80",
+    "dev": "e4dc583ed95e892669527b864aac01b86d990aee59d5fdc91a5e615e0f5f00a0",
+    "test": "3bfb1c33d2429db79e33a3eab0823e2c3597eada2afbbed5070468c8f4262fcd",
+    "test_labels": "6ce8340f8c8b20e81cccb40265ebfcde00b4de0423651a0d7ebdd5a75fc884ed"
+  },
+  "source_anomalies": {
+    "empty_token_lines_skipped": {
+      "train": 13,
+      "dev": 0,
+      "test": 4
+    },
+    "mojibake_token_lines_repaired": {
+      "train": 0,
+      "dev": 0,
+      "test": 2777
+    }
+  },
+  "counts_before_cleaning": {
+    "train": 14000,
+    "dev": 3000,
+    "test": 3000
+  },
+  "counts_after_cleaning": {
+    "train": 13997,
+    "dev": 3000,
+    "test": 3000
+  },
+  "label_counts": {
+    "train": {
+      "negative": 4101,
+      "neutral": 5263,
+      "positive": 4633
+    },
+    "dev": {
+      "negative": 890,
+      "neutral": 1128,
+      "positive": 982
+    },
+    "test": {
+      "negative": 900,
+      "neutral": 1100,
+      "positive": 1000
+    }
+  },
+  "language_tag_counts": {
+    "train": {
+      "EMT": 520,
+      "Eng": 121412,
+      "Hin": 169893,
+      "O": 73722
+    },
+    "dev": {
+      "EMT": 100,
+      "Eng": 25615,
+      "Hin": 37004,
+      "O": 15959
+    },
+    "test": {
+      "EMT": 96,
+      "Eng": 26358,
+      "Hin": 36122,
+      "O": 15783
+    }
+  },
+  "exact_cross_split_overlap": {
+    "train_dev": [],
+    "train_test": [
+      {
+        "text_sha256": "a11b0c5a5b1c3aa7c8aa4b54eba27397f1aaf829a7c4ef72d2b193b98be23dc8",
+        "train": [
+          "6553"
+        ],
+        "test": [
+          "32866"
+        ]
+      },
+      {
+        "text_sha256": "f39adee911022aed125b54bdc9d2d64b6c4588314105ffab02406e5955d8945c",
+        "train": [
+          "13159"
+        ],
+        "test": [
+          "6594"
+        ]
+      }
+    ],
+    "dev_test": []
+  },
+  "removed_from_train": [
+    {
+      "uid": "709",
+      "reason": "duplicate_inside_train",
+      "text_sha256": "e26759b41ef51f93cc8fe5ec16fcfd896d29f9fd334745d6707be6bfe82f834f"
+    },
+    {
+      "uid": "13159",
+      "reason": "exact_train_test_text_leakage",
+      "text_sha256": "f39adee911022aed125b54bdc9d2d64b6c4588314105ffab02406e5955d8945c"
+    },
+    {
+      "uid": "6553",
+      "reason": "exact_train_test_text_leakage",
+      "text_sha256": "a11b0c5a5b1c3aa7c8aa4b54eba27397f1aaf829a7c4ef72d2b193b98be23dc8"
+    }
+  ],
+  "removed_from_dev": [],
+  "test_labels_separated": true
+}

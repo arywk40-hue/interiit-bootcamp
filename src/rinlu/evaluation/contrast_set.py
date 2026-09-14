@@ -331,6 +331,10 @@ def score_contrast_set(
     output_dir.mkdir(parents=True, exist_ok=True)
     for model_name, model_path in model_artifacts.items():
         model = joblib.load(model_path)
+        if isinstance(model, dict):
+            if model.get("task") != "sentiment":
+                raise ValueError("Sentiment contrasts require a sentiment model bundle")
+            model = model["model"]
         flat_rows = []
         for pair_id, pair in resolved_pairs:
             for side in ("a", "b"):
@@ -471,4 +475,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

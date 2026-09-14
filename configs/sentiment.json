@@ -12,16 +12,35 @@
   ],
   "character_features": {
     "analyzer": "char",
-    "ngram_range": [3, 5],
+    "ngram_range": [
+      3,
+      5
+    ],
     "min_df": 2,
     "max_features": 180000,
     "sublinear_tf": true
   },
   "symbol_features": {
-    "unicode_categories": ["P", "S"],
-    "ngram_range": [1, 3],
+    "unicode_categories": [
+      "P",
+      "S"
+    ],
+    "ngram_range": [
+      1,
+      3
+    ],
     "max_features": 10000,
     "weight": 2.0
+  },
+  "qa": {
+    "max_answer_words": 8,
+    "top_sentences": 3,
+    "threshold": 0.0
+  },
+  "summarization": {
+    "max_sentences": 3,
+    "max_words": 80,
+    "redundancy": 0.4
   },
   "classifier": {
     "type": "one_vs_rest_logistic_regression",

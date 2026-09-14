@@ -1,0 +1,439 @@
+{
+  "task": "sentiment",
+  "training_split": "train_only",
+  "selected": "char_tfidf",
+  "candidates": {
+    "char_tfidf": {
+      "dev": {
+        "accuracy": 0.6073333333333333,
+        "macro_f1": 0.6097825952945134,
+        "per_class": {
+          "negative": {
+            "precision": 0.6045589692765114,
+            "recall": 0.6853932584269663,
+            "f1-score": 0.6424433912585571,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.551829268292683,
+            "recall": 0.48138297872340424,
+            "f1-score": 0.5142045454545454,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6643495531281033,
+            "recall": 0.6812627291242362,
+            "f1-score": 0.6726998491704375,
+            "support": 982.0
+          },
+          "accuracy": 0.6073333333333333,
+          "macro avg": {
+            "precision": 0.6069125968990993,
+            "recall": 0.6160129887582023,
+            "f1-score": 0.6097825952945134,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.6043040528206797,
+            "recall": 0.6073333333333333,
+            "f1-score": 0.6041295324594042,
+            "support": 3000.0
+          }
+        },
+        "examples": 3000
+      },
+      "latency": {
+        "p50_ms": 0.5131045000000001,
+        "p95_ms": 0.5644521,
+        "p99_ms": 0.6634505100000003,
+        "mean_ms": 0.50906168,
+        "sequential_requests_per_second": 1964.3984988223826,
+        "measured_runs": 100,
+        "scope": "preprocessing + prediction + output construction; warm model; no I/O",
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.0",
+        "threadpools": [
+          {
+            "user_api": "openmp",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+            "version": null
+          }
+        ]
+      }
+    },
+    "word_char_tfidf": {
+      "dev": {
+        "accuracy": 0.608,
+        "macro_f1": 0.6113744697099616,
+        "per_class": {
+          "negative": {
+            "precision": 0.6179104477611941,
+            "recall": 0.697752808988764,
+            "f1-score": 0.6554089709762533,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.5461689587426326,
+            "recall": 0.4929078014184397,
+            "f1-score": 0.5181733457595527,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6622313203684749,
+            "recall": 0.6588594704684317,
+            "f1-score": 0.6605410923940787,
+            "support": 982.0
+          },
+          "accuracy": 0.608,
+          "macro avg": {
+            "precision": 0.6087702422907671,
+            "recall": 0.6165066936252118,
+            "f1-score": 0.6113744697099616,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.6054433468569982,
+            "recall": 0.608,
+            "f1-score": 0.6054882903055421,
+            "support": 3000.0
+          }
+        },
+        "examples": 3000
+      },
+      "latency": {
+        "p50_ms": 0.8601875,
+        "p95_ms": 0.9664836499999999,
+        "p99_ms": 1.10626333,
+        "mean_ms": 0.8632099699999998,
+        "sequential_requests_per_second": 1158.4666937987292,
+        "measured_runs": 100,
+        "scope": "preprocessing + prediction + output construction; warm model; no I/O",
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.0",
+        "threadpools": [
+          {
+            "user_api": "openmp",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+            "version": null
+          }
+        ]
+      }
+    },
+    "raw_canonical_char_tfidf": {
+      "dev": {
+        "accuracy": 0.6,
+        "macro_f1": 0.603440517074978,
+        "per_class": {
+          "negative": {
+            "precision": 0.6104294478527608,
+            "recall": 0.6707865168539325,
+            "f1-score": 0.639186295503212,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.5350194552529183,
+            "recall": 0.4875886524822695,
+            "f1-score": 0.5102040816326531,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6569416498993964,
+            "recall": 0.664969450101833,
+            "f1-score": 0.6609311740890689,
+            "support": 982.0
+          },
+          "accuracy": 0.6,
+          "macro avg": {
+            "precision": 0.6007968510016918,
+            "recall": 0.6077815398126784,
+            "f1-score": 0.603440517074978,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.5973002847718187,
+            "recall": 0.6,
+            "f1-score": 0.597806806678319,
+            "support": 3000.0
+          }
+        },
+        "examples": 3000
+      },
+      "latency": {
+        "p50_ms": 1.1230419999999999,
+        "p95_ms": 1.3898122,
+        "p99_ms": 1.4644530900000012,
+        "mean_ms": 1.12580037,
+        "sequential_requests_per_second": 888.2569473662545,
+        "measured_runs": 100,
+        "scope": "preprocessing + prediction + output construction; warm model; no I/O",
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.0",
+        "threadpools": [
+          {
+            "user_api": "openmp",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+            "version": null
+          }
+        ]
+      }
+    },
+    "char_symbol_tfidf": {
+      "dev": {
+        "accuracy": 0.598,
+        "macro_f1": 0.6005477159667483,
+        "per_class": {
+          "negative": {
+            "precision": 0.6048309178743961,
+            "recall": 0.7033707865168539,
+            "f1-score": 0.6503896103896104,
+            "support": 890.0
+          },
+          "neutral": {
+            "precision": 0.5420081967213115,
+            "recall": 0.46897163120567376,
+            "f1-score": 0.502851711026616,
+            "support": 1128.0
+          },
+          "positive": {
+            "precision": 0.6461071789686552,
+            "recall": 0.6507128309572301,
+            "f1-score": 0.6484018264840182,
+            "support": 982.0
+          },
+          "accuracy": 0.598,
+          "macro avg": {
+            "precision": 0.5976487645214542,
+            "recall": 0.6076850828932526,
+            "f1-score": 0.6005477159667483,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.594720670852357,
+            "recall": 0.598,
+            "f1-score": 0.5942646922973606,
+            "support": 3000.0
+          }
+        },
+        "examples": 3000
+      },
+      "latency": {
+        "p50_ms": 0.9442710000000001,
+        "p95_ms": 1.1748545,
+        "p99_ms": 1.2410496700000013,
+        "mean_ms": 0.9591333299999999,
+        "sequential_requests_per_second": 1042.6079135421141,
+        "measured_runs": 100,
+        "scope": "preprocessing + prediction + output construction; warm model; no I/O",
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.0",
+        "threadpools": [
+          {
+            "user_api": "openmp",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+            "version": null
+          }
+        ]
+      }
+    }
+  },
+  "counts": {
+    "train": 13997,
+    "dev": 3000,
+    "test": 3000
+  },
+  "audit": {
+    "schema_version": 1,
+    "input_sha256": {
+      "train": "9b1118ad0a3e46a909e0e380bfa289b8fc748f4e7fca24871129e3a22dd36b80",
+      "dev": "e4dc583ed95e892669527b864aac01b86d990aee59d5fdc91a5e615e0f5f00a0",
+      "test": "3bfb1c33d2429db79e33a3eab0823e2c3597eada2afbbed5070468c8f4262fcd",
+      "test_labels": "6ce8340f8c8b20e81cccb40265ebfcde00b4de0423651a0d7ebdd5a75fc884ed"
+    },
+    "source_anomalies": {
+      "empty_token_lines_skipped": {
+        "train": 13,
+        "dev": 0,
+        "test": 4
+      },
+      "mojibake_token_lines_repaired": {
+        "train": 0,
+        "dev": 0,
+        "test": 2777
+      }
+    },
+    "counts_before_cleaning": {
+      "train": 14000,
+      "dev": 3000,
+      "test": 3000
+    },
+    "counts_after_cleaning": {
+      "train": 13997,
+      "dev": 3000,
+      "test": 3000
+    },
+    "label_counts": {
+      "train": {
+        "negative": 4101,
+        "neutral": 5263,
+        "positive": 4633
+      },
+      "dev": {
+        "negative": 890,
+        "neutral": 1128,
+        "positive": 982
+      },
+      "test": {
+        "negative": 900,
+        "neutral": 1100,
+        "positive": 1000
+      }
+    },
+    "language_tag_counts": {
+      "train": {
+        "EMT": 520,
+        "Eng": 121412,
+        "Hin": 169893,
+        "O": 73722
+      },
+      "dev": {
+        "EMT": 100,
+        "Eng": 25615,
+        "Hin": 37004,
+        "O": 15959
+      },
+      "test": {
+        "EMT": 96,
+        "Eng": 26358,
+        "Hin": 36122,
+        "O": 15783
+      }
+    },
+    "exact_cross_split_overlap": {
+      "train_dev": [],
+      "train_test": [
+        {
+          "text_sha256": "a11b0c5a5b1c3aa7c8aa4b54eba27397f1aaf829a7c4ef72d2b193b98be23dc8",
+          "train": [
+            "6553"
+          ],
+          "test": [
+            "32866"
+          ]
+        },
+        {
+          "text_sha256": "f39adee911022aed125b54bdc9d2d64b6c4588314105ffab02406e5955d8945c",
+          "train": [
+            "13159"
+          ],
+          "test": [
+            "6594"
+          ]
+        }
+      ],
+      "dev_test": []
+    },
+    "removed_from_train": [
+      {
+        "uid": "709",
+        "reason": "duplicate_inside_train",
+        "text_sha256": "e26759b41ef51f93cc8fe5ec16fcfd896d29f9fd334745d6707be6bfe82f834f"
+      },
+      {
+        "uid": "13159",
+        "reason": "exact_train_test_text_leakage",
+        "text_sha256": "f39adee911022aed125b54bdc9d2d64b6c4588314105ffab02406e5955d8945c"
+      },
+      {
+        "uid": "6553",
+        "reason": "exact_train_test_text_leakage",
+        "text_sha256": "a11b0c5a5b1c3aa7c8aa4b54eba27397f1aaf829a7c4ef72d2b193b98be23dc8"
+      }
+    ],
+    "removed_from_dev": [],
+    "test_labels_separated": true
+  },
+  "split_sha256": {
+    "train": "82f96517b814c6eba05ed7a52d7a01155bddab845686f60fb8635227a6869350",
+    "dev": "f2c78b9030e3d4e55971b48be65746b533245fecd3e49d38f218b7a2703b3c65",
+    "test": "0f0ceade3205f223db84b3af718a905ca27e6b689f3b1e7e242d600f4ecc0f02"
+  },
+  "artifact_bytes": 5514567,
+  "parameters": {
+    "classifier_coefficients_and_intercepts": 540003,
+    "idf_values": 180000,
+    "total_learned_scalars": 720003
+  },
+  "config": {
+    "seed": 42,
+    "selection_split": "dev",
+    "selection_metric": "macro_f1",
+    "selection_tolerance": 0.002,
+    "selection_tiebreaker": "lowest_batch_one_p95_latency",
+    "candidate_models": [
+      "char_tfidf",
+      "word_char_tfidf",
+      "raw_canonical_char_tfidf",
+      "char_symbol_tfidf"
+    ],
+    "character_features": {
+      "analyzer": "char",
+      "ngram_range": [
+        3,
+        5
+      ],
+      "min_df": 2,
+      "max_features": 180000,
+      "sublinear_tf": true
+    },
+    "symbol_features": {
+      "unicode_categories": [
+        "P",
+        "S"
+      ],
+      "ngram_range": [
+        1,
+        3
+      ],
+      "max_features": 10000,
+      "weight": 2.0
+    },
+    "qa": {
+      "max_answer_words": 8,
+      "top_sentences": 3,
+      "threshold": 0.0
+    },
+    "summarization": {
+      "max_sentences": 3,
+      "max_words": 80,
+      "redundancy": 0.4
+    },
+    "classifier": {
+      "type": "one_vs_rest_logistic_regression",
+      "C": 4.0,
+      "solver": "liblinear",
+      "class_weight": "balanced",
+      "max_iter": 500
+    }
+  },
+  "code_sha256": "ffdb0ad1f51c0578695a81ed0012c726f39cc25f3fe24a72751d159cee387696",
+  "packages": {
+    "numpy": "2.5.2",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.0",
+    "joblib": "1.5.3",
+    "threadpoolctl": "3.6.0"
+  },
+  "artifact_sha256": "8b3da0c40070a7f929aa1ded2b5a9a26509d91bb3c4b11f74a8bc5b6fe433e08"
+}

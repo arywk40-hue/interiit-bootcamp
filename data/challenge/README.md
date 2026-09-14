@@ -43,8 +43,7 @@ After at least 100 pairs are written, run this before anyone labels them:
 PYTHONPATH=src python -m rinlu.evaluation.contrast_set freeze \
   --pairs data/challenge/human_contrasts.csv \
   --output-dir data/challenge/frozen_v1 \
-  --model character_primary=models/sentiment/final_model.joblib \
-  --model character_symbol_secondary=models/sentiment/char_symbol_tfidf_train_dev.joblib \
+  --model current_sentiment=models/current/sentiment.joblib \
   --config configs/sentiment.json
 ```
 
@@ -54,6 +53,10 @@ This writes:
 - content, ID, configuration and model SHA-256 hashes;
 - two independently shuffled annotation forms;
 - a private mapping from anonymous item IDs back to pairs.
+
+This creates a new freeze for the current model bundle. The historical
+`reports/sentiment/contrast_preregistration.json` refers to older model and
+configuration hashes. Do not reuse it to certify the current experiment.
 
 Commit and push the frozen directory before labeling. A local timestamp alone
 is not externally verifiable.

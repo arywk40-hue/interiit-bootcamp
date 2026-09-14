@@ -6,3 +6,8 @@ data/raw/*
 data/processed/**/*.jsonl
 models/**/*.joblib
 reports/sentiment/high_confidence_errors.csv
+reports/current/*_predictions.json
+reports/domain_adapted/
+reports/external/
+models/external/
+src/*.egg-info/

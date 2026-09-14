@@ -1,0 +1,68 @@
+{
+  "sentiment": {
+    "train_14k_split_conll.txt": {
+      "url": "https://huggingface.co/datasets/RTT1/SentiMix/resolve/205f0391fc1f10320ec3c10708eaa27e88db04c7/train_14k_split_conll.txt",
+      "sha256": "9b1118ad0a3e46a909e0e380bfa289b8fc748f4e7fca24871129e3a22dd36b80",
+      "bytes": 3437706
+    },
+    "dev_3k_split_conll.txt": {
+      "url": "https://huggingface.co/datasets/RTT1/SentiMix/resolve/205f0391fc1f10320ec3c10708eaa27e88db04c7/dev_3k_split_conll.txt",
+      "sha256": "e4dc583ed95e892669527b864aac01b86d990aee59d5fdc91a5e615e0f5f00a0",
+      "bytes": 739899
+    },
+    "Hindi_test_unalbelled_conll_updated.txt": {
+      "url": "https://huggingface.co/datasets/RTT1/SentiMix/resolve/205f0391fc1f10320ec3c10708eaa27e88db04c7/Hindi_test_unalbelled_conll_updated.txt",
+      "sha256": "3bfb1c33d2429db79e33a3eab0823e2c3597eada2afbbed5070468c8f4262fcd",
+      "bytes": 726029
+    },
+    "test_labels_hinglish.txt": {
+      "url": "https://huggingface.co/datasets/RTT1/SentiMix/resolve/205f0391fc1f10320ec3c10708eaa27e88db04c7/test_labels_hinglish.txt",
+      "sha256": "6ce8340f8c8b20e81cccb40265ebfcde00b4de0423651a0d7ebdd5a75fc884ed",
+      "bytes": 43222
+    },
+    "README.md": {
+      "url": "https://huggingface.co/datasets/RTT1/SentiMix/resolve/205f0391fc1f10320ec3c10708eaa27e88db04c7/README.md",
+      "sha256": "aed9f9e83693625c634010ca797d3c1a00b19643cc394b234433381f2c9ca7ed",
+      "bytes": 26
+    }
+  },
+  "intent": {
+    "LICENSE.md": {
+      "url": "https://raw.githubusercontent.com/google-research-datasets/Hinglish-TOP-Dataset/fdd3998a6573130659bfa1ce4b1ebe698df2bf3a/LICENSE.md",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "bytes": 10174
+    },
+    "train.tsv": {
+      "url": "https://raw.githubusercontent.com/google-research-datasets/Hinglish-TOP-Dataset/fdd3998a6573130659bfa1ce4b1ebe698df2bf3a/Dataset/Human%20Annotated%20Data/train.tsv",
+      "sha256": "8bcf9a01e467a97195631f1ec9983af27ef9a752b6d8f8537764e81814102360",
+      "bytes": 852746
+    },
+    "validation.tsv": {
+      "url": "https://raw.githubusercontent.com/google-research-datasets/Hinglish-TOP-Dataset/fdd3998a6573130659bfa1ce4b1ebe698df2bf3a/Dataset/Human%20Annotated%20Data/validation.tsv",
+      "sha256": "c713c7fb367713c3a5ed65b727d3d6329dd944f1032e786b06bcaedcf3cdc332",
+      "bytes": 392544
+    },
+    "test.tsv": {
+      "url": "https://raw.githubusercontent.com/google-research-datasets/Hinglish-TOP-Dataset/fdd3998a6573130659bfa1ce4b1ebe698df2bf3a/Dataset/Human%20Annotated%20Data/test.tsv",
+      "sha256": "9f7bd4f80b15956143b4188a113981735264944ac825d6231b60cc2444533791",
+      "bytes": 1911894
+    }
+  },
+  "qa": {
+    "COPYING": {
+      "url": "https://raw.githubusercontent.com/khyathiraghavi/code_switched_QA/3489317a587da66c92e44d5778b20e5461de695f/COPYING",
+      "sha256": "a8f7d18f1d50a6d54ee2eac5c7c5e7c91d9c0b0c4aac9f2a2c8708e7ad410474",
+      "bytes": 2269
+    },
+    "README": {
+      "url": "https://raw.githubusercontent.com/khyathiraghavi/code_switched_QA/3489317a587da66c92e44d5778b20e5461de695f/README",
+      "sha256": "cd1498651808ecf6ebef750d6f3d1d78e20471e4881c1fc4be66f8d17ff3832a",
+      "bytes": 1266
+    },
+    "code_mixed_qa_train.json": {
+      "url": "https://raw.githubusercontent.com/khyathiraghavi/code_switched_QA/3489317a587da66c92e44d5778b20e5461de695f/code_mixed_qa_train.json",
+      "sha256": "43c1956921d630f174c6cdbf1d72b549f367a9cd2599a77254ae2c489ae282df",
+      "bytes": 502197
+    }
+  }
+}

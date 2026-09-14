@@ -86,6 +86,8 @@ def prepare_dataset(
         ]
 
     test_keys = set(indexes["test"])
+    dev_keys = set(indexes["dev"])
+    cleaned_dev = [record for record in raw["dev"] if duplicate_key(record.text) not in test_keys]
     seen_train_keys: set[str] = set()
     cleaned_train = []
     removals = []
@@ -94,6 +96,8 @@ def prepare_dataset(
         reason = None
         if key in test_keys:
             reason = "exact_train_test_text_leakage"
+        elif key in dev_keys:
+            reason = "exact_train_dev_text_leakage"
         elif key in seen_train_keys:
             reason = "duplicate_inside_train"
         if reason:
@@ -110,7 +114,7 @@ def prepare_dataset(
 
     output_dir.mkdir(parents=True, exist_ok=True)
     write_jsonl(output_dir / "train.jsonl", cleaned_train)
-    write_jsonl(output_dir / "dev.jsonl", raw["dev"])
+    write_jsonl(output_dir / "dev.jsonl", cleaned_dev)
     write_jsonl(output_dir / "test.jsonl", raw["test"], include_label=False)
     write_jsonl(output_dir / "test_labeled.jsonl", labelled_test)
 
@@ -137,7 +141,7 @@ def prepare_dataset(
         "counts_before_cleaning": {split: len(records) for split, records in raw.items()},
         "counts_after_cleaning": {
             "train": len(cleaned_train),
-            "dev": len(raw["dev"]),
+            "dev": len(cleaned_dev),
             "test": len(raw["test"]),
         },
         "label_counts": {
@@ -150,6 +154,7 @@ def prepare_dataset(
         },
         "exact_cross_split_overlap": overlap,
         "removed_from_train": removals,
+        "removed_from_dev": [record.uid for record in raw["dev"] if duplicate_key(record.text) in test_keys],
         "test_labels_separated": True,
     }
     with (output_dir / "manifest.json").open("w", encoding="utf-8") as handle:
