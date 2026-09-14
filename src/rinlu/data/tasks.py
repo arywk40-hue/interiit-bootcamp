@@ -85,8 +85,39 @@ def load_qa(root):
     assignment = {g: "train" if i < train_end else "dev" if i < dev_end else "test"
                   for i, g in enumerate(groups)}
     splits = {s: [r for r in usable if assignment[r["group"]] == s] for s in ("train", "dev", "test")}
+    expansion_path = root / "raw/qa/human_expansion.jsonl"
+    expansion_count = 0
+    if expansion_path.exists():
+        expansion_groups = {}
+        for line_number, line in enumerate(expansion_path.read_text(encoding="utf-8").splitlines(), 1):
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            required = {"uid", "text", "context", "answer", "group", "split",
+                        "reviewer_ids", "consent_to_use"}
+            if required - row.keys():
+                raise ValueError(f"human QA row {line_number} is missing {sorted(required - row.keys())}")
+            if row["split"] not in splits:
+                raise ValueError(f"human QA row {line_number} has invalid split")
+            if not row["consent_to_use"] or len(set(row["reviewer_ids"])) < 2:
+                raise ValueError(f"human QA row {line_number} needs consent and two reviewers")
+            if not re.search(re.escape(row["answer"]), row["context"], re.IGNORECASE):
+                raise ValueError(f"human QA row {line_number} answer is not an exact context span")
+            key = (duplicate_key(row["context"]), duplicate_key(row["text"]))
+            if key in seen:
+                raise ValueError(f"human QA row {line_number} duplicates an existing question/context")
+            seen.add(key)
+            group = "human:" + hashlib.sha256(str(row["group"]).encode()).hexdigest()
+            previous_split = expansion_groups.setdefault(group, row["split"])
+            if previous_split != row["split"]:
+                raise ValueError(f"human QA group crosses splits at row {line_number}")
+            splits[row["split"]].append(dict(uid=str(row["uid"]), text=row["text"],
+                context=row["context"], answer=row["answer"], group=group))
+            assignment[group] = row["split"]
+            expansion_count += 1
     return splits, {"source": "CMQA original train, custom context-disjoint 70/15/15 split",
-                    "excluded": dict(excluded), "context_groups": len(groups), "group_split": assignment}
+                    "excluded": dict(excluded), "context_groups": len(assignment),
+                    "human_expansion_rows": expansion_count, "group_split": assignment}
 
 
 def load_summary(root):

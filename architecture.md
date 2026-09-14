@@ -20,7 +20,7 @@ flowchart LR
   D --> E[Two stride-2 convolution stages]
   E --> F[Six-layer shared Transformer encoder]
   F --> G[Sentiment: 3-way head]
-  F --> H[Intent: 57-way head]
+  F --> H[Intent: 64-way head]
   F --> I[QA: answerability + start/end byte heads]
   F --> J[Summary: source-turn relevance head]
 ```
@@ -50,23 +50,31 @@ own p95 gate after turn retrieval, export, and quantization.
 
 1. Freeze test splits and remove normalized duplicates before any fitting.
 2. Initialize every neural parameter randomly with the recorded seed.
-3. Train masked-byte reconstruction on allowed train text only. Mask contiguous
-   spans, while never deleting emoji or punctuation from the original target.
+3. Train masked-byte reconstruction on allowed train text only. Select complete
+   Unicode characters and corrupt all their UTF-8 bytes together, so a multibyte
+   emoji or Indic character is never half-selected. The original bytes remain the target.
 4. Add supervised task batches from human-labelled train splits. Continue joint
    optimization of the same model; no external checkpoint is loaded.
-5. Create natural/noisy pairs with vowel deletion, letter repetition, spacing,
-   and common Romanization substitutions. Match clean/noisy representations with
-   a consistency loss. Do not perturb emoji or punctuation in these pairs.
+5. Measure deterministic vowel deletion and letter repetition as development
+   diagnostics. A clean/noisy consistency loss remains an unrun ablation; it is
+   not part of the reported trained checkpoint.
 6. Select architecture and loss weights on development data. Open each test split
    once for the final report.
 7. Export ONNX, apply dynamic int8 quantization, and benchmark batch-one p50/p95/p99
    including byte encoding and output construction.
 
-The joint objective is a weighted sum of masked-byte cross entropy, sentiment
-cross entropy, intent cross entropy, QA answerability/start/end cross entropy,
-summary sentence binary cross entropy, and clean/noisy consistency loss. Missing
-task labels do not become guessed labels: unlabelled rows contribute only to the
-masked-byte objective.
+The implemented joint objective sums masked-byte cross entropy, sentiment cross
+entropy, class-aware intent cross entropy, and QA start/end cross entropy. The
+answerability and summary heads exist in the graph but cannot receive supervised
+loss until matching human labels are available. Missing task labels do not become
+guessed labels: unlabelled rows contribute only to masked-byte reconstruction.
+
+The pretraining sampler interleaves sources instead of uniformly sampling the
+largest corpus. It includes train-only SentiMix, Hinglish-TOP, and CMQA text;
+PHINC Hinglish; the public anonymized `saidutta69/Gupshup` chat corpus; and
+redacted private chats. Normalized development/test text is excluded before
+sampling. The public Gupshup chat corpus is distinct from the request-only
+GupShup h2h summarization benchmark and supplies no summary supervision.
 
 ## Hugging Face dataset audit
 
@@ -100,8 +108,10 @@ QA, or summary labels.
 - Warm batch-one p95 below 10 ms for each declared input length on the target CPU.
 - Report long-input latency separately instead of extrapolating from short text.
 
-The implementation is in `src/rinlu/neural.py`; its fixed architecture settings
-are in `configs/byte_multitask.json`.
+The model is in `src/rinlu/neural.py`, training is in
+`scripts/train_from_scratch.py`, and ONNX/int8 export plus measurement is in
+`scripts/export_byte_model.py`. Fixed architecture settings are in
+`configs/byte_multitask.json`.
 
 ## Current trained baselines
 
@@ -323,6 +333,8 @@ emoji understanding before the human study.
 - [SentiMix task paper](https://aclanthology.org/2020.semeval-1.100/)
 - [Hinglish-TOP source and license](https://github.com/google-research-datasets/Hinglish-TOP-Dataset)
 - [CMQA source, README and COPYING](https://github.com/khyathiraghavi/code_switched_QA)
+- [PHINC human parallel corpus](https://huggingface.co/datasets/LingoIITGN/PHINC)
+- [Public anonymized Gupshup chat corpus](https://huggingface.co/datasets/saidutta69/Gupshup)
 - [GupShup source and access request](https://github.com/midas-research/gupshup)
 - [Scikit-learn TF-IDF documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
 - [Scikit-learn Ridge documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)

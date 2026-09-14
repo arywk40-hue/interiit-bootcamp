@@ -102,7 +102,7 @@ effect of emoji removal is not evidence of correct emoji-flip interpretation.
 
 ## What prevents a complete PS claim
 
-- The new 4,304,712-parameter shared byte model is implemented but not yet trained.
+- The new 4,306,511-parameter shared byte model is implemented but not yet trained.
 - GupShup access is needed for real summary training and evaluation.
 - Natural spelling and pragmatic emoji-flip pairs still require human annotation.
 - QA needs substantially more context-grounded human data and stronger accuracy.

@@ -20,6 +20,10 @@ dependencies = [
 external-baseline = [
   "transformers>=4.43",
 ]
+export = [
+  "onnx>=1.17",
+  "onnxruntime>=1.20",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

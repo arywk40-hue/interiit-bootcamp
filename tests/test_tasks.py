@@ -4,16 +4,81 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import torch
+from torch.nn import functional as F
+
 from rinlu.data.tasks import clean_splits, load_qa, load_summary
 from rinlu.evaluation.metrics import rouge_scores, token_f1
 from rinlu.evaluation.tasks import benchmark, parameter_count
 from rinlu.qa import SpanReader
 from rinlu.sentiment.features import build_model
 from rinlu.summarization import ExtractiveSummarizer
-from rinlu.neural import ByteMultiTaskModel, collate_bytes, encode_bytes
+from rinlu.neural import (ByteMultiTaskConfig, ByteMultiTaskModel, collate_bytes, encode_bytes,
+                          mask_unicode_characters, unicode_byte_groups)
+from scripts.train_from_scratch import build_pretraining_corpus
 
 
 class TaskTests(unittest.TestCase):
+    def test_byte_model_parameter_count_is_frozen(self):
+        self.assertEqual(ByteMultiTaskModel().parameter_report()["unique_parameters"], 4_306_511)
+
+    def test_masking_selects_complete_unicode_characters(self):
+        encoded = encode_bytes("a😄ह", "masked_byte", max_length=32)
+        original_groups = unicode_byte_groups(encoded["input_ids"])
+        corrupted, labels = mask_unicode_characters(
+            encoded, torch.Generator().manual_seed(7), probability=1
+        )
+        for group in original_groups:
+            selected = [labels[position] != -100 for position in group]
+            self.assertTrue(all(selected) or not any(selected))
+        self.assertEqual([labels[p] for g in original_groups for p in g],
+                         [encoded["input_ids"][p] for g in original_groups for p in g])
+        self.assertEqual(len(corrupted), len(encoded["input_ids"]))
+
+    def test_pretraining_builder_excludes_heldout_and_is_deterministic(self):
+        rows = [{"text": "train one", "source": "a"},
+                {"text": "DEV SECRET", "source": "a"},
+                {"text": "train two", "source": "b"}]
+        heldout = {"dev secret"}
+        first = build_pretraining_corpus(rows, [], heldout, 2, 17)
+        second = build_pretraining_corpus(rows, [], heldout, 2, 17)
+        self.assertEqual(first, second)
+        self.assertNotIn("DEV SECRET", [row["text"] for row in first])
+
+    def test_tiny_model_has_finite_gradients_and_learns(self):
+        torch.manual_seed(11)
+        config = ByteMultiTaskConfig(d_model=32, layers=1, heads=4,
+                                     feed_forward=64, dropout=0, max_positions=32,
+                                     intent_labels=2, downsample_stages=1)
+        model = ByteMultiTaskModel(config)
+        batch = collate_bytes([encode_bytes(text, "sentiment", 32)
+                               for text in ("accha", "bura", "accha", "bura")])
+        labels = torch.tensor([2, 0, 2, 0])
+        optimizer = torch.optim.AdamW(model.parameters(), lr=0.01)
+        initial = float(F.cross_entropy(model("sentiment", **batch)["logits"], labels).detach())
+        for _ in range(8):
+            loss = F.cross_entropy(model("sentiment", **batch)["logits"], labels)
+            optimizer.zero_grad(); loss.backward()
+            self.assertTrue(all(torch.isfinite(parameter.grad).all()
+                                for parameter in model.parameters()
+                                if parameter.grad is not None))
+            optimizer.step()
+        final = float(F.cross_entropy(model("sentiment", **batch)["logits"], labels).detach())
+        self.assertLess(final, initial)
+
+    def test_checkpoint_round_trip_preserves_logits(self):
+        torch.manual_seed(5)
+        model = ByteMultiTaskModel().eval()
+        batch = collate_bytes([encode_bytes("service acchi hai 😄", "sentiment", 48)])
+        expected = model("sentiment", **batch)["logits"].detach()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "model.pt"
+            torch.save({"state_dict": model.state_dict()}, path)
+            restored = ByteMultiTaskModel().eval()
+            restored.load_state_dict(torch.load(path, weights_only=True)["state_dict"])
+            actual = restored("sentiment", **batch)["logits"].detach()
+        self.assertTrue(torch.equal(expected, actual))
+
     def test_random_byte_model_preserves_symbols_and_runs_all_heads(self):
         positive = encode_bytes("service acchi hai 😄!", "sentiment", max_length=64)
         self.assertIn(5, positive["symbol_ids"])
@@ -21,13 +86,16 @@ class TaskTests(unittest.TestCase):
         model = ByteMultiTaskModel()
         self.assertLess(model.parameter_report()["unique_parameters"], 500_000_000)
         self.assertEqual(tuple(model("sentiment", **batch)["logits"].shape), (1, 3))
-        self.assertEqual(tuple(model("intent", **batch)["logits"].shape), (1, 57))
+        self.assertEqual(tuple(model("intent", **batch)["logits"].shape), (1, 64))
         self.assertEqual(tuple(model("summarization", **batch)["logits"].shape), (1,))
         qa = collate_bytes([encode_bytes("kab?", "qa", max_length=64,
                                         context="delivery kal hogi")])
         output = model("qa", **qa)
         self.assertEqual(tuple(output["start_logits"].shape), tuple(qa["input_ids"].shape))
         self.assertTrue((output["start_logits"][qa["segment_ids"] == 0] < -1000).all())
+        self.assertEqual(set(model.forward_all(**qa)), {
+            "sentiment_logits", "intent_logits", "summary_logits", "start_logits",
+            "end_logits", "answerable_logits"})
 
     def test_duplicate_text_never_crosses_splits(self):
         splits = {"train": [{"text": "  KAL meeting"}, {"text": "unique train"}],
@@ -47,12 +115,18 @@ class TaskTests(unittest.TestCase):
                     for i in range(20) for j in range(2)]
             rows.append(dict(id="bad", context="general", query="kya hai?", answer="image", language="Hindi"))
             (folder / "code_mixed_qa_train.json").write_text(json.dumps({"questions": rows}))
+            (folder / "human_expansion.jsonl").write_text(json.dumps({
+                "uid": "human-1", "text": "parcel kab aaya?", "context": "Parcel kal aaya.",
+                "answer": "kal", "group": "delivery-note-1", "split": "test",
+                "reviewer_ids": ["r1", "r2"], "consent_to_use": True}) + "\n")
             splits, audit = load_qa(root)
             groups = {s: {r["group"] for r in values} for s, values in splits.items()}
             self.assertFalse(groups["train"] & groups["dev"])
             self.assertFalse(groups["train"] & groups["test"])
             self.assertFalse(groups["dev"] & groups["test"])
             self.assertEqual(audit["excluded"]["no_text_context"], 1)
+            self.assertEqual(audit["human_expansion_rows"], 1)
+            self.assertIn("human-1", [row["uid"] for row in splits["test"]])
 
     def test_summary_copies_source_and_preserves_order(self):
         text = "A: order late hai 😒!\nB: kal deliver hoga.\nA: refund chahiye!!!"

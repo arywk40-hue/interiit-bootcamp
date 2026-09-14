@@ -64,5 +64,27 @@
       "sha256": "43c1956921d630f174c6cdbf1d72b549f367a9cd2599a77254ae2c489ae282df",
       "bytes": 502197
     }
+  },
+  "pretrain": {
+    "PHINC.csv": {
+      "url": "https://huggingface.co/datasets/LingoIITGN/PHINC/resolve/44b5471df75e508b9d6fcdbcc93df04bb1e84056/PHINC.csv",
+      "sha256": "325ba383cd6d73e0c3128885e2a79133e612ec03d18c8b55506d0b4b12ec68ed",
+      "bytes": 2125039
+    },
+    "README.md": {
+      "url": "https://huggingface.co/datasets/LingoIITGN/PHINC/resolve/44b5471df75e508b9d6fcdbcc93df04bb1e84056/README.md",
+      "sha256": "595adde3401a7f04922c6587374a7ebca05f4f585d898c4be597b408ac950994",
+      "bytes": 3105
+    },
+    "gupshup_train.jsonl": {
+      "url": "https://huggingface.co/datasets/saidutta69/Gupshup/resolve/2289a2761c7725b700394636c7a8962c0ad724a6/data/train.jsonl",
+      "sha256": "d9e90bf4f31236c7efc769a5753ccf4aa4caae0feadd3892ec51f66f113b46c9",
+      "bytes": 94978562
+    },
+    "GUPSHUP_README.md": {
+      "url": "https://huggingface.co/datasets/saidutta69/Gupshup/resolve/2289a2761c7725b700394636c7a8962c0ad724a6/README.md",
+      "sha256": "50e9864b2cf0e66d100d39a3bbaab1df7a28e833a2c239496a2ee8deb927d37e",
+      "bytes": 4613
+    }
   }
 }

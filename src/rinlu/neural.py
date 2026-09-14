@@ -4,6 +4,7 @@ The module contains no checkpoint loader. UTF-8 bytes keep spelling variants,
 emoji, and punctuation without learning a subword vocabulary from private text.
 """
 from dataclasses import asdict, dataclass
+import math
 import unicodedata
 
 import torch
@@ -12,7 +13,8 @@ from torch.nn import functional as F
 
 
 PAD, CLS, SEP, MASK = 0, 1, 2, 3
-TASK_IDS = {"sentiment": 4, "intent": 5, "qa": 6, "summarization": 7}
+TASK_IDS = {"sentiment": 4, "intent": 5, "qa": 6, "summarization": 7,
+            "masked_byte": MASK}
 BYTE_OFFSET = 8
 VOCAB_SIZE = BYTE_OFFSET + 256
 
@@ -63,6 +65,53 @@ def collate_bytes(rows):
     return batch
 
 
+def unicode_byte_groups(input_ids):
+    """Return complete UTF-8 character positions from one encoded sequence.
+
+    ``encode_bytes`` always emits valid UTF-8. Continuation bytes are therefore
+    attached to their leading byte, so corruption never selects half an emoji or
+    accented/Indic character.
+    """
+    groups = []
+    for position, token in enumerate(input_ids):
+        if token < BYTE_OFFSET:
+            continue
+        byte = token - BYTE_OFFSET
+        if 0x80 <= byte <= 0xBF and groups:
+            groups[-1].append(position)
+        else:
+            groups.append([position])
+    return groups
+
+
+def mask_unicode_characters(encoded, generator, probability=0.15):
+    """Apply BERT-style masking to whole Unicode characters, returning byte labels."""
+    if not 0 < probability <= 1:
+        raise ValueError("mask probability must be in (0, 1]")
+    corrupted = list(encoded["input_ids"])
+    labels = [-100] * len(corrupted)
+    groups = unicode_byte_groups(corrupted)
+    if not groups:
+        return corrupted, labels
+    count = max(1, round(len(groups) * probability))
+    selected = torch.randperm(len(groups), generator=generator)[:count].tolist()
+    for group_index in selected:
+        positions = groups[group_index]
+        for position in positions:
+            labels[position] = corrupted[position]
+        draw = float(torch.rand((), generator=generator))
+        if draw < 0.8:
+            for position in positions:
+                corrupted[position] = MASK
+        elif draw < 0.9:
+            replacements = torch.randint(
+                BYTE_OFFSET, VOCAB_SIZE, (len(positions),), generator=generator
+            ).tolist()
+            for position, replacement in zip(positions, replacements):
+                corrupted[position] = replacement
+    return corrupted, labels
+
+
 @dataclass
 class ByteMultiTaskConfig:
     d_model: int = 256
@@ -71,7 +120,7 @@ class ByteMultiTaskConfig:
     feed_forward: int = 768
     dropout: float = 0.1
     max_positions: int = 512
-    intent_labels: int = 57
+    intent_labels: int = 64
     downsample_stages: int = 2
 
 
@@ -140,15 +189,36 @@ class ByteMultiTaskModel(nn.Module):
             contextual = F.interpolate(hidden.transpose(1, 2), size=input_ids.shape[1],
                                        mode="linear", align_corners=False).transpose(1, 2)
             span = self.qa_head(torch.cat((raw, contextual), dim=-1))
-            context_mask = (segment_ids == 1) & attention_mask.bool()
+            context_mask = ((segment_ids == 1) & attention_mask.bool()
+                            & (input_ids >= BYTE_OFFSET))
             span = span.masked_fill(~context_mask.unsqueeze(-1), -1e4)
             return {"start_logits": span[..., 0], "end_logits": span[..., 1],
                     "answerable_logits": self.answerable_head(pooled).squeeze(-1)}
         if task == "masked_byte":
             contextual = F.interpolate(hidden.transpose(1, 2), size=input_ids.shape[1],
                                        mode="linear", align_corners=False).transpose(1, 2)
-            return {"logits": F.linear(contextual, self.byte_embedding.weight, self.mlm_bias)}
+            return {"logits": F.linear(contextual / math.sqrt(self.config.d_model),
+                                       self.byte_embedding.weight, self.mlm_bias)}
         raise ValueError(f"unknown task: {task}")
+
+    def forward_all(self, input_ids, symbol_ids, segment_ids, attention_mask):
+        """Run the shared encoder once and expose every supervised task head."""
+        raw, hidden, pooled = self._encode(input_ids, symbol_ids, segment_ids,
+                                           attention_mask)
+        contextual = F.interpolate(hidden.transpose(1, 2), size=input_ids.shape[1],
+                                   mode="linear", align_corners=False).transpose(1, 2)
+        span = self.qa_head(torch.cat((raw, contextual), dim=-1))
+        context_mask = ((segment_ids == 1) & attention_mask.bool()
+                        & (input_ids >= BYTE_OFFSET))
+        span = span.masked_fill(~context_mask.unsqueeze(-1), -1e4)
+        return {
+            "sentiment_logits": self.sentiment_head(pooled),
+            "intent_logits": self.intent_head(pooled),
+            "summary_logits": self.summary_head(pooled).squeeze(-1),
+            "start_logits": span[..., 0],
+            "end_logits": span[..., 1],
+            "answerable_logits": self.answerable_head(pooled).squeeze(-1),
+        }
 
     def parameter_report(self):
         unique = sum(parameter.numel() for parameter in self.parameters())

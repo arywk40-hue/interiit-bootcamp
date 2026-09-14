@@ -23,7 +23,7 @@ Use Python 3.12 or newer; this run used Python 3.13.0. Commands below assume the
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e .
+python -m pip install -e '.[export]'
 python scripts/fetch_data.py
 PYTHONPATH=src python -m unittest discover -s tests -v
 PYTHONPATH=src python -m rinlu.run train --task all
@@ -60,7 +60,7 @@ and disk loading are not included. Production callers should keep the model load
 
 The final neural candidate is `ByteMultiTaskModel` in `src/rinlu/neural.py`:
 
-- 4,304,712 parameters, initialized randomly;
+- 4,306,511 parameters, initialized randomly;
 - raw UTF-8 byte input plus explicit Unicode symbol classes;
 - one shared convolution-downsampled Transformer encoder;
 - classification heads for sentiment and intent;
@@ -71,10 +71,36 @@ The architecture, training objectives, latency gates, and audited Hugging Face
 dataset shortlist are documented in `architecture.md`. The compact fitted models
 remain baselines until this neural candidate has trained quality measurements.
 
+Train the shared model from random initialization, then export fixed-width ONNX
+graphs with dynamic int8 weights:
+
+```bash
+PYTHONPATH=src python scripts/train_from_scratch.py \
+  --private /path/to/redacted_chat_1.txt --private /path/to/redacted_chat_2.txt
+PYTHONPATH=src python scripts/export_byte_model.py --runs 300
+PYTHONPATH=src python scripts/infer_byte_model.py \
+  --task sentiment --text 'service acchi hai 😄'
+PYTHONPATH=src python scripts/infer_byte_model.py \
+  --task qa --text 'delivery kab hogi?' --context 'Delivery kal hogi.'
+```
+
+The trainer performs Unicode-character-safe byte masking, balances pretraining
+sources, uses class-aware intent loss, and chooses its saved checkpoint on
+development metrics. It records the seed, optimizer state, configuration,
+pretraining-corpus hash, source counts, and private source hashes. It never
+evaluates a held-out test split during training.
+The inference command uses the task-specific int8 graph. Export also creates one
+unified graph containing a single encoder copy and all four heads. Neural summary
+inference refuses to run until official h2h labels have actually trained that head.
+
 The SAIL-2017 mBERT checkpoint can be evaluated as a frozen external comparison:
 
 ```bash
+# quick smoke run; never use it to overwrite the final configuration
 PYTHONPATH=src python scripts/evaluate_external_sentiment.py --ensemble --limit 300
+
+# final reproducible comparison, using the complete development/test splits
+PYTHONPATH=src python scripts/evaluate_external_sentiment.py --ensemble
 ```
 
 This command never updates checkpoint weights and never reads private WhatsApp
@@ -111,6 +137,8 @@ artifact must remain private unless chat participants consent to publication.
 | Intent | [Google Hinglish-TOP](https://github.com/google-research-datasets/Hinglish-TOP-Dataset) | Human-only train/validation/test TSVs, Apache-2.0 repository license. Generated augmentation is excluded. |
 | QA | [CMQA challenge](https://github.com/khyathiraghavi/code_switched_QA) | Hindi-English questions with real text contexts and contiguous answers. The source COPYING notice permits use with attribution and marked modifications. |
 | Summarization | [GupShup](https://github.com/midas-research/gupshup) | Request from the authors. Use **h2h**, Hinglish dialogue to Hinglish summary, for this extractive baseline. |
+| Byte pretraining | [PHINC](https://huggingface.co/datasets/LingoIITGN/PHINC) | Human Hinglish side only, CC BY 4.0, pinned and hashed. |
+| Byte pretraining | [saidutta69/Gupshup](https://huggingface.co/datasets/saidutta69/Gupshup) | Public anonymized Roman-Hinglish chat messages, MIT. This similarly named corpus has no summary labels and is never reported as the summarization benchmark. |
 
 The downloader uses pinned revisions and verifies SHA-256 against
 `data/source_manifest.json`. Dataset text remains in ignored `data/raw/`.
@@ -176,3 +204,12 @@ honest record of what has actually been collected.
 After collecting pairs, freeze the **current** `models/current/sentiment.joblib`
 and current configuration before annotation. The old preregistration hashes refer
 to the previous experiment and cannot certify these new artifacts.
+
+QA expansion is also wired without inventing labels. Put independently reviewed
+rows in `data/raw/qa/human_expansion.jsonl`, one object per line, with columns
+`uid`, `text` (question), `context`, `answer`, `group` (shared source/document),
+`split`, `reviewer_ids`, and `consent_to_use`. `answer` must be an exact context
+span, each group must stay in one split, and at least two anonymous reviewer IDs
+are required. The loader rejects violations and reports the accepted row count.
+The current file is absent because the available 102-example CMQA subset cannot
+honestly be enlarged by relabelling generated questions as human QA.

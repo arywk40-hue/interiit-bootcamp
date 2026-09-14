@@ -1,0 +1,162 @@
+{
+  "checkpoint": "models/byte_multitask/model.pt",
+  "parameters": {
+    "unique_parameters": 4306511,
+    "trainable_parameters": 4306511,
+    "config": {
+      "d_model": 256,
+      "layers": 6,
+      "heads": 8,
+      "feed_forward": 768,
+      "dropout": 0.1,
+      "max_positions": 512,
+      "intent_labels": 64,
+      "downsample_stages": 2
+    },
+    "random_initialization": true
+  },
+  "tasks": {
+    "sentiment": {
+      "input_bytes": 160,
+      "fp32_bytes": 17277963,
+      "int8_bytes": 5557552,
+      "p50_ms": 3.247,
+      "p95_ms": 5.417253850000001,
+      "p99_ms": 10.965093749999967,
+      "end_to_end_p50_ms": 4.415729499999999,
+      "end_to_end_p95_ms": 6.9854976,
+      "end_to_end_p99_ms": 9.125056489999988,
+      "runs": 300,
+      "fp32_max_abs_error_vs_pytorch": 2.384185791015625e-07,
+      "int8_max_abs_error_vs_pytorch": 0.007621645927429199,
+      "scope": "warm batch-one CPU; end-to-end includes byte encoding and output construction; file I/O excluded",
+      "int8_quality": {
+        "split": "test",
+        "examples": 3000,
+        "accuracy": 0.42,
+        "macro_f1": 0.416195326580191,
+        "robustness": {
+          "vowel_drop": {
+            "changed_inputs": 2998,
+            "clean_macro_f1": 0.4161427231577692,
+            "perturbed_macro_f1": 0.4159374924206261,
+            "delta": -0.0002052307371430695,
+            "prediction_stability": 0.7091394262841895
+          },
+          "repeat_letter": {
+            "changed_inputs": 3000,
+            "clean_macro_f1": 0.416195326580191,
+            "perturbed_macro_f1": 0.4212939685366308,
+            "delta": 0.005098641956439831,
+            "prediction_stability": 0.7213333333333334
+          },
+          "emoji_ablation": {
+            "changed_inputs": 609,
+            "clean_macro_f1": 0.4175323796847387,
+            "perturbed_macro_f1": 0.38060098951363264,
+            "delta": -0.03693139017110608,
+            "prediction_stability": 0.6124794745484401
+          },
+          "punctuation_ablation": {
+            "changed_inputs": 2966,
+            "clean_macro_f1": 0.4186125078491636,
+            "perturbed_macro_f1": 0.356831133183432,
+            "delta": -0.06178137466573158,
+            "prediction_stability": 0.5091031692515172
+          }
+        }
+      }
+    },
+    "intent": {
+      "input_bytes": 160,
+      "fp32_bytes": 17340660,
+      "int8_bytes": 5573374,
+      "p50_ms": 2.2774375,
+      "p95_ms": 4.43335,
+      "p99_ms": 5.229502499999985,
+      "end_to_end_p50_ms": 3.648187,
+      "end_to_end_p95_ms": 7.3990955000000005,
+      "end_to_end_p99_ms": 15.883938839999969,
+      "runs": 300,
+      "fp32_max_abs_error_vs_pytorch": 1.1920928955078125e-06,
+      "int8_max_abs_error_vs_pytorch": 0.01911771297454834,
+      "scope": "warm batch-one CPU; end-to-end includes byte encoding and output construction; file I/O excluded",
+      "int8_quality": {
+        "split": "test",
+        "examples": 6390,
+        "accuracy": 0.2704225352112676,
+        "macro_f1": 0.05620034911205888,
+        "robustness": {
+          "vowel_drop": {
+            "changed_inputs": 6305,
+            "clean_macro_f1": 0.05601781846904903,
+            "perturbed_macro_f1": 0.051948283455322194,
+            "delta": -0.004069535013726838,
+            "prediction_stability": 0.6090404440919904
+          },
+          "repeat_letter": {
+            "changed_inputs": 6390,
+            "clean_macro_f1": 0.05620034911205888,
+            "perturbed_macro_f1": 0.05039116212474936,
+            "delta": -0.00580918698730952,
+            "prediction_stability": 0.5899843505477308
+          },
+          "emoji_ablation": {
+            "changed_inputs": 0
+          },
+          "punctuation_ablation": {
+            "changed_inputs": 1924,
+            "clean_macro_f1": 0.06413912032451537,
+            "perturbed_macro_f1": 0.06216999125617476,
+            "delta": -0.001969129068340604,
+            "prediction_stability": 0.7993762993762994
+          }
+        }
+      }
+    },
+    "qa": {
+      "input_bytes": 256,
+      "fp32_bytes": 17284149,
+      "int8_bytes": 5564683,
+      "p50_ms": 6.726313,
+      "p95_ms": 11.995714250000004,
+      "p99_ms": 18.747580169999882,
+      "end_to_end_p50_ms": 8.400125,
+      "end_to_end_p95_ms": 14.7225125,
+      "end_to_end_p99_ms": 57.70560365999993,
+      "runs": 300,
+      "fp32_max_abs_error_vs_pytorch": 2.384185791015625e-06,
+      "int8_max_abs_error_vs_pytorch": 0.02284613624215126,
+      "scope": "warm batch-one CPU; end-to-end includes byte encoding and output construction; file I/O excluded",
+      "int8_quality": {
+        "split": "test",
+        "examples": 2,
+        "token_f1": 0.0
+      }
+    },
+    "summarization": {
+      "input_bytes": 160,
+      "fp32_bytes": 17276107,
+      "int8_bytes": 5557526,
+      "p50_ms": 4.2563955,
+      "p95_ms": 10.759209,
+      "p99_ms": 26.303193829999866,
+      "end_to_end_p50_ms": 4.049250000000001,
+      "end_to_end_p95_ms": 5.61734165,
+      "end_to_end_p99_ms": 9.367330499999973,
+      "runs": 300,
+      "fp32_max_abs_error_vs_pytorch": 1.7881393432617188e-07,
+      "int8_max_abs_error_vs_pytorch": 0.002012491226196289,
+      "scope": "warm batch-one CPU; end-to-end includes byte encoding and output construction; file I/O excluded",
+      "int8_quality": {
+        "status": "not measured: official GupShup h2h files unavailable"
+      }
+    }
+  },
+  "unified_artifact": {
+    "input_bytes": 256,
+    "fp32_bytes": 17342038,
+    "int8_bytes": 5566115,
+    "description": "one shared encoder and all four heads; select the requested output"
+  }
+}
