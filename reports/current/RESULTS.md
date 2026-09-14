@@ -10,6 +10,21 @@ All fitted models use train only. Test is held out from candidate selection.
 | qa | 7 | token-F1 0.3175; EM 0.2857 | 1.67 | 0.001 | 31 |
 | summarization | — | No real-data evaluation; GupShup unavailable | — | — | 0 unfitted / 7 fitted |
 
+## Frozen mBERT and weighted ensemble
+
+`rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment` was evaluated
+without changing its weights. Its model card reports accuracy 0.588889 and F1
+0.582678 on SAIL 2017; those figures are not directly comparable with SentiMix.
+On the complete 3,000-example SentiMix test it obtained macro-F1 0.4262 and p95
+47.76 ms. It has 177,855,747 parameters.
+
+The ensemble searched mBERT weights 0.00–1.00 in steps of 0.05 on all 3,000
+development examples. The selected weights were **1.00 character model and 0.00
+mBERT**; every nonzero mBERT weight lowered development macro-F1. The frozen test
+result therefore remains macro-F1 0.6805 and p95 0.73 ms. The deployment pipeline
+does not load mBERT. The decision and artifact hashes are fixed in
+`configs/sentiment_ensemble.json`.
+
 ## Private WhatsApp domain-adaptation ablation
 
 Five cleaned chat exports supplied locally were deduplicated into 47,046 messages.
@@ -87,6 +102,7 @@ effect of emoji removal is not evidence of correct emoji-flip interpretation.
 
 ## What prevents a complete PS claim
 
+- The new 4,304,712-parameter shared byte model is implemented but not yet trained.
 - GupShup access is needed for real summary training and evaluation.
 - Natural spelling and pragmatic emoji-flip pairs still require human annotation.
 - QA needs substantially more context-grounded human data and stronger accuracy.
@@ -96,4 +112,4 @@ effect of emoji removal is not evidence of correct emoji-flip interpretation.
 Raw answer-containing prediction outputs are generated locally and ignored by Git.
 The historical sentiment results are a separate train+dev experiment and remain
 unchanged. Dataset URLs, revisions and hashes are in `data/source_manifest.json`.
-The final test suite contains 22 passing tests.
+The final test suite contains 23 passing tests.

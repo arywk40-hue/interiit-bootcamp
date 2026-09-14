@@ -39,10 +39,12 @@ and fused with the original byte embeddings. Non-context positions are masked
 before start/end selection. The predicted byte offsets can therefore be checked
 against the supplied source rather than accepting generated text.
 
-The initial eager-PyTorch smoke benchmark on this machine measured 6.73 ms p95
-for a 32-byte sentiment input with one CPU thread. This is an untrained engineering
-measurement, not a quality result or a long-context latency claim. QA and summary
-must pass their own p95 gates after retrieval, export, and quantization.
+The initial eager-PyTorch smoke benchmark on this machine measured 4.84 ms p95
+for a 32-byte sentiment input and 9.80 ms p95 for a 256-byte QA input with one CPU
+thread. A 512-byte QA input measured 19.07 ms p95, so the serving design must first
+retrieve a relevant passage and cap the neural reader at 256 bytes. These are
+untrained engineering measurements, not quality results. Summary must pass its
+own p95 gate after turn retrieval, export, and quantization.
 
 ## Training without existing model weights
 
@@ -315,6 +317,9 @@ emoji understanding before the human study.
 
 ## Sources
 
+- [CANINE tokenization-free encoder](https://aclanthology.org/2022.tacl-1.5/)
+- [ByT5 byte-to-byte models](https://aclanthology.org/2022.tacl-1.17/)
+- [Frozen SAIL-2017 mBERT comparison](https://huggingface.co/rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment)
 - [SentiMix task paper](https://aclanthology.org/2020.semeval-1.100/)
 - [Hinglish-TOP source and license](https://github.com/google-research-datasets/Hinglish-TOP-Dataset)
 - [CMQA source, README and COPYING](https://github.com/khyathiraghavi/code_switched_QA)

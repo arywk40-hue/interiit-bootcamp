@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 import numpy as np
+import joblib
 import torch
 from sklearn.metrics import accuracy_score, classification_report, f1_score
 
@@ -33,15 +34,42 @@ def sample_rows(rows, limit, seed):
 
 
 def predict_batches(model, tokenizer, rows, device, batch_size, max_length):
-    predictions = []
+    probabilities = []
     with torch.inference_mode():
         for start in range(0, len(rows), batch_size):
             text = [row["text"] for row in rows[start:start + batch_size]]
             encoded = tokenizer(text, padding=True, truncation=True,
                                 max_length=max_length, return_tensors="pt")
             encoded = {key: value.to(device) for key, value in encoded.items()}
-            predictions.extend(model(**encoded).logits.argmax(-1).cpu().tolist())
-    return [LABELS[index] for index in predictions]
+            probabilities.append(model(**encoded).logits.softmax(-1).cpu().numpy())
+    return np.concatenate(probabilities)
+
+
+def label_predictions(probabilities):
+    return [LABELS[index] for index in probabilities.argmax(-1)]
+
+
+def char_probabilities(model, rows):
+    raw = model.predict_proba([row["text"] for row in rows])
+    columns = [list(model.classes_).index(LABELS[index]) for index in range(3)]
+    return raw[:, columns]
+
+
+def select_ensemble(external_dev, char_dev, dev_rows, external_test, char_test, test_rows):
+    expected = [row["label"] for row in dev_rows]
+    candidates = []
+    for weight in np.linspace(0, 1, 21):
+        mixed = weight * external_dev + (1 - weight) * char_dev
+        score = f1_score(expected, label_predictions(mixed), average="macro")
+        candidates.append({"external_weight": float(weight), "dev_macro_f1": score})
+    selected = max(candidates, key=lambda row: (row["dev_macro_f1"], -row["external_weight"]))
+    weight = selected["external_weight"]
+    predicted = label_predictions(weight * external_test + (1 - weight) * char_test)
+    expected = [row["label"] for row in test_rows]
+    return {"formula": "weight * frozen_mbert + (1 - weight) * char_tfidf",
+            "selection_split": "dev", "grid": candidates, "selected": selected,
+            "test_accuracy": accuracy_score(expected, predicted),
+            "test_macro_f1": f1_score(expected, predicted, average="macro")}
 
 
 def latency_report(model, tokenizer, rows, device, max_length, runs):
@@ -74,6 +102,9 @@ def main():
     parser.add_argument("--latency-runs", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--local-files-only", action="store_true")
+    parser.add_argument("--char-model", type=Path, default=Path("models/current/sentiment.joblib"))
+    parser.add_argument("--ensemble", action="store_true",
+                        help="Select frozen-mBERT/character probability weight on dev")
     args = parser.parse_args()
     if args.limit < 0 or args.batch_size < 1 or args.latency_runs < 1:
         parser.error("invalid evaluation limits")
@@ -87,8 +118,9 @@ def main():
         args.model, local_files_only=args.local_files_only).to(device).eval()
     splits, audit = load_sentiment(args.data)
     rows = sample_rows(splits["test"], args.limit, args.seed)
-    predicted = predict_batches(model, tokenizer, rows, device, args.batch_size,
-                                args.max_length)
+    probabilities = predict_batches(model, tokenizer, rows, device, args.batch_size,
+                                    args.max_length)
+    predicted = label_predictions(probabilities)
     expected = [row["label"] for row in rows]
     report = {
         "role": "frozen external comparison; no training performed",
@@ -110,11 +142,24 @@ def main():
         "platform": platform.platform(),
         "privacy": "No WhatsApp text is loaded by this evaluator."
     }
+    if args.ensemble:
+        bundle = joblib.load(args.char_model)
+        char_model = bundle["model"]
+        dev_rows = sample_rows(splits["dev"], args.limit, args.seed)
+        external_dev = predict_batches(model, tokenizer, dev_rows, device,
+                                       args.batch_size, args.max_length)
+        report["ensemble"] = select_ensemble(
+            external_dev, char_probabilities(char_model, dev_rows), dev_rows,
+            probabilities, char_probabilities(char_model, rows), rows)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
-    print(json.dumps({key: report[key] for key in
+    summary = {key: report[key] for key in
                       ("examples", "subset", "accuracy", "macro_f1", "parameters",
-                       "device", "latency")}, indent=2))
+                       "device", "latency")}
+    if "ensemble" in report:
+        summary["ensemble"] = {key: report["ensemble"][key] for key in
+                               ("selected", "test_accuracy", "test_macro_f1")}
+    print(json.dumps(summary, indent=2))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,22 @@
+{
+  "selection_split": "dev",
+  "selection_metric": "macro_f1",
+  "weight_grid_step": 0.05,
+  "weights": {
+    "char_tfidf": 1.0,
+    "frozen_codemixed_mbert": 0.0
+  },
+  "selected_dev_macro_f1": 0.6097825952945134,
+  "full_test_macro_f1": 0.6804582873255125,
+  "decision": "Do not load mBERT in production because every nonzero tested weight reduced dev macro-F1.",
+  "char_artifact_sha256": "8b3da0c40070a7f929aa1ded2b5a9a26509d91bb3c4b11f74a8bc5b6fe433e08",
+  "external_model": {
+    "id": "rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment",
+    "revision": "efeb9edba760887149556619b6b81586027795f1",
+    "weights_sha256": "ea399ebae7b42add0d9e8b3a5a11b1827feaa124aab707328fe91bb586fa101a",
+    "parameters": 177855747,
+    "full_test_macro_f1": 0.4262210521603462,
+    "measured_p95_ms": 47.7643023,
+    "role": "frozen comparison only; no training or pseudo-labelling"
+  }
+}

@@ -60,7 +60,7 @@ and disk loading are not included. Production callers should keep the model load
 
 The final neural candidate is `ByteMultiTaskModel` in `src/rinlu/neural.py`:
 
-- 4.30M parameters, initialized randomly;
+- 4,304,712 parameters, initialized randomly;
 - raw UTF-8 byte input plus explicit Unicode symbol classes;
 - one shared convolution-downsampled Transformer encoder;
 - classification heads for sentiment and intent;
@@ -74,13 +74,15 @@ remain baselines until this neural candidate has trained quality measurements.
 The SAIL-2017 mBERT checkpoint can be evaluated as a frozen external comparison:
 
 ```bash
-PYTHONPATH=src python scripts/evaluate_external_sentiment.py --limit 300
+PYTHONPATH=src python scripts/evaluate_external_sentiment.py --ensemble --limit 300
 ```
 
 This command never updates checkpoint weights and never reads private WhatsApp
-text. Remove `--limit 300` for the complete 3,000-example SentiMix test. Its model
-card score is from SAIL 2017, so only this local evaluation is comparable with our
-held-out result.
+text. It searches external-model weights from 0 to 1 in steps of 0.05 on the
+development split, freezes the best value, and reports test performance. Remove
+`--limit 300` for the complete 3,000-example SentiMix test. Its model-card score
+is from SAIL 2017, so only this local evaluation is comparable with our held-out
+result.
 
 ## Private WhatsApp domain adaptation
 
