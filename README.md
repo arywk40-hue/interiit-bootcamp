@@ -1,9 +1,9 @@
-# Hinglish NLU: four explainable baselines
+# Romanized Hinglish sentiment engine and multitask experiments
 
-This implements sentiment, intent classification, extractive summarization, and
-context-based extractive QA for Problem Statement 4. The current models use
-character features and small linear models. There is no Transformer, LLM router,
-or hidden API call at inference.
+The submission focus for [Problem Statement 4](problemstatement.md) is ultra-fast Romanized Hinglish
+sentiment/text classification. Intent is secondary evidence; QA is a small
+prototype; summarization remains data-blocked. The deployed models use character
+features and small linear models. There is no LLM router or hidden API call at inference.
 
 **Status:** sentiment, intent, and QA train and run locally. Summarization runs in
 an explicitly untrained, unsupervised mode; supervised training and evaluation
@@ -84,6 +84,8 @@ PYTHONPATH=src python scripts/infer_byte_model.py \
   --task sentiment --text 'service acchi hai 😄'
 PYTHONPATH=src python scripts/infer_byte_model.py \
   --task qa --text 'delivery kab hogi?' --context 'Delivery kal hogi.'
+PYTHONPATH=src python scripts/benchmark_throughput.py \
+  --requests 500 --workers 1,2,4,8
 ```
 
 The trainer performs Unicode-character-safe byte masking, balances pretraining
@@ -167,8 +169,8 @@ Do not substitute English reference summaries and describe that as h2h evaluatio
 
 ## Read the code in this order
 
-Only six new runtime/download modules were needed. Each is 150 lines or fewer.
-The remaining machinery reuses the existing repository.
+The compact baselines and shared neural experiment reuse the same loaders,
+metrics and split controls.
 
 | File | What you need to explain |
 |---|---|
@@ -182,6 +184,11 @@ The remaining machinery reuses the existing repository.
 | `src/rinlu/evaluation/metrics.py` | Existing sentiment metrics plus explicitly defined token-F1 and ROUGE-1/2/L F1. |
 | `src/rinlu/evaluation/tasks.py` | Task metrics, learned scalar counts, real timing, synthetic spelling diagnostics and ablations. |
 | `src/rinlu/run.py` | The common train/test/predict CLI; saves models, configurations, data hashes, and reports. |
+| `src/rinlu/neural.py` | UTF-8 encoding, full-character masking, shared encoder and four task heads. |
+| `scripts/train_from_scratch.py` | Balanced masked-byte pretraining, joint supervision, dev selection and resumable checkpoints. |
+| `scripts/export_byte_model.py` | ONNX/int8 export, numerical-fidelity checks and bounded latency measurement. |
+| `scripts/infer_byte_model.py` | Bounded task routing and extractive output construction for int8 graphs. |
+| `scripts/benchmark_throughput.py` | Sustained one-model load tests at configurable worker counts. |
 | `configs/sentiment.json` | Historical filename; the new CLI reads it for both classifiers and QA/summary settings. |
 | `src/rinlu/evaluation/contrast_set.py` | Existing blind human evaluation: freeze hashes, annotation, adjudication, pair accuracy and bootstrap intervals. Supports current model bundles. |
 | `tests/test_tasks.py` | New data integrity, extraction, configuration, and metric checks using tiny test-only examples. |

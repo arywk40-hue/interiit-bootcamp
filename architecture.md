@@ -1,4 +1,35 @@
-# Technical design: a from-scratch byte model for Hinglish NLU
+# Technical whitepaper: ultra-fast Romanized Hinglish NLP
+
+## Abstract and submission scope
+
+This project targets informal Romanized Hindi-English messages where spelling,
+shorthand, emoji and punctuation carry meaning. The competition submission is a
+focused sentiment/text-classification engine: a character-TF-IDF classifier
+reaches 0.6805 macro-F1 on 3,000 held-out SentiMix messages, 0.73 ms isolated p95,
+and 1,238 sustained requests/s in the one-worker load test. It preserves the raw
+symbols and is more accurate and faster than the evaluated frozen 177.9M mBERT.
+
+Intent, extractive QA and summarization are presented as extensions rather than
+equal production claims. A 4.31M-parameter shared byte network demonstrates
+random-initialized multitask training and compact int8 serving, but its quality
+does not justify replacing the linear baselines. This separation keeps the main
+claim aligned with the problem statement's permission to choose one or multiple
+downstream tasks.
+
+## Problem and evaluation question
+
+Romanized Hinglish has no fixed spelling, mixes English words with Hindi grammar,
+and uses symbols such as `😒`, `!` and `?` to change tone. A useful support-chat
+engine must retain those signals while processing individual messages in less
+than 10 ms on the target CPU. The primary evaluation question is whether a compact
+local classifier can preserve informal text and improve over frozen multilingual
+models while meeting the latency and throughput limits.
+
+The primary quality measure is held-out macro-F1, which gives negative, neutral
+and positive equal weight. Engineering measures are learned scalar count,
+artifact size, isolated p95/p99 latency and sustained requests/s. Synthetic
+spelling edits and symbol ablations diagnose behavior; only the pending blind
+human contrast set can support a natural-variation or emoji-flip claim.
 
 ## Constraint decision
 
@@ -314,10 +345,12 @@ these are lexical overlap metrics, not semantic or factuality metrics.
 
 Warm batch-one CPU timing includes preprocessing, model computation, and output
 construction. It excludes process startup, artifact loading, networking, and file
-I/O. Inputs are spread across the split, with warm-up and one BLAS thread. Report
-p50/p95/p99 and sequential throughput. Sequential throughput is not concurrent
-server throughput. Full artifacts and learned scalar counts are reported; TF-IDF
-IDF values are included in addition to classifier weights and intercepts.
+I/O. Inputs are spread across the split, with warm-up and one BLAS thread. The
+separate sustained-load experiment issues 500 requests at one, two, four and eight
+workers against one loaded model and reports wall-clock requests/s plus per-call
+p50/p95/p99. This is in-process capacity evidence, not distributed-server capacity.
+Full artifacts and learned scalar counts are reported; TF-IDF IDF values are
+included in addition to classifier weights and intercepts.
 
 Classification accepts nonblank inputs up to 2,000 characters. QA accepts up to
 1,000 question and 12,000 context characters. Summary accepts up to 12,000 characters

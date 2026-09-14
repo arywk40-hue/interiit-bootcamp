@@ -1,0 +1,237 @@
+{
+  "scope": "sustained in-process calls to one shared loaded model; preprocessing, inference and output construction included; startup and file I/O excluded",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.0",
+  "requests_per_setting": 500,
+  "results": {
+    "baseline_sentiment": [
+      {
+        "workers": 1,
+        "requests": 1000,
+        "wall_seconds": 0.8078373330063187,
+        "requests_per_second": 1237.8729716272946,
+        "p50_ms": 0.818625,
+        "p95_ms": 0.87401665,
+        "p99_ms": 0.91463125
+      },
+      {
+        "workers": 2,
+        "requests": 1000,
+        "wall_seconds": 0.830656457983423,
+        "requests_per_second": 1203.8671226702922,
+        "p50_ms": 1.6537085,
+        "p95_ms": 2.4921773999999997,
+        "p99_ms": 3.00162009
+      },
+      {
+        "workers": 4,
+        "requests": 1000,
+        "wall_seconds": 0.9319847500009928,
+        "requests_per_second": 1072.9789301798498,
+        "p50_ms": 1.719625,
+        "p95_ms": 13.902625299999997,
+        "p99_ms": 27.251099079999985
+      },
+      {
+        "workers": 8,
+        "requests": 1000,
+        "wall_seconds": 0.8698599580093287,
+        "requests_per_second": 1149.6103376093968,
+        "p50_ms": 2.5196665,
+        "p95_ms": 13.836103849999974,
+        "p99_ms": 92.08976551
+      }
+    ],
+    "neural_sentiment": [
+      {
+        "workers": 1,
+        "requests": 1000,
+        "wall_seconds": 4.7569523340207525,
+        "requests_per_second": 210.21862944646386,
+        "p50_ms": 4.616958,
+        "p95_ms": 4.98389855,
+        "p99_ms": 5.842190659999999
+      },
+      {
+        "workers": 2,
+        "requests": 1000,
+        "wall_seconds": 2.498289749986725,
+        "requests_per_second": 400.2738273274001,
+        "p50_ms": 4.9634165,
+        "p95_ms": 5.41668925,
+        "p99_ms": 5.95749009
+      },
+      {
+        "workers": 4,
+        "requests": 1000,
+        "wall_seconds": 1.45847608402255,
+        "requests_per_second": 685.6471703272296,
+        "p50_ms": 5.2605625,
+        "p95_ms": 8.75843395,
+        "p99_ms": 9.7116595
+      },
+      {
+        "workers": 8,
+        "requests": 1000,
+        "wall_seconds": 1.6067431670089718,
+        "requests_per_second": 622.3770049456922,
+        "p50_ms": 10.8185415,
+        "p95_ms": 20.300824999999982,
+        "p99_ms": 57.93457166999995
+      }
+    ],
+    "baseline_intent": [
+      {
+        "workers": 1,
+        "requests": 500,
+        "wall_seconds": 6.835908541979734,
+        "requests_per_second": 73.14316698789477,
+        "p50_ms": 9.318854,
+        "p95_ms": 31.580497899999994,
+        "p99_ms": 72.92766565999995
+      },
+      {
+        "workers": 2,
+        "requests": 500,
+        "wall_seconds": 3.4916695000138134,
+        "requests_per_second": 143.1979744927239,
+        "p50_ms": 6.814354,
+        "p95_ms": 49.56063474999993,
+        "p99_ms": 98.11818808999996
+      },
+      {
+        "workers": 4,
+        "requests": 500,
+        "wall_seconds": 3.3983914999989793,
+        "requests_per_second": 147.1284282579421,
+        "p50_ms": 10.9474585,
+        "p95_ms": 97.87473749999992,
+        "p99_ms": 129.85487407999995
+      },
+      {
+        "workers": 8,
+        "requests": 500,
+        "wall_seconds": 3.6862902079883497,
+        "requests_per_second": 135.63772025232262,
+        "p50_ms": 12.0398335,
+        "p95_ms": 212.44936699999985,
+        "p99_ms": 370.16040606999985
+      }
+    ],
+    "neural_intent": [
+      {
+        "workers": 1,
+        "requests": 500,
+        "wall_seconds": 2.311607167008333,
+        "requests_per_second": 216.29972736548345,
+        "p50_ms": 4.531750499999999,
+        "p95_ms": 5.226406249999999,
+        "p99_ms": 5.52081983
+      },
+      {
+        "workers": 2,
+        "requests": 500,
+        "wall_seconds": 1.353912999999011,
+        "requests_per_second": 369.2999476335372,
+        "p50_ms": 5.1519165,
+        "p95_ms": 8.041415249999996,
+        "p99_ms": 8.855408919999999
+      },
+      {
+        "workers": 4,
+        "requests": 500,
+        "wall_seconds": 0.935013499984052,
+        "requests_per_second": 534.7516372849464,
+        "p50_ms": 6.980646,
+        "p95_ms": 12.427045549999999,
+        "p99_ms": 22.72712825
+      },
+      {
+        "workers": 8,
+        "requests": 500,
+        "wall_seconds": 0.8592062079987954,
+        "requests_per_second": 581.932480637641,
+        "p50_ms": 10.965938,
+        "p95_ms": 29.52978059999999,
+        "p99_ms": 36.751866579999984
+      }
+    ],
+    "baseline_qa": [
+      {
+        "workers": 1,
+        "requests": 500,
+        "wall_seconds": 0.8323361660004593,
+        "requests_per_second": 600.718820620999,
+        "p50_ms": 1.3716460000000001,
+        "p95_ms": 2.5593437499999996,
+        "p99_ms": 2.86612033
+      },
+      {
+        "workers": 2,
+        "requests": 500,
+        "wall_seconds": 0.8776716669963207,
+        "requests_per_second": 569.6891204328874,
+        "p50_ms": 2.962896,
+        "p95_ms": 6.835860399999998,
+        "p99_ms": 7.95796267
+      },
+      {
+        "workers": 4,
+        "requests": 500,
+        "wall_seconds": 0.9556020829768386,
+        "requests_per_second": 523.2303370901283,
+        "p50_ms": 5.758521,
+        "p95_ms": 16.24514585,
+        "p99_ms": 18.34415333
+      },
+      {
+        "workers": 8,
+        "requests": 500,
+        "wall_seconds": 0.9631085830042139,
+        "requests_per_second": 519.1522626040312,
+        "p50_ms": 10.542479,
+        "p95_ms": 36.177331899999984,
+        "p99_ms": 39.75610717
+      }
+    ],
+    "neural_qa": [
+      {
+        "workers": 1,
+        "requests": 500,
+        "wall_seconds": 4.428013708995422,
+        "requests_per_second": 112.91744625457231,
+        "p50_ms": 8.136396000000001,
+        "p95_ms": 11.076454799999995,
+        "p99_ms": 16.618339999999943
+      },
+      {
+        "workers": 2,
+        "requests": 500,
+        "wall_seconds": 2.064124875003472,
+        "requests_per_second": 242.23340654191716,
+        "p50_ms": 8.132187,
+        "p95_ms": 8.888395499999996,
+        "p99_ms": 9.681859999999995
+      },
+      {
+        "workers": 4,
+        "requests": 500,
+        "wall_seconds": 4.1329118329740595,
+        "requests_per_second": 120.98007898711889,
+        "p50_ms": 22.0521255,
+        "p95_ms": 91.06803989999996,
+        "p99_ms": 183.07452141999892
+      },
+      {
+        "workers": 8,
+        "requests": 500,
+        "wall_seconds": 1.8195061250007711,
+        "requests_per_second": 274.79984438073166,
+        "p50_ms": 24.1803955,
+        "p95_ms": 55.5998521,
+        "p99_ms": 67.20639207999997
+      }
+    ]
+  },
+  "focused_sentiment_requests_per_setting": 1000
+}

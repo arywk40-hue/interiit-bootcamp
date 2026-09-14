@@ -54,6 +54,32 @@ removal changes meaning in some messages. Their larger sentiment effects show
 that the byte model uses those channels; they do not establish correct pragmatic
 flips without the preregistered human contrast set.
 
+## Sustained concurrent throughput
+
+The focused sentiment setting issued 1,000 in-process requests to one already-loaded
+shared model. The secondary-task settings used 500 requests each.
+The measurement includes preprocessing, inference and output construction. It
+excludes process startup and file I/O. Numerical libraries and each ONNX session
+used one thread; concurrency came from request workers.
+
+| Sentiment implementation | Workers | Requests/s | p95 latency |
+|---|---:|---:|---:|
+| deployed character baseline | 1 | 1,238 | 0.87 ms |
+| deployed character baseline | 2 | 1,204 | 2.49 ms |
+| deployed character baseline | 4 | 1,073 | 13.90 ms |
+| deployed character baseline | 8 | 1,150 | 13.84 ms |
+| neural int8 | 1 | 210 | 4.98 ms |
+| neural int8 | 2 | 400 | 5.42 ms |
+| neural int8 | 4 | 686 | 8.76 ms |
+| neural int8 | 8 | 622 | 20.30 ms |
+
+The best latency-compliant sentiment setting is the one-worker character model.
+Four neural workers improve throughput while retaining single-digit p95. Eight
+workers raise contention and violate the latency gate;
+extra baseline threads add contention without a reliable throughput gain. Full
+sentiment, intent and QA measurements are in `throughput.json`. These are local
+threaded measurements, not distributed-server capacity claims.
+
 | Task | Test examples | Quality | p95, ms | Artifact, MB | Learned scalars |
 |---|---:|---|---:|---:|---:|
 | sentiment | 3000 | macro-F1 0.6805 | 0.73 | 5.515 | 720,003 |
