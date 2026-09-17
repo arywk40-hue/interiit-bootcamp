@@ -39,11 +39,11 @@
     "examples": 3000
   },
   "latency": {
-    "p50_ms": 0.562354,
-    "p95_ms": 0.73381075,
-    "p99_ms": 0.9067481599999988,
-    "mean_ms": 0.5795780566666667,
-    "sequential_requests_per_second": 1725.3931347078776,
+    "p50_ms": 0.506958,
+    "p95_ms": 0.5412152,
+    "p99_ms": 0.6064652399999998,
+    "mean_ms": 0.49916281999999995,
+    "sequential_requests_per_second": 2003.354336366639,
     "measured_runs": 300,
     "scope": "preprocessing + prediction + output construction; warm model; no I/O",
     "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
@@ -54,7 +54,7 @@
         "internal_api": "openmp",
         "num_threads": 1,
         "prefix": "libomp",
-        "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+        "filepath": "/Users/ariyanbhakat/Desktop/interiit/interiit-bootcamp/.venv/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
         "version": null
       }
     ]
@@ -94,6 +94,8 @@
       "delta": -0.004051382076903809
     }
   },
+  "inference_code_sha256": "0731f630aaa56ae2f26a0cc03a0299a6e705c332b1a5d9620da2feddcbf25f94",
+  "artifact_sha256": "8b3da0c40070a7f929aa1ded2b5a9a26509d91bb3c4b11f74a8bc5b6fe433e08",
   "meets_measured_p95_under_10_ms": true,
   "meets_500m_learned_scalars": true
 }
