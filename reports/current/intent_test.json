@@ -405,12 +405,12 @@
     "examples": 6390
   },
   "latency": {
-    "p50_ms": 3.5383750000000003,
-    "p95_ms": 3.84223155,
-    "p99_ms": 4.380675919999997,
-    "mean_ms": 3.58345409,
-    "sequential_requests_per_second": 279.0603632374149,
-    "measured_runs": 300,
+    "p50_ms": 5.588416,
+    "p95_ms": 5.588416,
+    "p99_ms": 5.588416,
+    "mean_ms": 5.588416,
+    "sequential_requests_per_second": 178.94158201536894,
+    "measured_runs": 1,
     "scope": "preprocessing + prediction + output construction; warm model; no I/O",
     "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
     "python": "3.13.0",

@@ -12,22 +12,40 @@
         "examples": 21
       },
       "latency": {
-        "p50_ms": 1.888042,
-        "p95_ms": 3.2988339499999997,
-        "p99_ms": 3.4804437500000036,
-        "mean_ms": 2.1036429099999996,
-        "sequential_requests_per_second": 475.36584999590076,
+        "p50_ms": 1.2492290000000001,
+        "p95_ms": 1.7335505999999996,
+        "p99_ms": 1.85130884,
+        "mean_ms": 1.2173858100000001,
+        "sequential_requests_per_second": 821.4322787284665,
         "measured_runs": 100,
         "scope": "preprocessing + prediction + output construction; warm model; no I/O",
         "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
-        "python": "3.13.0",
+        "python": "3.13.11",
         "threadpools": [
+          {
+            "user_api": "blas",
+            "internal_api": "openblas",
+            "num_threads": 1,
+            "prefix": "libopenblas",
+            "filepath": "/Users/ariyanbhakat/miniconda3/lib/libopenblas.0.dylib",
+            "version": "0.3.34",
+            "threading_layer": "openmp",
+            "architecture": "VORTEX"
+          },
           {
             "user_api": "openmp",
             "internal_api": "openmp",
             "num_threads": 1,
             "prefix": "libomp",
-            "filepath": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
+            "filepath": "/Users/ariyanbhakat/miniconda3/lib/libomp.dylib",
+            "version": null
+          },
+          {
+            "user_api": "openmp",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "filepath": "/Users/ariyanbhakat/miniconda3/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib",
             "version": null
           }
         ]
@@ -48,6 +66,7 @@
       "no_text_context": 774
     },
     "context_groups": 25,
+    "human_expansion_rows": 0,
     "group_split": {
       "ab426015392d089371f3197ff2b6e298bcd0017c557a8a84cc6f2d89c93d4807": "train",
       "8fda0f612823466795dd1a3e3c5c27ac30459530f53f1cb9662b1b15a9941dc2": "train",
@@ -81,7 +100,7 @@
     "dev": "e404558168a7871ccfda0bbdd47faf4fc17dabd4131b5371cf1eceaf9c7cebd7",
     "test": "74ba478900644a3696ae902023ad1d65c155cfbc66208d4d324b79cfcbd29013"
   },
-  "artifact_bytes": 1328,
+  "artifact_bytes": 1330,
   "parameters": {
     "total_learned_scalars": 31
   },
@@ -137,13 +156,13 @@
       "max_iter": 500
     }
   },
-  "code_sha256": "ffdb0ad1f51c0578695a81ed0012c726f39cc25f3fe24a72751d159cee387696",
+  "code_sha256": "0731f630aaa56ae2f26a0cc03a0299a6e705c332b1a5d9620da2feddcbf25f94",
+  "artifact_sha256": "d41cea58081e8dfb181a7c5bdf438a2cfa0ed0516f3ea1519789b1c6cf04b5ea",
   "packages": {
     "numpy": "2.5.2",
     "scikit-learn": "1.9.0",
     "scipy": "1.18.0",
     "joblib": "1.5.3",
     "threadpoolctl": "3.6.0"
-  },
-  "artifact_sha256": "75cf7967bbd5da32b488a55f96ec883f9fd479e3326223d9817188fc1d7b1b2a"
+  }
 }

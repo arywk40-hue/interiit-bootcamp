@@ -39,11 +39,11 @@
     "examples": 3000
   },
   "latency": {
-    "p50_ms": 0.506958,
-    "p95_ms": 0.5412152,
-    "p99_ms": 0.6064652399999998,
-    "mean_ms": 0.49916281999999995,
-    "sequential_requests_per_second": 2003.354336366639,
+    "p50_ms": 0.8342080000000001,
+    "p95_ms": 0.93584135,
+    "p99_ms": 1.0248884999999999,
+    "mean_ms": 0.8276444266666667,
+    "sequential_requests_per_second": 1208.248334405506,
     "measured_runs": 300,
     "scope": "preprocessing + prediction + output construction; warm model; no I/O",
     "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",

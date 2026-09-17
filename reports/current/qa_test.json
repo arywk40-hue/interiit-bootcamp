@@ -8,12 +8,12 @@
     "examples": 7
   },
   "latency": {
-    "p50_ms": 0.8553124999999999,
-    "p95_ms": 1.5847542000000001,
-    "p99_ms": 1.66604051,
-    "mean_ms": 1.0993559733333333,
-    "sequential_requests_per_second": 909.6234743400918,
-    "measured_runs": 300,
+    "p50_ms": 1.8990835,
+    "p95_ms": 3.2367812499999995,
+    "p99_ms": 3.819000000000001,
+    "mean_ms": 2.051045966666667,
+    "sequential_requests_per_second": 487.5561134425412,
+    "measured_runs": 30,
     "scope": "preprocessing + prediction + output construction; warm model; no I/O",
     "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
     "python": "3.13.0",
@@ -58,7 +58,7 @@
     }
   },
   "inference_code_sha256": "0731f630aaa56ae2f26a0cc03a0299a6e705c332b1a5d9620da2feddcbf25f94",
-  "artifact_sha256": "75cf7967bbd5da32b488a55f96ec883f9fd479e3326223d9817188fc1d7b1b2a",
+  "artifact_sha256": "d41cea58081e8dfb181a7c5bdf438a2cfa0ed0516f3ea1519789b1c6cf04b5ea",
   "meets_measured_p95_under_10_ms": true,
   "meets_500m_learned_scalars": true
 }
