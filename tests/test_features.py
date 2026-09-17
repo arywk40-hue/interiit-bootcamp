@@ -1,11 +1,27 @@
 import unittest
 
+import numpy as np
+
 from rinlu.sentiment.features import conservative_canonicalize, symbol_view
+from rinlu.sentiment.infer import predict
 from rinlu.sentiment.train import select_candidate
 from rinlu.evaluation.robustness import drop_internal_vowel, remove_emoji, repeat_letter
 
 
 class FeatureTests(unittest.TestCase):
+    def test_legacy_inference_accepts_current_model_bundle(self):
+        class Classifier:
+            classes_ = np.asarray(["negative", "neutral", "positive"])
+
+            def predict_proba(self, texts):
+                self.last_texts = texts
+                return np.asarray([[0.1, 0.2, 0.7]])
+
+        classifier = Classifier()
+        result = predict({"task": "sentiment", "model": classifier}, "accha hai")
+        self.assertEqual(result["label"], "positive")
+        self.assertEqual(classifier.last_texts, ["accha hai"])
+
     def test_canonicalizer_preserves_emoji_and_punctuation(self):
         actual = conservative_canonicalize("  BOHOOOOT   badhiya 😒!!! ")
         self.assertEqual(actual, "bohoot badhiya 😒!!!")

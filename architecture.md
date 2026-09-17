@@ -5,7 +5,7 @@
 This project targets informal Romanized Hindi-English messages where spelling,
 shorthand, emoji and punctuation carry meaning. The competition submission is a
 focused sentiment/text-classification engine: a character-TF-IDF classifier
-reaches 0.6805 macro-F1 on 3,000 held-out SentiMix messages, 0.73 ms isolated p95,
+reaches 0.6805 macro-F1 on 3,000 held-out SentiMix messages, 0.54 ms isolated p95,
 and 1,238 sustained requests/s in the one-worker load test. It preserves the raw
 symbols and is more accurate and faster than the evaluated frozen 177.9M mBERT.
 
@@ -149,8 +149,8 @@ created a 5.57 MB unified model containing one encoder and all heads.
 
 On held-out data, int8 sentiment reached 0.4162 macro-F1, intent reached 0.0562,
 and QA scored 0.0 token-F1 on the two test answers that fit 256 bytes. Measured
-end-to-end p95 was 5.55 ms for sentiment, 5.18 ms for intent, and 8.81 ms for QA.
-The summary candidate head measured 5.62 ms p95 but remains untrained, so this is
+end-to-end p95 was 2.88 ms for sentiment, 2.93 ms for intent, and 5.17 ms for QA.
+The summary candidate head measured 2.92 ms p95 but remains untrained, so this is
 an engineering timing only. `reports/current/RESULTS.md` contains the full timing,
 robustness and comparison tables.
 

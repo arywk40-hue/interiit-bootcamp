@@ -125,8 +125,8 @@ def main():
             model = bundle["model"]
         text = args.text_file.read_text() if args.text_file else args.text
         context = args.context_file.read_text() if args.context_file else args.context
-        with threadpool_limits(limits=1):
-            print(json.dumps(predict_one(args.task, model, {"text": text, "context": context}), ensure_ascii=False, indent=2))
+        result = predict_one(args.task, model, {"text": text, "context": context})
+        print(json.dumps(result, ensure_ascii=False, indent=2))
         return
     tasks = list(LOADERS) if args.task == "all" else [args.task]
     missing = {}

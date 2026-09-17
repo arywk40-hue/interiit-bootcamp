@@ -199,7 +199,8 @@ def main():
                         if task == "qa" else ["logits"])
         torch.onnx.export(graph, inputs, fp32, input_names=[
             "input_ids", "symbol_ids", "segment_ids", "attention_mask"],
-            output_names=output_names, opset_version=17, do_constant_folding=True)
+            output_names=output_names, opset_version=17, do_constant_folding=True,
+            dynamo=False)
         quantize_dynamic(str(fp32), str(int8), weight_type=QuantType.QInt8,
                          op_types_to_quantize=["MatMul", "Gemm"])
         fp32_session = cpu_session(ort, fp32)
@@ -250,7 +251,7 @@ def main():
         input_names=["input_ids", "symbol_ids", "segment_ids", "attention_mask"],
         output_names=["sentiment_logits", "intent_logits", "summary_logits",
                       "start_logits", "end_logits", "answerable_logits"],
-        opset_version=17, do_constant_folding=True,
+        opset_version=17, do_constant_folding=True, dynamo=False,
     )
     quantize_dynamic(str(unified_fp32), str(unified_int8), weight_type=QuantType.QInt8,
                      op_types_to_quantize=["MatMul", "Gemm"])

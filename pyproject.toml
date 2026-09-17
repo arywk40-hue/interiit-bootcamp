@@ -23,6 +23,7 @@ external-baseline = [
 export = [
   "onnx>=1.17",
   "onnxruntime>=1.20",
+  "onnxscript>=0.5",
 ]
 
 [tool.setuptools.packages.find]

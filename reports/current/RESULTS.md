@@ -1,6 +1,6 @@
 # Current measured results
 
-Run date: 2026-09-14. macOS ARM64, Python 3.13.0, one numerical-library thread.
+Run date: 2026-09-17. macOS ARM64, Python 3.13.0, one numerical-library thread.
 All fitted models use train only. Test is held out from candidate selection.
 
 ## From-scratch shared byte model
@@ -16,10 +16,10 @@ across the initial and resumed runs.
 
 | Neural int8 task | Held-out examples actually read | Quality | End-to-end p95 | End-to-end p99 |
 |---|---:|---:|---:|---:|
-| sentiment, 160 bytes | 3,000 | macro-F1 0.4162; accuracy 0.4200 | 5.55 ms | 9.66 ms |
-| intent, 160 bytes | 6,390 | macro-F1 0.0562; accuracy 0.2704 | 5.18 ms | 7.92 ms |
-| QA, 256 bytes | 2 of 7 | token-F1 0.0000 | 8.81 ms | 9.79 ms |
-| summary candidate score, 160 bytes | — | untrained; no h2h labels | 5.62 ms | 6.65 ms |
+| sentiment, 160 bytes | 3,000 | macro-F1 0.4162; accuracy 0.4200 | 2.88 ms | 3.19 ms |
+| intent, 160 bytes | 6,390 | macro-F1 0.0562; accuracy 0.2704 | 2.93 ms | 3.10 ms |
+| QA, 256 bytes | 2 of 7 | token-F1 0.0000 | 5.17 ms | 5.59 ms |
+| summary candidate score, 160 bytes | — | untrained; no h2h labels | 2.92 ms | 3.19 ms |
 
 These are the final dynamic-int8 test measurements, at least 300 warm sequential
 calls per graph with one ONNX Runtime thread. End-to-end timing includes byte encoding,
@@ -104,9 +104,9 @@ threaded measurements, not distributed-server capacity claims.
 
 | Task | Test examples | Quality | p95, ms | Artifact, MB | Learned scalars |
 |---|---:|---|---:|---:|---:|
-| sentiment | 3000 | macro-F1 0.6805 | 0.73 | 5.515 | 720,003 |
-| intent | 6390 | macro-F1 0.4988 | 3.82 | 8.827 | 1,394,725 |
-| qa | 7 | token-F1 0.3175; EM 0.2857 | 1.67 | 0.001 | 31 |
+| sentiment | 3000 | macro-F1 0.6805 | 0.54 | 5.515 | 720,003 |
+| intent | 6390 | macro-F1 0.4988 | 3.84 | 8.827 | 1,394,725 |
+| qa | 7 | token-F1 0.3175; EM 0.2857 | 1.58 | 0.001 | 31 |
 | summarization | — | No real-data evaluation; GupShup unavailable | — | — | 0 unfitted / 7 fitted |
 
 ## Frozen mBERT and weighted ensemble
@@ -120,7 +120,7 @@ On the complete 3,000-example SentiMix test it obtained macro-F1 0.4262 and p95
 The ensemble searched mBERT weights 0.00–1.00 in steps of 0.05 on all 3,000
 development examples. The selected weights were **1.00 character model and 0.00
 mBERT**; every nonzero mBERT weight lowered development macro-F1. The frozen test
-result therefore remains macro-F1 0.6805 and p95 0.73 ms. The deployment pipeline
+result therefore remains macro-F1 0.6805 and p95 0.54 ms. The deployment pipeline
 does not load mBERT. The decision and artifact hashes are fixed in
 `configs/sentiment_ensemble.json`.
 
@@ -214,4 +214,4 @@ effect of emoji removal is not evidence of correct emoji-flip interpretation.
 Raw answer-containing prediction outputs are generated locally and ignored by Git.
 The historical sentiment results are a separate train+dev experiment and remain
 unchanged. Dataset URLs, revisions and hashes are in `data/source_manifest.json`.
-The final test suite contains 29 passing tests.
+The final test suite contains 30 passing tests.

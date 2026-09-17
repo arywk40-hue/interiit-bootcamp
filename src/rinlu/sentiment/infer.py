@@ -9,6 +9,10 @@ import joblib
 
 
 def predict(model, text: str) -> dict:
+    if isinstance(model, dict):
+        if model.get("task") != "sentiment" or "model" not in model:
+            raise ValueError("Expected a sentiment model bundle")
+        model = model["model"]
     started = time.perf_counter_ns()
     probabilities = model.predict_proba([text])[0]
     latency_ms = (time.perf_counter_ns() - started) / 1_000_000
@@ -34,4 +38,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
