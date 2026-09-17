@@ -173,6 +173,12 @@ class TaskTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             model.predict("kya?", "a" * 12001)
 
+    def test_qa_when_question_prefers_temporal_span(self):
+        rows = [{"text": "delivery kab hogi?", "context": "Delivery kal hogi.", "answer": "kal"}]
+        model = SpanReader().fit(rows)
+        result = model.predict("delivery kab aayegi?", "Aapka order Friday ko deliver hoga.")
+        self.assertEqual(result["answer"], "Friday")
+
     def test_metrics_handle_repetitions_and_empty_answers(self):
         self.assertAlmostEqual(token_f1("good good", "good"), 2 / 3)
         self.assertEqual(token_f1("", ""), 1)

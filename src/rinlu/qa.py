@@ -13,6 +13,16 @@ from rinlu.summarization import sentence_spans
 
 
 STOP = set("a an the is are of to in and ka ki ke hai hain h kya what which who when where how".split())
+TEMPORAL_WORDS = (
+    "today|tomorrow|yesterday|tonight|morning|afternoon|evening|night|"
+    "monday|tuesday|wednesday|thursday|friday|saturday|sunday|"
+    "somvar|mangalvar|budhvar|guruvaar|shukravaar|shanivar|ravivar|"
+    "aaj|kal|parso|subah|dopahar|shaam|raat"
+)
+TEMPORAL_RE = re.compile(
+    rf"\b(?:{TEMPORAL_WORDS})\b|\b\d{{1,2}}(?::\d{{2}})?\s*(?:am|pm|baje)?\b",
+    re.IGNORECASE,
+)
 
 
 def content_words(text):
@@ -111,6 +121,16 @@ class SpanReader:
         spans, features = self.candidates(question, context)
         if not spans or not question.strip() or features[:, :2].max() == 0:
             return {"answer": "", "start": None, "end": None, "no_answer": True, "score": 0.0}
+        # A when/kab question has a constrained answer type.  Prefer the
+        # shortest temporal token instead of letting capitalization or the
+        # sentence start make a generic word such as "Aapka" win.
+        if re.search(r"\b(kab|when)\b", question.casefold()):
+            temporal = [match for match in TEMPORAL_RE.finditer(context)]
+            if temporal:
+                match = min(temporal, key=lambda item: (len(item.group()), item.start()))
+                return {"answer": context[match.start():match.end()],
+                        "start": match.start(), "end": match.end(),
+                        "no_answer": False, "score": 1.0}
         scores = self.ranker.predict(features)
         best = int(np.argmax(scores))
         if scores[best] < self.threshold:

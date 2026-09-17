@@ -104,7 +104,8 @@ def main():
     parser.add_argument("--reports", type=Path, default=Path("reports/current"))
     parser.add_argument("--config", type=Path, default=Path("configs/sentiment.json"))
     parser.add_argument("--runs", type=int, default=100)
-    parser.add_argument("--text", default="")
+    parser.add_argument("--text", "--question", dest="text", default="",
+                        help="Input text; --question is an alias for QA")
     parser.add_argument("--text-file", type=Path, help="Read a UTF-8 dialogue/question from a file")
     parser.add_argument("--context", default="")
     parser.add_argument("--context-file", type=Path)
