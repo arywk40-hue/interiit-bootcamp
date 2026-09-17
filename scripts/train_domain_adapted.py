@@ -47,6 +47,8 @@ def main():
     p.add_argument("--output-dir", type=Path, default=Path("models/domain_adapted"))
     p.add_argument("--report-dir", type=Path, default=Path("reports/domain_adapted"))
     p.add_argument("--runs", type=int, default=300)
+    p.add_argument("--skip-robustness", action="store_true",
+                   help="Skip slow perturbation diagnostics during local adaptation")
     a = p.parse_args()
     chats, private_audit = read_private(a.chat)
     loader = load_sentiment if a.task == "sentiment" else load_intent
@@ -62,12 +64,13 @@ def main():
     with threadpool_limits(limits=1):
         dev, _ = evaluate(a.task, model, splits["dev"]); test, _ = evaluate(a.task, model, splits["test"])
         latency = benchmark(a.task, model, splits["test"], a.runs)
-        stress = robustness(a.task, model, splits["test"])
+        stress = {} if a.skip_robustness else robustness(a.task, model, splits["test"])
     report = {"task": a.task, "method": "unlabelled WhatsApp TF-IDF adaptation; public labels only",
               "private_unique_messages": len(chats), "private_sources": private_audit,
               "source_audit": source_audit, "fit_seconds": fit_seconds, "dev": dev, "test": test,
               "latency": latency, "parameters": parameter_count(model), "artifact_bytes": artifact.stat().st_size,
               "robustness_diagnostics": stress,
+              "robustness_skipped": a.skip_robustness,
               "privacy_warning": "Artifact vocabulary contains private-source n-grams; do not publish without consent."}
     a.report_dir.mkdir(parents=True, exist_ok=True)
     (a.report_dir / f"{a.task}.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
