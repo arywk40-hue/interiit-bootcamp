@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-09-17T17:25:02.665075+00:00",
+  "pair_count": 105,
+  "item_count": 210,
+  "pairs_file_sha256": "776bf0fcc9638273a31e208fc9760b7f2c542672cae2971637d287f1a156a97b",
+  "canonical_pair_content_sha256": "1952978b17eeb86643f48a562dc9ea1442accd4194bca95c1bc881300d6bd588",
+  "pair_ids_sha256": "01e511807606c6e60e6a8a87e8cd76523008379cf844a02977bedc2003cbf9f9",
+  "models": {
+    "current_sentiment": {
+      "file": "sentiment.joblib",
+      "sha256": "8b3da0c40070a7f929aa1ded2b5a9a26509d91bb3c4b11f74a8bc5b6fe433e08",
+      "bytes": 5514567
+    }
+  },
+  "configs": {
+    "sentiment.json": {
+      "sha256": "92e888d318177b3fd2851aef715e446ecc3f47c448a2d6653a96ba1a2fa12976",
+      "bytes": 982
+    }
+  },
+  "annotation_protocol": {
+    "blindness": "annotators receive separately shuffled individual messages without pair IDs or variant types",
+    "labels": [
+      "negative",
+      "neutral",
+      "positive"
+    ],
+    "agreement": [
+      "three_class_cohen_kappa",
+      "same_vs_flip_cohen_kappa"
+    ],
+    "tie_break": "third annotator labels disagreements independently; majority wins; three-way label splits are excluded as ambiguous"
+  },
+  "preregistered_metrics": [
+    "individual_message_macro_f1",
+    "pair_exact_accuracy",
+    "flip_sensitivity_on_gold_flip_pairs",
+    "directional_flip_accuracy",
+    "stability_on_gold_same_pairs",
+    "bootstrap_95_percent_confidence_intervals_by_pair"
+  ]
+}

@@ -1,0 +1,211 @@
+pair_id,side,item_id,variant_type,text,gold,prediction
+SP001,a,f27a6a467c403df2,spelling_same,Yaar aaj ka khana bahut accha tha,positive,neutral
+SP001,b,044cf558db6e96b1,spelling_same,Yaar aaj ka khana bahut acha tha,positive,neutral
+SP002,a,0babf880eeadaf86,spelling_same,Movie thodi boring thi yaar,negative,neutral
+SP002,b,b24b82b7bd4a05ea,spelling_same,Movie thodi boaring thi yaar,negative,neutral
+SP003,a,e0a718b19b4a575f,spelling_same,"Bhai match jeet gaye, kya baat hai!",positive,neutral
+SP003,b,078f767b8ac9e0ce,spelling_same,"Bhai match jeet gaye, kya baat h!",positive,neutral
+SP004,a,347ac52f5c51b5f4,spelling_same,Mausam bahut khoobsurat hai aaj,negative,positive
+SP004,b,203b8ea83ddbabc6,spelling_same,Mausam bahut khubsurat hai aaj,positive,positive
+SP005,a,8bf1bb515901d29c,spelling_same,Traffic mein bahut time waste hua,negative,neutral
+SP005,b,405a2f1221f16535,spelling_same,Traffic me bahut time waste hua,negative,neutral
+SP006,a,ab2d37ee2aa81e88,spelling_same,Wo restaurant ka service bekar tha,negative,neutral
+SP006,b,a835be6cb0ad7efb,spelling_same,Wo restaurant ka service bekaar tha,negative,neutral
+SP007,a,575fac7c62888cbd,spelling_same,Exam bahut tough tha is baar,negative,neutral
+SP007,b,20dcb9edf47c3e60,spelling_same,Exam bahut tuff tha is baar,positive,positive
+SP008,a,f4e9e9882cd2d78e,spelling_same,Uska gaana sunke dil khush ho gaya,positive,positive
+SP008,b,55b45a55b854af06,spelling_same,Uska gana sunke dil khush ho gaya,negative,positive
+SP009,a,e45cd7af15db0e25,spelling_same,Yeh phone bilkul faltu nikla,negative,neutral
+SP009,b,7073b9d45cb317ed,spelling_same,Yeh phone bilkul faaltu nikla,positive,neutral
+SP010,a,7e7f7f567ed8eebf,spelling_same,Trip bahut mazedaar raha,positive,positive
+SP010,b,7b389720620b9606,spelling_same,Trip bahut majedaar raha,positive,positive
+SP011,a,131a5118c938de9b,spelling_same,Professor ne lecture achhe se samjhaya,positive,neutral
+SP011,b,ee7ed96c00983c40,spelling_same,Professor ne lecture ache se samjhaya,negative,neutral
+SP012,a,0d494bcbc36b9a77,spelling_same,Ye jagah bilkul khatarnak lag rahi hai raat mein,negative,neutral
+SP012,b,4f2f05931b3444d5,spelling_same,Ye jagah bilkul khatarnaak lag rahi hai raat mein,negative,neutral
+SP013,a,2f27eb84d71b60b4,spelling_same,Chai ka swaad kamaal ka tha,negative,neutral
+SP013,b,7048b9487ef79b3d,spelling_same,Chai ka swad kamal ka tha,positive,neutral
+SP014,a,fd6bd46cbda93347,spelling_same,Uska rawaiya bahut ganda tha,positive,neutral
+SP014,b,dc6d0004f4d0962f,spelling_same,Uska rawaiya bahut gandaa tha,negative,neutral
+SP015,a,65ede68af1288840,spelling_same,Result dekh ke bohot khushi hui,positive,positive
+SP015,b,f94b4feb23d7b14f,spelling_same,Result dekh ke bahut khushi hui,negative,positive
+SP016,a,f17babe5f759a3a8,spelling_same,Is jagah ka maintenance bahut kharab hai,negative,neutral
+SP016,b,499ea7e4233baafb,spelling_same,Is jagah ka maintenance bahut kharaab hai,negative,neutral
+SP017,a,a655d23229a2522b,spelling_same,Wo bandaa bahut helpful nikla,positive,neutral
+SP017,b,a7342ac0bf0a2b57,spelling_same,Wo banda bahut helpful nikla,positive,neutral
+SP018,a,17b72b6ee2b5abc0,spelling_same,Cricket match bahut boring raha aaj,negative,neutral
+SP018,b,a0661fd0ab3c4f12,spelling_same,Cricket match bohot boring raha aaj,negative,neutral
+SP019,a,ac41d3df421b2d1e,spelling_same,Uski painting bahut sundar hai,negative,neutral
+SP019,b,f803f3931741f585,spelling_same,Uski painting bahut sunder hai,negative,neutral
+SP020,a,009e30a261871520,spelling_same,"Delivery bahut late aayi, gussa aa gaya",negative,positive
+SP020,b,a24fe2589b193a19,spelling_same,"Delivery bahut late aai, gussa aa gaya",negative,positive
+SP021,a,e42bd24451ccf858,spelling_same,Yeh jagah ekdum shaandaar hai,positive,neutral
+SP021,b,21dc18507b04b783,spelling_same,Yeh jagah ekdum shandar hai,positive,neutral
+SP022,a,a8c415c8508138f8,spelling_same,Uska attitude bahut ajeeb tha,negative,positive
+SP022,b,0be9cc8376f2103b,spelling_same,Uska attitude bahut ajib tha,negative,negative
+SP023,a,fcdf57bf06761712,spelling_same,Hostel ka khana aajkal thoda sudhar gaya hai,positive,neutral
+SP023,b,a9eeecf071cb0e6f,spelling_same,Hostel ka khaana aajkal thoda sudhar gaya hai,positive,neutral
+SP024,a,469a6681b42c9cc5,spelling_same,Wifi bahut slow chal raha hai yahan,negative,neutral
+SP024,b,5099930c5d8434b8,spelling_same,Wifi bohot slow chal raha hai yaha,negative,neutral
+SP025,a,9d3506ca9dc5ef8b,spelling_same,Uska performance kaafi impressive tha,positive,neutral
+SP025,b,a25902d307ea4762,spelling_same,Uska performance kafi impressive tha,negative,positive
+SP026,a,ea086f0bbd63f414,spelling_same,Is saal ki Diwali thodi phiki lagi,negative,negative
+SP026,b,9f18aa12a8143932,spelling_same,Is saal ki Diwali thodi fiki lagi,negative,negative
+SP027,a,488233b4d7d7ba41,spelling_same,Teacher ne bahut acchi tarah doubt clear kiya,positive,neutral
+SP027,b,b5c8c46705103889,spelling_same,Teacher ne bahut achi tarah doubt clear kiya,positive,neutral
+SP028,a,631a4b55cf1815f4,spelling_same,Room bahut ganda mila hotel mein,positive,neutral
+SP028,b,539965989a88e62c,spelling_same,Room bahut gandaa mila hotel mein,negative,negative
+SP029,a,2a0d91703760359b,spelling_same,Uska explanation bahut clear tha,positive,neutral
+SP029,b,7db1dccaa16d31e7,spelling_same,Uska explanation bohot clear tha,positive,neutral
+SP030,a,8636fefff1b1e93c,spelling_same,Yeh jagah bahut peaceful hai,positive,neutral
+SP030,b,abb6ccd09330a04e,spelling_same,Yeh jagah bohot peaceful hai,positive,neutral
+SH001,a,fa7a934f75a04cb2,shorthand_same,Aj ka lecture bhot bakwas tha,negative,negative
+SH001,b,e1d7803c03748a47,shorthand_same,Aaj ka lecture bahut bakwaas tha,negative,positive
+SH002,a,2f96eed90ebeae20,shorthand_same,Kal ka trip mast tha yr,positive,neutral
+SH002,b,47cabca88995a08e,shorthand_same,Kal ka trip mast tha yaar,positive,neutral
+SH003,a,612101d2d0ffb08f,shorthand_same,"Ye plan sahi h, chlte h",negative,neutral
+SH003,b,502011ac2293a44a,shorthand_same,"Ye plan sahi hai, chalte hain",positive,neutral
+SH004,a,35012e6218297e32,shorthand_same,Wo movie dekh k time waste hua,positive,neutral
+SH004,b,1a6cd630af04ad52,shorthand_same,Wo movie dekh ke time waste hua,negative,neutral
+SH005,a,19b1757f0bafbeba,shorthand_same,Bhai tune bht acha kaam kiya,positive,neutral
+SH005,b,faebc007603cf1ea,shorthand_same,Bhai tune bahut accha kaam kiya,positive,neutral
+SH006,a,514593ac3d28aa05,shorthand_same,Aj mood off h yr,negative,neutral
+SH006,b,b953e8a1f9f4c021,shorthand_same,Aaj mood off hai yaar,negative,neutral
+SH007,a,63049f4986044fe6,shorthand_same,Prsentation bht smooth gyi,positive,neutral
+SH007,b,b2de8c476d2585eb,shorthand_same,Presentation bahut smooth gayi,positive,positive
+SH008,a,7206359eafb77540,shorthand_same,Ye app bkwaas h bilkul,negative,neutral
+SH008,b,b89ff91252098074,shorthand_same,Ye app bakwaas hai bilkul,positive,neutral
+SH009,a,259617efbe3d9d86,shorthand_same,Wknd trip osm tha,positive,neutral
+SH009,b,c745d1de41050a30,shorthand_same,Weekend trip awesome tha,negative,positive
+SH011,a,d61c5ce0a227f74a,shorthand_same,"Fnlly result aagya, so relieved",positive,neutral
+SH011,b,ca4ca6224124f240,shorthand_same,"Finally result aa gaya, so relieved",positive,neutral
+SH012,a,fdc9694792c73841,shorthand_same,"Itna traffic tha, late ho gya office",negative,neutral
+SH012,b,9cdaac09e8a82c5b,shorthand_same,"Itna traffic tha, late ho gaya office",negative,neutral
+SH013,a,f7852c6f0a7f719f,shorthand_same,Grp project mein sb ne acha contribute kiya,negative,neutral
+SH013,b,461da95db5605d39,shorthand_same,Group project mein sabne accha contribute kiya,positive,positive
+SH014,a,7523f67283f49a69,shorthand_same,Bhut disappointing raha match,negative,negative
+SH014,b,909750b683579127,shorthand_same,Bahut disappointing raha match,negative,negative
+SH015,a,5ad06401568cd2d1,shorthand_same,Thnku itni help krne k liye,positive,neutral
+SH015,b,5583beda8fe3be75,shorthand_same,Thank you itni help karne ke liye,positive,positive
+SH016,a,cea8a3a865c15e34,shorthand_same,Ye service bilkul bkwaas h yr,negative,neutral
+SH016,b,38aa20cb7bb38893,shorthand_same,Ye service bilkul bakwaas hai yaar,negative,neutral
+SH017,a,69318237597334e2,shorthand_same,Aj ka din ekdm perfect tha,positive,neutral
+SH017,b,6de57556052f84c3,shorthand_same,Aaj ka din ekdum perfect tha,positive,neutral
+SH018,a,222e42b6894c887f,shorthand_same,"Itna wait krna pda, irritating tha",negative,neutral
+SH018,b,4d38b1607725c391,shorthand_same,"Itna wait karna pada, irritating tha",negative,neutral
+SH019,a,5868933a9131e687,shorthand_same,New phone ka camera zbrdst h,positive,neutral
+SH019,b,77cb25e4feb0b859,shorthand_same,New phone ka camera zabardast hai,positive,neutral
+SH020,a,0997ff91e815f177,shorthand_same,Delivery guy bhut rude tha aj,negative,positive
+SH020,b,db71c9a7b3a78550,shorthand_same,Delivery guy bahut rude tha aaj,negative,positive
+SH021,a,5c2167c68cda2988,shorthand_same,Sem break mein bht chill kiya,positive,neutral
+SH021,b,6719be8df7019fae,shorthand_same,Semester break mein bahut chill kiya,positive,neutral
+SH022,a,2b31ee26e5f27137,shorthand_same,"Wifi bar bar disconnect ho rha, so annoying",negative,neutral
+SH022,b,3d4cdd99a0d400c6,shorthand_same,"Wifi baar baar disconnect ho raha hai, so annoying",negative,neutral
+SH023,a,04a0821bc2fcd3d1,shorthand_same,Cricket match jbrdst tha aj,negative,neutral
+SH023,b,4608c61070424ac3,shorthand_same,Cricket match zabardast tha aaj,positive,neutral
+SH024,a,f9535b088d7e4e04,shorthand_same,Bhut hi disorganized tha event,negative,negative
+SH024,b,60b8b0c7c2730723,shorthand_same,Bahut hi disorganized tha event,negative,neutral
+SH025,a,4fc8fae9eba27be5,shorthand_same,"Naya cafe khula h, coffee mst h",positive,neutral
+SH025,b,d76745ffc6c3c464,shorthand_same,"Naya cafe khula hai, coffee mast hai",positive,neutral
+SH026,a,8347df5d0360babb,shorthand_same,"Itni deri se kyu reply krte ho, irritating h",negative,negative
+SH026,b,ea2ca8c0791f5aeb,shorthand_same,"Itni deri se kyun reply karte ho, irritating hai",positive,negative
+SH027,a,f20c0f370a471cef,shorthand_same,Aj ka sunset dekh k dil khush ho gya,positive,neutral
+SH027,b,75f77640396f444c,shorthand_same,Aaj ka sunset dekh ke dil khush ho gaya,negative,neutral
+SH028,a,9b62284157791040,shorthand_same,Ye customer support bilkul useless h,negative,neutral
+SH028,b,c350c4b65f625c8d,shorthand_same,Ye customer support bilkul useless hai,negative,neutral
+SH029,a,348561d41b35f5cc,shorthand_same,Bhut mast tha aj ka session,positive,neutral
+SH029,b,88fe3eff25f77135,shorthand_same,Bahut mast tha aaj ka session,positive,neutral
+SH030,a,fd44d34fa398c2d1,shorthand_same,Itna delay hone ki wjh se sb pareshan the,negative,neutral
+SH030,b,e290cd369d859b1e,shorthand_same,Itna delay hone ki wajah se sabhi pareshan the,positive,neutral
+EF001,a,8b3b3ad04ae7f34e,emoji_flip,"Wah, kya zabardast plan tha 😍",positive,neutral
+EF001,b,594281f36f0cb24c,emoji_flip,"Wah, kya zabardast plan tha 🙄",positive,neutral
+EF002,a,7f737b842fc1150c,emoji_flip,Bhai tune kamaal kar diya 👏,positive,neutral
+EF002,b,56c38d5f2078192a,emoji_flip,Bhai tune kamaal kar diya 🙄,positive,neutral
+EF003,a,f96cdf6c66f96bad,emoji_flip,Finally reply aa gaya 😊,positive,negative
+EF003,b,3de3494fb1115d0d,emoji_flip,Finally reply aa gaya 😒,negative,negative
+EF004,a,64e85c95bc891653,emoji_flip,Result aa gaya 😄,positive,neutral
+EF004,b,326bad7dcd35ca6f,emoji_flip,Result aa gaya 😞,positive,neutral
+EF005,a,960b8c372393a179,emoji_flip,"Great, phir se meeting cancel ho gayi 😌",positive,neutral
+EF005,b,a65fa05f1a366409,emoji_flip,"Great, phir se meeting cancel ho gayi 😤",positive,neutral
+EF006,a,584e5644bd42b96d,emoji_flip,Presentation ho gayi 👍,positive,neutral
+EF006,b,671097394fb32fca,emoji_flip,Presentation ho gayi 😒,negative,neutral
+EF007,a,57d2c04effc9ef25,emoji_flip,Aaj ka khana bahut special tha ❤️,positive,positive
+EF007,b,3507299e7266193c,emoji_flip,Aaj ka khana bahut special tha 🤢,negative,positive
+EF008,a,1b4a338ad1677122,emoji_flip,Naya update aaya hai app mein 😃,positive,neutral
+EF008,b,27af9b56044c8ee3,emoji_flip,Naya update aaya hai app mein 😩,negative,neutral
+EF009,a,1c2ba55b6be17feb,emoji_flip,"Kal exam hai, bilkul ready hoon 💪",positive,neutral
+EF009,b,e79e01b8c1e2edb2,emoji_flip,"Kal exam hai, bilkul ready hoon 😭",negative,neutral
+EF010,a,6b6b5a4cf1e63cae,emoji_flip,Finally ghar pahunch gaya 😌,positive,negative
+EF010,b,a4dfe32ff3a5248a,emoji_flip,Finally ghar pahunch gaya 😡,negative,negative
+EF011,a,9426b3fae42cc78d,emoji_flip,Uska gift bahut pasand aaya 😍,positive,neutral
+EF011,b,49557de751d92fa6,emoji_flip,Uska gift bahut pasand aaya 😒,negative,neutral
+EF012,a,d57aa63240c75a1e,emoji_flip,Aaj ka lecture bahut informative tha 🤓,positive,neutral
+EF012,b,a8c6e29f3fa2b21b,emoji_flip,Aaj ka lecture bahut informative tha 🥱,positive,neutral
+EF013,a,7997ca009dff8ada,emoji_flip,Naya roommate mil gaya 😊,positive,neutral
+EF013,b,3a4a48cae7678bfa,emoji_flip,Naya roommate mil gaya 😒,negative,neutral
+EF014,a,45acdedfaa98bebc,emoji_flip,Interview ho gaya 😁,positive,neutral
+EF014,b,d0f560f153c822d6,emoji_flip,Interview ho gaya 😣,negative,neutral
+EF015,a,83db6d84725e2cef,emoji_flip,Weekend plan ban gaya 😄,negative,neutral
+EF015,b,143bf38e33171b66,emoji_flip,Weekend plan ban gaya 😩,negative,neutral
+EF016,a,4844ac8d79d74514,emoji_flip,Aaj mausam kaafi alag hai 😍,positive,neutral
+EF016,b,97bd029f17760b9e,emoji_flip,Aaj mausam kaafi alag hai 😩,negative,neutral
+EF017,a,a3284561dfec0c1c,emoji_flip,Customer care ne turant reply diya 🙌,positive,neutral
+EF017,b,972edd1dc157f23a,emoji_flip,Customer care ne turant reply diya 🙄,negative,neutral
+EF018,a,7dde9b9babd7fccf,emoji_flip,Group project mein sabka contribution equal tha 👏,positive,neutral
+EF018,b,251dfd98c9a90011,emoji_flip,Group project mein sabka contribution equal tha 🙄,negative,neutral
+EF019,a,eb2c6ba94e068a4d,emoji_flip,Naya haircut dekha uska 😍,positive,neutral
+EF019,b,3f5a3bcdd1629274,emoji_flip,Naya haircut dekha uska 😖,negative,neutral
+EF020,a,0a9ea56e3b9d63c4,emoji_flip,Flight ka update aa gaya 😌,negative,neutral
+EF020,b,66c4f6741e8cca14,emoji_flip,Flight ka update aa gaya 😡,negative,neutral
+EF021,a,5c88a684e3e2da5d,emoji_flip,Boss ka message aa gaya 😊,positive,neutral
+EF021,b,8b196cae5141df89,emoji_flip,Boss ka message aa gaya 😒,negative,neutral
+EF022,a,bba79a29d48cc2ab,emoji_flip,Wifi speed aaj bahut fast hai 🚀,positive,neutral
+EF022,b,0d45fbffd246d02b,emoji_flip,Wifi speed aaj bahut fast hai 🐌,negative,neutral
+EF023,a,8b0622036a796890,emoji_flip,Naye neighbours mil gaye 😊,positive,neutral
+EF023,b,a071e96ae0495918,emoji_flip,Naye neighbours mil gaye 😒,negative,neutral
+EF024,a,77b60a537a7a4941,emoji_flip,Result aa gaya 😌,positive,neutral
+EF024,b,75b637d80ddebb6b,emoji_flip,Result aa gaya 😞,negative,neutral
+EF025,a,076d288839afe5ef,emoji_flip,Uska speech sun liya 🔥,positive,negative
+EF025,b,bf7dcc6870967c96,emoji_flip,Uska speech sun liya 😴,negative,negative
+EF026,a,9ae999c4be487b1a,emoji_flip,Fest dekh liya 🎊,positive,neutral
+EF026,b,a334347fe54bdbe7,emoji_flip,Fest dekh liya 🙄,negative,neutral
+EF027,a,cd746392aae3f1fb,emoji_flip,Naya cafe try kiya aaj 😋,positive,neutral
+EF027,b,07c7fdcc82851283,emoji_flip,Naya cafe try kiya aaj 🤮,negative,neutral
+EF028,a,03b6a49bdaa65888,emoji_flip,Roommate ne surprise plan kiya 🥳,positive,neutral
+EF028,b,a55c8e8c7f82174d,emoji_flip,Roommate ne surprise plan kiya 😒,negative,neutral
+EF029,a,860d25ee377049b0,emoji_flip,Gym join kar liya finally 💪,positive,neutral
+EF029,b,0bc5edb16a3d013e,emoji_flip,Gym join kar liya finally 😩,negative,neutral
+EF030,a,c5a22236aa6bd5c2,emoji_flip,Aaj traffic ka scene dekh liya 😌,positive,neutral
+EF030,b,eadc7210b194010d,emoji_flip,Aaj traffic ka scene dekh liya 🤯,negative,neutral
+PF015,a,020cbf46681fd910,context_flip,Plan toh mast tha.,positive,neutral
+PF015,b,b1f96b9ad4f1e40d,context_flip,"Plan toh mast tha, bas 3 ghante late start hua.",negative,negative
+PF016,a,88d364113ea0510e,context_flip,Khana toh kamaal ka tha.,positive,neutral
+PF016,b,be160980c10c8291,context_flip,"Khana toh kamaal ka tha, bas poora jala hua tha.",negative,negative
+PF017,a,e0f2c89f088f4446,context_flip,Badi helpful team hai.,positive,positive
+PF017,b,dc88b218be3b03e2,context_flip,"Badi helpful team hai, bas zarurat ke time gayab ho jaati hai.",negative,neutral
+PF018,a,37b33cc8d7734065,context_flip,Timing toh perfect thi.,positive,neutral
+PF018,b,6c84cd9c4c6ba22a,context_flip,"Timing toh perfect thi, meeting khatam hone ke baad aaye.",negative,neutral
+PF019,a,82b429bf5fcd781c,context_flip,Flight toh kaafi smooth thi.,positive,neutral
+PF019,b,096680d11ad711f6,context_flip,"Flight toh kaafi smooth thi, aadha safar turbulence mein nikla.",positive,neutral
+PF020,a,f1dd3c801454e162,context_flip,Service badi sahi thi.,positive,positive
+PF020,b,8a5c59d9a401c066,context_flip,"Service badi sahi thi, bas teen baar call karna pada.",negative,neutral
+PF021,a,ea0924a78eb20948,context_flip,Gift toh kaafi acha tha.,positive,neutral
+PF021,b,d84a367baf9429ea,context_flip,"Gift toh kaafi acha tha, bas kholte hi broken nikla.",negative,neutral
+PF022,a,13c381f36a6a39f1,context_flip,Advice toh badi acchi thi.,positive,neutral
+PF022,b,d8b472f5eab0f2d2,context_flip,"Advice toh badi acchi thi, bas bilkul kaam nahi aayi.",negative,neutral
+PF023,a,325b66f7ac199781,context_flip,Kaafi professional tareeke se handle kiya.,positive,neutral
+PF023,b,fc92228d1e81624a,context_flip,"Kaafi professional tareeke se handle kiya, bina bataye case hi close kar diya.",negative,neutral
+PF024,a,1fc6a4603fae6904,context_flip,Support ka reply kaafi acha tha.,positive,neutral
+PF024,b,0a01aadfa920c03e,context_flip,"Support ka reply kaafi acha tha, bas 10 din baad aaya.",negative,neutral
+PF025,a,abd6e105dba11d14,context_flip,Estimate toh kaafi accurate tha.,positive,neutral
+PF025,b,81972b6451b52cf0,context_flip,"Estimate toh kaafi accurate tha, final cost double nikli.",positive,neutral
+PF026,a,574e23740e027428,context_flip,Bada caring roommate hai.,positive,negative
+PF026,b,ca7ae12b2590fe0c,context_flip,"Bada caring roommate hai, bukhar mein bhi mera khana kha gaya.",negative,neutral
+PF027,a,c7811aa624941dfb,context_flip,Bada punctual hai woh.,positive,positive
+PF027,b,0a9a492f928d29d4,context_flip,"Bada punctual hai woh, roz ek ghanta late aata hai.",negative,negative
+PF028,a,f63810144e12d305,context_flip,Guide toh kaafi badhiya tha.,negative,neutral
+PF028,b,2744e7fae76550d3,context_flip,"Guide toh kaafi badhiya tha, khud hi raasta bhool gaya.",negative,neutral
+PF029,a,ed5f056f583783d2,context_flip,Decision toh bahut accha tha.,negative,positive
+PF029,b,0497c2ec160c856c,context_flip,"Decision toh bahut accha tha, agle din hi reverse karna pada.",negative,positive
+PF030,a,c978c0a59090ef7d,context_flip,Event toh kaafi organized tha.,positive,neutral
+PF030,b,344912977c110746,context_flip,"Event toh kaafi organized tha, last minute tak venue hi fix nahi tha.",positive,neutral

@@ -1,0 +1,63 @@
+{
+  "frozen_pair_content_sha256": "1952978b17eeb86643f48a562dc9ea1442accd4194bca95c1bc881300d6bd588",
+  "pairs_total": 105,
+  "pairs_resolved": 105,
+  "items_unresolved_as_ambiguous": [],
+  "agreement": {
+    "three_class_sentiment_cohen_kappa": 1.0,
+    "same_vs_flip_relation_cohen_kappa": 1.0
+  },
+  "models": {
+    "current_sentiment": {
+      "individual_message_macro_f1": 0.14597742992355298,
+      "pair_exact_accuracy": {
+        "count": 105,
+        "rate": 0.0380952380952381,
+        "bootstrap_95_ci": [
+          0.009523809523809525,
+          0.0761904761904762
+        ]
+      },
+      "flip_sensitivity_on_gold_flip_pairs": {
+        "count": 53,
+        "rate": 0.20754716981132076,
+        "bootstrap_95_ci": [
+          0.11320754716981132,
+          0.32075471698113206
+        ]
+      },
+      "directional_flip_accuracy": {
+        "count": 53,
+        "rate": 0.018867924528301886,
+        "bootstrap_95_ci": [
+          0.0,
+          0.05660377358490566
+        ]
+      },
+      "stability_on_gold_same_pairs": {
+        "count": 52,
+        "rate": 0.9038461538461539,
+        "bootstrap_95_ci": [
+          0.8076923076923077,
+          0.9807692307692307
+        ]
+      },
+      "exact_accuracy_on_gold_same_pairs": {
+        "count": 52,
+        "rate": 0.057692307692307696,
+        "bootstrap_95_ci": [
+          0.0,
+          0.1346153846153846
+        ]
+      },
+      "intended_relation_matches_adjudicated_gold": {
+        "count": 105,
+        "rate": 0.7047619047619048,
+        "bootstrap_95_ci": [
+          0.6190476190476191,
+          0.780952380952381
+        ]
+      }
+    }
+  }
+}

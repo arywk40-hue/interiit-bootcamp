@@ -1,121 +1,121 @@
 pair_id,category,draft_text_a,draft_text_b,surface_variation,decision,reviewed_text_a,reviewed_text_b,human_reviewer_id,review_notes
-SP001,spelling_preserving,Yaar aaj ka khana bahut accha tha,Yaar aaj ka khana bahut acha tha,accha/acha,,,,,
-SP002,spelling_preserving,Movie thodi boring thi yaar,Movie thodi boaring thi yaar,boring/boaring,,,,,
-SP003,spelling_preserving,"Bhai match jeet gaye, kya baat hai!","Bhai match jeet gaye, kya baat h!",hai/h,,,,,
-SP004,spelling_preserving,Mausam bahut khoobsurat hai aaj,Mausam bahut khubsurat hai aaj,khoobsurat/khubsurat,,,,,
-SP005,spelling_preserving,Traffic mein bahut time waste hua,Traffic me bahut time waste hua,mein/me,,,,,
-SP006,spelling_preserving,Wo restaurant ka service bekar tha,Wo restaurant ka service bekaar tha,bekar/bekaar,,,,,
-SP007,spelling_preserving,Exam bahut tough tha is baar,Exam bahut tuff tha is baar,tough/tuff,,,,,
-SP008,spelling_preserving,Uska gaana sunke dil khush ho gaya,Uska gana sunke dil khush ho gaya,gaana/gana,,,,,
-SP009,spelling_preserving,Yeh phone bilkul faltu nikla,Yeh phone bilkul faaltu nikla,faltu/faaltu,,,,,
-SP010,spelling_preserving,Trip bahut mazedaar raha,Trip bahut majedaar raha,mazedaar/majedaar,,,,,
-SP011,spelling_preserving,Professor ne lecture achhe se samjhaya,Professor ne lecture ache se samjhaya,achhe/ache,,,,,
-SP012,spelling_preserving,Ye jagah bilkul khatarnak lag rahi hai raat mein,Ye jagah bilkul khatarnaak lag rahi hai raat mein,khatarnak/khatarnaak,,,,,
-SP013,spelling_preserving,Chai ka swaad kamaal ka tha,Chai ka swad kamal ka tha,"swaad/swad, kamaal/kamal",,,,,
-SP014,spelling_preserving,Uska rawaiya bahut ganda tha,Uska rawaiya bahut gandaa tha,ganda/gandaa,,,,,
-SP015,spelling_preserving,Result dekh ke bohot khushi hui,Result dekh ke bahut khushi hui,bohot/bahut,,,,,
-SP016,spelling_preserving,Is jagah ka maintenance bahut kharab hai,Is jagah ka maintenance bahut kharaab hai,kharab/kharaab,,,,,
-SP017,spelling_preserving,Wo bandaa bahut helpful nikla,Wo banda bahut helpful nikla,bandaa/banda,,,,,
-SP018,spelling_preserving,Cricket match bahut boring raha aaj,Cricket match bohot boring raha aaj,bahut/bohot,,,,,
-SP019,spelling_preserving,Uski painting bahut sundar hai,Uski painting bahut sunder hai,sundar/sunder,,,,,
-SP020,spelling_preserving,"Delivery bahut late aayi, gussa aa gaya","Delivery bahut late aai, gussa aa gaya",aayi/aai,,,,,
-SP021,spelling_preserving,Yeh jagah ekdum shaandaar hai,Yeh jagah ekdum shandar hai,shaandaar/shandar,,,,,
-SP022,spelling_preserving,Uska attitude bahut ajeeb tha,Uska attitude bahut ajib tha,ajeeb/ajib,,,,,
-SP023,spelling_preserving,Hostel ka khana aajkal thoda sudhar gaya hai,Hostel ka khaana aajkal thoda sudhar gaya hai,khana/khaana,,,,,
-SP024,spelling_preserving,Wifi bahut slow chal raha hai yahan,Wifi bohot slow chal raha hai yaha,"bahut/bohot, yahan/yaha",,,,,
-SP025,spelling_preserving,Uska performance kaafi impressive tha,Uska performance kafi impressive tha,kaafi/kafi,,,,,
-SP026,spelling_preserving,Is saal ki Diwali thodi phiki lagi,Is saal ki Diwali thodi fiki lagi,phiki/fiki,,,,,
-SP027,spelling_preserving,Teacher ne bahut acchi tarah doubt clear kiya,Teacher ne bahut achi tarah doubt clear kiya,acchi/achi,,,,,
-SP028,spelling_preserving,Room bahut ganda mila hotel mein,Room bahut gandaa mila hotel mein,ganda/gandaa,,,,,
-SP029,spelling_preserving,Uska explanation bahut clear tha,Uska explanation bohot clear tha,bahut/bohot,,,,,
-SP030,spelling_preserving,Yeh jagah bahut peaceful hai,Yeh jagah bohot peaceful hai,bahut/bohot,,,,,
-SH001,shorthand_preserving,Aj ka lecture bhot bakwas tha,Aaj ka lecture bahut bakwaas tha,texting shorthand vs full spelling,,,,,
-SH002,shorthand_preserving,Kal ka trip mast tha yr,Kal ka trip mast tha yaar,texting shorthand vs full spelling,,,,,
-SH003,shorthand_preserving,"Ye plan sahi h, chlte h","Ye plan sahi hai, chalte hain",texting shorthand vs full spelling,,,,,
-SH004,shorthand_preserving,Wo movie dekh k time waste hua,Wo movie dekh ke time waste hua,texting shorthand vs full spelling,,,,,
-SH005,shorthand_preserving,Bhai tune bht acha kaam kiya,Bhai tune bahut accha kaam kiya,texting shorthand vs full spelling,,,,,
-SH006,shorthand_preserving,Aj mood off h yr,Aaj mood off hai yaar,texting shorthand vs full spelling,,,,,
-SH007,shorthand_preserving,Prsentation bht smooth gyi,Presentation bahut smooth gayi,texting shorthand vs full spelling,,,,,
-SH008,shorthand_preserving,Ye app bkwaas h bilkul,Ye app bakwaas hai bilkul,texting shorthand vs full spelling,,,,,
-SH009,shorthand_preserving,Wknd trip osm tha,Weekend trip awesome tha,texting shorthand vs full spelling,,,,,
-SH010,shorthand_preserving,Ntg gud abt this place tbh,"Nothing good about this place, to be honest",texting shorthand vs full spelling,,,,,
-SH011,shorthand_preserving,"Fnlly result aagya, so relieved","Finally result aa gaya, so relieved",texting shorthand vs full spelling,,,,,
-SH012,shorthand_preserving,"Itna traffic tha, late ho gya office","Itna traffic tha, late ho gaya office",texting shorthand vs full spelling,,,,,
-SH013,shorthand_preserving,Grp project mein sb ne acha contribute kiya,Group project mein sabne accha contribute kiya,texting shorthand vs full spelling,,,,,
-SH014,shorthand_preserving,Bhut disappointing raha match,Bahut disappointing raha match,texting shorthand vs full spelling,,,,,
-SH015,shorthand_preserving,Thnku itni help krne k liye,Thank you itni help karne ke liye,texting shorthand vs full spelling,,,,,
-SH016,shorthand_preserving,Ye service bilkul bkwaas h yr,Ye service bilkul bakwaas hai yaar,texting shorthand vs full spelling,,,,,
-SH017,shorthand_preserving,Aj ka din ekdm perfect tha,Aaj ka din ekdum perfect tha,texting shorthand vs full spelling,,,,,
-SH018,shorthand_preserving,"Itna wait krna pda, irritating tha","Itna wait karna pada, irritating tha",texting shorthand vs full spelling,,,,,
-SH019,shorthand_preserving,New phone ka camera zbrdst h,New phone ka camera zabardast hai,texting shorthand vs full spelling,,,,,
-SH020,shorthand_preserving,Delivery guy bhut rude tha aj,Delivery guy bahut rude tha aaj,texting shorthand vs full spelling,,,,,
-SH021,shorthand_preserving,Sem break mein bht chill kiya,Semester break mein bahut chill kiya,texting shorthand vs full spelling,,,,,
-SH022,shorthand_preserving,"Wifi bar bar disconnect ho rha, so annoying","Wifi baar baar disconnect ho raha hai, so annoying",texting shorthand vs full spelling,,,,,
-SH023,shorthand_preserving,Cricket match jbrdst tha aj,Cricket match zabardast tha aaj,texting shorthand vs full spelling,,,,,
-SH024,shorthand_preserving,Bhut hi disorganized tha event,Bahut hi disorganized tha event,texting shorthand vs full spelling,,,,,
-SH025,shorthand_preserving,"Naya cafe khula h, coffee mst h","Naya cafe khula hai, coffee mast hai",texting shorthand vs full spelling,,,,,
-SH026,shorthand_preserving,"Itni deri se kyu reply krte ho, irritating h","Itni deri se kyun reply karte ho, irritating hai",texting shorthand vs full spelling,,,,,
-SH027,shorthand_preserving,Aj ka sunset dekh k dil khush ho gya,Aaj ka sunset dekh ke dil khush ho gaya,texting shorthand vs full spelling,,,,,
-SH028,shorthand_preserving,Ye customer support bilkul useless h,Ye customer support bilkul useless hai,texting shorthand vs full spelling,,,,,
-SH029,shorthand_preserving,Bhut mast tha aj ka session,Bahut mast tha aaj ka session,texting shorthand vs full spelling,,,,,
-SH030,shorthand_preserving,Itna delay hone ki wjh se sb pareshan the,Itna delay hone ki wajah se sabhi pareshan the,texting shorthand vs full spelling,,,,,
-EF001,emoji_flip,"Wah, kya zabardast plan tha 😍","Wah, kya zabardast plan tha 🙄","identical text, emoji changes polarity",,,,,
-EF002,emoji_flip,Bhai tumne toh kamaal kar diya 👏,Bhai tumne toh kamaal kar diya 🙃,"identical text, emoji changes polarity",,,,,
-EF003,emoji_flip,"Itni late reply, thanks a lot 🙏","Itni late reply, thanks a lot 🙄","identical text, emoji changes polarity",,,,,
-EF004,emoji_flip,"Wow, first rank aaya hai 🎉","Wow, first rank aaya hai 😐","identical text, emoji changes polarity",,,,,
-EF005,emoji_flip,"Great, phir se meeting cancel ho gayi 😌","Great, phir se meeting cancel ho gayi 😤","identical text, emoji changes polarity",,,,,
-EF006,emoji_flip,Bahut badhiya presentation thi 👍,Bahut badhiya presentation thi 😑,"identical text, emoji changes polarity",,,,,
-EF007,emoji_flip,Aaj ka khana bahut special tha ❤️,Aaj ka khana bahut special tha 🤢,"identical text, emoji changes polarity",,,,,
-EF008,emoji_flip,Naya update aaya hai app mein 😃,Naya update aaya hai app mein 😩,"identical text, emoji changes polarity",,,,,
-EF009,emoji_flip,"Kal exam hai, bilkul ready hoon 💪","Kal exam hai, bilkul ready hoon 😭","identical text, emoji changes polarity",,,,,
-EF010,emoji_flip,Traffic mein 2 ghante nikal gaye 😂,Traffic mein 2 ghante nikal gaye 😡,"identical text, emoji changes polarity",,,,,
-EF011,emoji_flip,Uska gift bahut pasand aaya 😍,Uska gift bahut pasand aaya 😒,"identical text, emoji changes polarity",,,,,
-EF012,emoji_flip,Aaj ka lecture bahut informative tha 🤓,Aaj ka lecture bahut informative tha 🥱,"identical text, emoji changes polarity",,,,,
-EF013,emoji_flip,Naya roommate mil gaya hai 😊,Naya roommate mil gaya hai 😬,"identical text, emoji changes polarity",,,,,
-EF014,emoji_flip,Interview bahut acha gaya mera 😁,Interview bahut acha gaya mera 😬,"identical text, emoji changes polarity",,,,,
-EF015,emoji_flip,Weekend pe extra classes lagi hain 🙂,Weekend pe extra classes lagi hain 😤,"identical text, emoji changes polarity",,,,,
-EF016,emoji_flip,Mausam aaj bahut suhana hai 🌸,Mausam aaj bahut suhana hai 😩,"identical text, emoji changes polarity",,,,,
-EF017,emoji_flip,Customer care ne turant reply diya 🙌,Customer care ne turant reply diya 🙄,"identical text, emoji changes polarity",,,,,
-EF018,emoji_flip,Group project mein sabka contribution equal tha 👏,Group project mein sabka contribution equal tha 🙄,"identical text, emoji changes polarity",,,,,
-EF019,emoji_flip,Uska naya haircut dekha maine 😍,Uska naya haircut dekha maine 😅,"identical text, emoji changes polarity",,,,,
-EF020,emoji_flip,Flight 3 ghante late thi 😌,Flight 3 ghante late thi 😡,"identical text, emoji changes polarity",,,,,
-EF021,emoji_flip,Boss ne aaj extra kaam de diya 😊,Boss ne aaj extra kaam de diya 😩,"identical text, emoji changes polarity",,,,,
-EF022,emoji_flip,Wifi speed aaj bahut fast hai 🚀,Wifi speed aaj bahut fast hai 🐌,"identical text, emoji changes polarity",,,,,
-EF023,emoji_flip,Naye neighbours bahut friendly lag rahe hain 😊,Naye neighbours bahut friendly lag rahe hain 😐,"identical text, emoji changes polarity",,,,,
-EF024,emoji_flip,Aaj ka result dekh kar bahut sukoon mila 😌,Aaj ka result dekh kar bahut sukoon mila 😞,"identical text, emoji changes polarity",,,,,
-EF025,emoji_flip,Uska speech bahut inspiring tha 🔥,Uska speech bahut inspiring tha 😴,"identical text, emoji changes polarity",,,,,
-EF026,emoji_flip,Is baar ka fest bahut hi grand tha 🎊,Is baar ka fest bahut hi grand tha 🙄,"identical text, emoji changes polarity",,,,,
-EF027,emoji_flip,Naya cafe try kiya aaj 😋,Naya cafe try kiya aaj 🤮,"identical text, emoji changes polarity",,,,,
-EF028,emoji_flip,Roommate ne surprise party plan ki 🥳,Roommate ne surprise party plan ki 😒,"identical text, emoji changes polarity",,,,,
-EF029,emoji_flip,Naya gym join kiya hai maine 💪,Naya gym join kiya hai maine 😮‍💨,"identical text, emoji changes polarity",,,,,
-EF030,emoji_flip,Aaj ka traffic dekh liya maine 😌,Aaj ka traffic dekh liya maine 🤯,"identical text, emoji changes polarity",,,,,
-PF001,punctuation_context_flip,Great job on the project!,Great job on the project...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF002,punctuation_context_flip,"Wah, kya zabardast idea hai!","Wah, kya zabardast idea hai...",exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF003,punctuation_context_flip,Shukriya itni jaldi help karne ke liye!,Shukriya itni jaldi help karne ke liye...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF004,punctuation_context_flip,Bahut accha suggestion diya tumne!,Bahut accha suggestion diya tumne...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF005,punctuation_context_flip,"Perfect, exactly what I needed!","Perfect, exactly what I needed...",exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF006,punctuation_context_flip,Kamaal ka result aaya hai!,Kamaal ka result aaya hai...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF007,punctuation_context_flip,Superb performance thi aaj!,Superb performance thi aaj...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF008,punctuation_context_flip,Bahut helpful tha ye session!,Bahut helpful tha ye session...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF009,punctuation_context_flip,"Amazing, bilkul time pe pahuncha delivery!","Amazing, bilkul time pe pahuncha delivery...",exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF010,punctuation_context_flip,"Great, sab kaam ho gaya!","Great, sab kaam ho gaya...",exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF011,punctuation_context_flip,"Wonderful news, congratulations!","Wonderful news, congratulations...",exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF012,punctuation_context_flip,Bahut smooth chala event!,Bahut smooth chala event...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF013,punctuation_context_flip,"Fantastic, naya update aa gaya!","Fantastic, naya update aa gaya...",exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF014,punctuation_context_flip,Bahut hi professional tha unka approach!,Bahut hi professional tha unka approach...,exclamation (genuine) vs trailing ellipsis (sarcastic),,,,,
-PF015,punctuation_context_flip,Bahut acha plan tha.,"Bahut acha plan tha, sirf 3 ghante late shuru hua.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF016,punctuation_context_flip,Kamaal ka khana tha.,"Kamaal ka khana tha, thanda serve karne ke alawa.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF017,punctuation_context_flip,Bahut helpful team hai.,"Bahut helpful team hai, jab tak kuch important na ho.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF018,punctuation_context_flip,Perfect timing tha unka.,"Perfect timing tha unka, exam ke ek din pehle.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF019,punctuation_context_flip,Bahut smooth flight thi.,"Bahut smooth flight thi, 5 ghante delay ke baad.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF020,punctuation_context_flip,Sahi service di unhone.,"Sahi service di unhone, teen baar call karne ke baad.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF021,punctuation_context_flip,Bahut acha gift tha.,"Bahut acha gift tha, agar size sahi hota.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF022,punctuation_context_flip,Bahut acchi advice thi unki.,"Bahut acchi advice thi unki, agar sunta koi.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF023,punctuation_context_flip,Bahut professional tarike se handle kiya.,"Bahut professional tarike se handle kiya, do hafte lagakar.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF024,punctuation_context_flip,Bahut acha reply mila support se.,"Bahut acha reply mila support se, das din baad.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF025,punctuation_context_flip,Kaafi accurate tha unka estimate.,"Kaafi accurate tha unka estimate, budget double karke.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF026,punctuation_context_flip,Bahut hi caring roommate hai.,"Bahut hi caring roommate hai, jab tak room saaf karna na ho.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF027,punctuation_context_flip,Bahut hi punctual hai wo.,"Bahut hi punctual hai wo, hamesha ek ghanta late aata hai.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF028,punctuation_context_flip,Bahut badhiya guide mila trip mein.,"Bahut badhiya guide mila trip mein, jo raasta hi bhool gaya.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF029,punctuation_context_flip,Bahut accha decision tha yeh.,"Bahut accha decision tha yeh, sabko poochne ke alawa.",genuine praise clause vs added negating clause (sarcastic),,,,,
-PF030,punctuation_context_flip,Kaafi organized tha poora event.,"Kaafi organized tha poora event, last minute tak kuch tay na hone ke alawa.",genuine praise clause vs added negating clause (sarcastic),,,,,
+SP001,spelling_preserving,Yaar aaj ka khana bahut accha tha,Yaar aaj ka khana bahut acha tha,accha/acha,accept,,,editor_01,
+SP002,spelling_preserving,Movie thodi boring thi yaar,Movie thodi boaring thi yaar,boring/boaring,accept,,,editor_01,
+SP003,spelling_preserving,"Bhai match jeet gaye, kya baat hai!","Bhai match jeet gaye, kya baat h!",hai/h,accept,,,editor_01,
+SP004,spelling_preserving,Mausam bahut khoobsurat hai aaj,Mausam bahut khubsurat hai aaj,khoobsurat/khubsurat,accept,,,editor_01,
+SP005,spelling_preserving,Traffic mein bahut time waste hua,Traffic me bahut time waste hua,mein/me,accept,,,editor_01,
+SP006,spelling_preserving,Wo restaurant ka service bekar tha,Wo restaurant ka service bekaar tha,bekar/bekaar,accept,,,editor_01,
+SP007,spelling_preserving,Exam bahut tough tha is baar,Exam bahut tuff tha is baar,tough/tuff,accept,,,editor_01,
+SP008,spelling_preserving,Uska gaana sunke dil khush ho gaya,Uska gana sunke dil khush ho gaya,gaana/gana,accept,,,editor_01,
+SP009,spelling_preserving,Yeh phone bilkul faltu nikla,Yeh phone bilkul faaltu nikla,faltu/faaltu,accept,,,editor_01,
+SP010,spelling_preserving,Trip bahut mazedaar raha,Trip bahut majedaar raha,mazedaar/majedaar,accept,,,editor_01,
+SP011,spelling_preserving,Professor ne lecture achhe se samjhaya,Professor ne lecture ache se samjhaya,achhe/ache,accept,,,editor_01,
+SP012,spelling_preserving,Ye jagah bilkul khatarnak lag rahi hai raat mein,Ye jagah bilkul khatarnaak lag rahi hai raat mein,khatarnak/khatarnaak,accept,,,editor_01,
+SP013,spelling_preserving,Chai ka swaad kamaal ka tha,Chai ka swad kamal ka tha,"swaad/swad, kamaal/kamal",accept,,,editor_01,
+SP014,spelling_preserving,Uska rawaiya bahut ganda tha,Uska rawaiya bahut gandaa tha,ganda/gandaa,accept,,,editor_01,
+SP015,spelling_preserving,Result dekh ke bohot khushi hui,Result dekh ke bahut khushi hui,bohot/bahut,accept,,,editor_01,
+SP016,spelling_preserving,Is jagah ka maintenance bahut kharab hai,Is jagah ka maintenance bahut kharaab hai,kharab/kharaab,accept,,,editor_01,
+SP017,spelling_preserving,Wo bandaa bahut helpful nikla,Wo banda bahut helpful nikla,bandaa/banda,accept,,,editor_01,
+SP018,spelling_preserving,Cricket match bahut boring raha aaj,Cricket match bohot boring raha aaj,bahut/bohot,accept,,,editor_01,
+SP019,spelling_preserving,Uski painting bahut sundar hai,Uski painting bahut sunder hai,sundar/sunder,accept,,,editor_01,
+SP020,spelling_preserving,"Delivery bahut late aayi, gussa aa gaya","Delivery bahut late aai, gussa aa gaya",aayi/aai,accept,,,editor_01,
+SP021,spelling_preserving,Yeh jagah ekdum shaandaar hai,Yeh jagah ekdum shandar hai,shaandaar/shandar,accept,,,editor_01,
+SP022,spelling_preserving,Uska attitude bahut ajeeb tha,Uska attitude bahut ajib tha,ajeeb/ajib,accept,,,editor_01,
+SP023,spelling_preserving,Hostel ka khana aajkal thoda sudhar gaya hai,Hostel ka khaana aajkal thoda sudhar gaya hai,khana/khaana,accept,,,editor_01,
+SP024,spelling_preserving,Wifi bahut slow chal raha hai yahan,Wifi bohot slow chal raha hai yaha,"bahut/bohot, yahan/yaha",accept,,,editor_01,
+SP025,spelling_preserving,Uska performance kaafi impressive tha,Uska performance kafi impressive tha,kaafi/kafi,accept,,,editor_01,
+SP026,spelling_preserving,Is saal ki Diwali thodi phiki lagi,Is saal ki Diwali thodi fiki lagi,phiki/fiki,accept,,,editor_01,
+SP027,spelling_preserving,Teacher ne bahut acchi tarah doubt clear kiya,Teacher ne bahut achi tarah doubt clear kiya,acchi/achi,accept,,,editor_01,
+SP028,spelling_preserving,Room bahut ganda mila hotel mein,Room bahut gandaa mila hotel mein,ganda/gandaa,accept,,,editor_01,
+SP029,spelling_preserving,Uska explanation bahut clear tha,Uska explanation bohot clear tha,bahut/bohot,accept,,,editor_01,
+SP030,spelling_preserving,Yeh jagah bahut peaceful hai,Yeh jagah bohot peaceful hai,bahut/bohot,accept,,,editor_01,
+SH001,shorthand_preserving,Aj ka lecture bhot bakwas tha,Aaj ka lecture bahut bakwaas tha,texting shorthand vs full spelling,accept,,,editor_01,
+SH002,shorthand_preserving,Kal ka trip mast tha yr,Kal ka trip mast tha yaar,texting shorthand vs full spelling,accept,,,editor_01,
+SH003,shorthand_preserving,"Ye plan sahi h, chlte h","Ye plan sahi hai, chalte hain",texting shorthand vs full spelling,accept,,,editor_01,
+SH004,shorthand_preserving,Wo movie dekh k time waste hua,Wo movie dekh ke time waste hua,texting shorthand vs full spelling,accept,,,editor_01,
+SH005,shorthand_preserving,Bhai tune bht acha kaam kiya,Bhai tune bahut accha kaam kiya,texting shorthand vs full spelling,accept,,,editor_01,
+SH006,shorthand_preserving,Aj mood off h yr,Aaj mood off hai yaar,texting shorthand vs full spelling,accept,,,editor_01,
+SH007,shorthand_preserving,Prsentation bht smooth gyi,Presentation bahut smooth gayi,texting shorthand vs full spelling,accept,,,editor_01,
+SH008,shorthand_preserving,Ye app bkwaas h bilkul,Ye app bakwaas hai bilkul,texting shorthand vs full spelling,accept,,,editor_01,
+SH009,shorthand_preserving,Wknd trip osm tha,Weekend trip awesome tha,texting shorthand vs full spelling,accept,,,editor_01,
+SH010,shorthand_preserving,Ntg gud abt this place tbh,"Nothing good about this place, to be honest",texting shorthand vs full spelling,reject,,,editor_01,
+SH011,shorthand_preserving,"Fnlly result aagya, so relieved","Finally result aa gaya, so relieved",texting shorthand vs full spelling,accept,,,editor_01,
+SH012,shorthand_preserving,"Itna traffic tha, late ho gya office","Itna traffic tha, late ho gaya office",texting shorthand vs full spelling,accept,,,editor_01,
+SH013,shorthand_preserving,Grp project mein sb ne acha contribute kiya,Group project mein sabne accha contribute kiya,texting shorthand vs full spelling,accept,,,editor_01,
+SH014,shorthand_preserving,Bhut disappointing raha match,Bahut disappointing raha match,texting shorthand vs full spelling,accept,,,editor_01,
+SH015,shorthand_preserving,Thnku itni help krne k liye,Thank you itni help karne ke liye,texting shorthand vs full spelling,accept,,,editor_01,
+SH016,shorthand_preserving,Ye service bilkul bkwaas h yr,Ye service bilkul bakwaas hai yaar,texting shorthand vs full spelling,accept,,,editor_01,
+SH017,shorthand_preserving,Aj ka din ekdm perfect tha,Aaj ka din ekdum perfect tha,texting shorthand vs full spelling,accept,,,editor_01,
+SH018,shorthand_preserving,"Itna wait krna pda, irritating tha","Itna wait karna pada, irritating tha",texting shorthand vs full spelling,accept,,,editor_01,
+SH019,shorthand_preserving,New phone ka camera zbrdst h,New phone ka camera zabardast hai,texting shorthand vs full spelling,accept,,,editor_01,
+SH020,shorthand_preserving,Delivery guy bhut rude tha aj,Delivery guy bahut rude tha aaj,texting shorthand vs full spelling,accept,,,editor_01,
+SH021,shorthand_preserving,Sem break mein bht chill kiya,Semester break mein bahut chill kiya,texting shorthand vs full spelling,accept,,,editor_01,
+SH022,shorthand_preserving,"Wifi bar bar disconnect ho rha, so annoying","Wifi baar baar disconnect ho raha hai, so annoying",texting shorthand vs full spelling,accept,,,editor_01,
+SH023,shorthand_preserving,Cricket match jbrdst tha aj,Cricket match zabardast tha aaj,texting shorthand vs full spelling,accept,,,editor_01,
+SH024,shorthand_preserving,Bhut hi disorganized tha event,Bahut hi disorganized tha event,texting shorthand vs full spelling,accept,,,editor_01,
+SH025,shorthand_preserving,"Naya cafe khula h, coffee mst h","Naya cafe khula hai, coffee mast hai",texting shorthand vs full spelling,accept,,,editor_01,
+SH026,shorthand_preserving,"Itni deri se kyu reply krte ho, irritating h","Itni deri se kyun reply karte ho, irritating hai",texting shorthand vs full spelling,accept,,,editor_01,
+SH027,shorthand_preserving,Aj ka sunset dekh k dil khush ho gya,Aaj ka sunset dekh ke dil khush ho gaya,texting shorthand vs full spelling,accept,,,editor_01,
+SH028,shorthand_preserving,Ye customer support bilkul useless h,Ye customer support bilkul useless hai,texting shorthand vs full spelling,accept,,,editor_01,
+SH029,shorthand_preserving,Bhut mast tha aj ka session,Bahut mast tha aaj ka session,texting shorthand vs full spelling,accept,,,editor_01,
+SH030,shorthand_preserving,Itna delay hone ki wjh se sb pareshan the,Itna delay hone ki wajah se sabhi pareshan the,texting shorthand vs full spelling,accept,,,editor_01,
+EF001,emoji_flip,"Wah, kya zabardast plan tha 😍","Wah, kya zabardast plan tha 🙄","identical text, emoji changes polarity",accept,,,editor_01,
+EF002,emoji_flip,Bhai tumne toh kamaal kar diya 👏,Bhai tumne toh kamaal kar diya 🙃,"identical text, emoji changes polarity",rewrite,Bhai tune kamaal kar diya 👏,Bhai tune kamaal kar diya 🙄,editor_01,👏 is clear praise; 🙄 makes the same line read sarcastically.
+EF003,emoji_flip,"Itni late reply, thanks a lot 🙏","Itni late reply, thanks a lot 🙄","identical text, emoji changes polarity",rewrite,Finally reply aa gaya 😊,Finally reply aa gaya 😒,editor_01,"The original line already sounded sarcastic, so I made the text neutral and let the emoji carry the tone."
+EF004,emoji_flip,"Wow, first rank aaya hai 🎉","Wow, first rank aaya hai 😐","identical text, emoji changes polarity",rewrite,Result aa gaya 😄,Result aa gaya 😞,editor_01,"😐 felt neutral, not like a proper sentiment flip."
+EF005,emoji_flip,"Great, phir se meeting cancel ho gayi 😌","Great, phir se meeting cancel ho gayi 😤","identical text, emoji changes polarity",accept,,,editor_01,
+EF006,emoji_flip,Bahut badhiya presentation thi 👍,Bahut badhiya presentation thi 😑,"identical text, emoji changes polarity",rewrite,Presentation ho gayi 👍,Presentation ho gayi 😒,editor_01,The original wording was already strongly positive; this keeps the text neutral so the emoji actually changes the tone.
+EF007,emoji_flip,Aaj ka khana bahut special tha ❤️,Aaj ka khana bahut special tha 🤢,"identical text, emoji changes polarity",accept,,,editor_01,
+EF008,emoji_flip,Naya update aaya hai app mein 😃,Naya update aaya hai app mein 😩,"identical text, emoji changes polarity",accept,,,editor_01,
+EF009,emoji_flip,"Kal exam hai, bilkul ready hoon 💪","Kal exam hai, bilkul ready hoon 😭","identical text, emoji changes polarity",accept,,,editor_01,
+EF010,emoji_flip,Traffic mein 2 ghante nikal gaye 😂,Traffic mein 2 ghante nikal gaye 😡,"identical text, emoji changes polarity",rewrite,Finally ghar pahunch gaya 😌,Finally ghar pahunch gaya 😡,editor_01,"The traffic sentence was negative even with 😂, so I changed it to something the emoji can genuinely flip."
+EF011,emoji_flip,Uska gift bahut pasand aaya 😍,Uska gift bahut pasand aaya 😒,"identical text, emoji changes polarity",accept,,,editor_01,
+EF012,emoji_flip,Aaj ka lecture bahut informative tha 🤓,Aaj ka lecture bahut informative tha 🥱,"identical text, emoji changes polarity",accept,,,editor_01,
+EF013,emoji_flip,Naya roommate mil gaya hai 😊,Naya roommate mil gaya hai 😬,"identical text, emoji changes polarity",rewrite,Naya roommate mil gaya 😊,Naya roommate mil gaya 😒,editor_01,"😬 can mean awkward or nervous, so 😒 gives a clearer negative reading."
+EF014,emoji_flip,Interview bahut acha gaya mera 😁,Interview bahut acha gaya mera 😬,"identical text, emoji changes polarity",rewrite,Interview ho gaya 😁,Interview ho gaya 😣,editor_01,The old text already said the interview went well. Neutral text makes the emoji contrast cleaner.
+EF015,emoji_flip,Weekend pe extra classes lagi hain 🙂,Weekend pe extra classes lagi hain 😤,"identical text, emoji changes polarity",rewrite,Weekend plan ban gaya 😄,Weekend plan ban gaya 😩,editor_01,🙂 with extra classes was too easy to read as irony.
+EF016,emoji_flip,Mausam aaj bahut suhana hai 🌸,Mausam aaj bahut suhana hai 😩,"identical text, emoji changes polarity",rewrite,Aaj mausam kaafi alag hai 😍,Aaj mausam kaafi alag hai 😩,editor_01,"“Suhana” already fixes the line as positive, so I used neutral wording."
+EF017,emoji_flip,Customer care ne turant reply diya 🙌,Customer care ne turant reply diya 🙄,"identical text, emoji changes polarity",accept,,,editor_01,
+EF018,emoji_flip,Group project mein sabka contribution equal tha 👏,Group project mein sabka contribution equal tha 🙄,"identical text, emoji changes polarity",accept,,,editor_01,
+EF019,emoji_flip,Uska naya haircut dekha maine 😍,Uska naya haircut dekha maine 😅,"identical text, emoji changes polarity",rewrite,Naya haircut dekha uska 😍,Naya haircut dekha uska 😖,editor_01,😅 was too ambiguous here.
+EF020,emoji_flip,Flight 3 ghante late thi 😌,Flight 3 ghante late thi 😡,"identical text, emoji changes polarity",rewrite,Flight ka update aa gaya 😌,Flight ka update aa gaya 😡,editor_01,The three-hour delay made both original versions negative.
+EF021,emoji_flip,Boss ne aaj extra kaam de diya 😊,Boss ne aaj extra kaam de diya 😩,"identical text, emoji changes polarity",rewrite,Boss ka message aa gaya 😊,Boss ka message aa gaya 😒,editor_01,“Extra kaam” was already negative; neutral text gives a cleaner flip.
+EF022,emoji_flip,Wifi speed aaj bahut fast hai 🚀,Wifi speed aaj bahut fast hai 🐌,"identical text, emoji changes polarity",accept,,,editor_01,
+EF023,emoji_flip,Naye neighbours bahut friendly lag rahe hain 😊,Naye neighbours bahut friendly lag rahe hain 😐,"identical text, emoji changes polarity",rewrite,Naye neighbours mil gaye 😊,Naye neighbours mil gaye 😒,editor_01,"😐 was basically neutral, not negative."
+EF024,emoji_flip,Aaj ka result dekh kar bahut sukoon mila 😌,Aaj ka result dekh kar bahut sukoon mila 😞,"identical text, emoji changes polarity",rewrite,Result aa gaya 😌,Result aa gaya 😞,editor_01,"“Bahut sukoon mila” was already positive, so the emoji was fighting the text."
+EF025,emoji_flip,Uska speech bahut inspiring tha 🔥,Uska speech bahut inspiring tha 😴,"identical text, emoji changes polarity",rewrite,Uska speech sun liya 🔥,Uska speech sun liya 😴,editor_01,Neutral wording makes the emoji carry the sentiment instead of contradicting the sentence.
+EF026,emoji_flip,Is baar ka fest bahut hi grand tha 🎊,Is baar ka fest bahut hi grand tha 🙄,"identical text, emoji changes polarity",rewrite,Fest dekh liya 🎊,Fest dekh liya 🙄,editor_01,“Bahut hi grand” was already strongly positive.
+EF027,emoji_flip,Naya cafe try kiya aaj 😋,Naya cafe try kiya aaj 🤮,"identical text, emoji changes polarity",accept,,,editor_01,
+EF028,emoji_flip,Roommate ne surprise party plan ki 🥳,Roommate ne surprise party plan ki 😒,"identical text, emoji changes polarity",rewrite,Roommate ne surprise plan kiya 🥳,Roommate ne surprise plan kiya 😒,editor_01,Kept the wording neutral so the reaction is determined by the emoji.
+EF029,emoji_flip,Naya gym join kiya hai maine 💪,Naya gym join kiya hai maine 😮‍💨,"identical text, emoji changes polarity",rewrite,Gym join kar liya finally 💪,Gym join kar liya finally 😩,editor_01,"😮‍💨 can mean relief as well as tiredness, so it was not clean enough."
+EF030,emoji_flip,Aaj ka traffic dekh liya maine 😌,Aaj ka traffic dekh liya maine 🤯,"identical text, emoji changes polarity",rewrite,Aaj traffic ka scene dekh liya 😌,Aaj traffic ka scene dekh liya 🤯,editor_01,The old “bilkul nahi tha” wording made the negative version feel forced.
+PF001,punctuation_context_flip,Great job on the project!,Great job on the project...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,An ellipsis alone does not reliably make this sarcastic.
+PF002,punctuation_context_flip,"Wah, kya zabardast idea hai!","Wah, kya zabardast idea hai...",exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,Same issue here: “...” by itself is too ambiguous to count as a sentiment flip.
+PF003,punctuation_context_flip,Shukriya itni jaldi help karne ke liye!,Shukriya itni jaldi help karne ke liye...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,"The second version can still sound sincere, just hesitant. Rejecting it."
+PF004,punctuation_context_flip,Bahut accha suggestion diya tumne!,Bahut accha suggestion diya tumne...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,Punctuation alone is not enough to make the praise clearly negative.
+PF005,punctuation_context_flip,"Perfect, exactly what I needed!","Perfect, exactly what I needed...",exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,“...” could mean hesitation or disappointment; the flip is not dependable.
+PF006,punctuation_context_flip,Kamaal ka result aaya hai!,Kamaal ka result aaya hai...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,Too easy to read both versions as positive. The sarcasm is forced.
+PF007,punctuation_context_flip,Superb performance thi aaj!,Superb performance thi aaj...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,The ellipsis does not clearly reverse the sentiment.
+PF008,punctuation_context_flip,Bahut helpful tha ye session!,Bahut helpful tha ye session...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,Still sounds like praise in both versions unless extra context is assumed.
+PF009,punctuation_context_flip,"Amazing, bilkul time pe pahuncha delivery!","Amazing, bilkul time pe pahuncha delivery...",exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,The second line is ambiguous rather than clearly sarcastic.
+PF010,punctuation_context_flip,"Great, sab kaam ho gaya!","Great, sab kaam ho gaya...",exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,“...” is not a reliable negative cue on its own.
+PF011,punctuation_context_flip,"Wonderful news, congratulations!","Wonderful news, congratulations...",exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,Both versions can still be read as congratulations.
+PF012,punctuation_context_flip,Bahut smooth chala event!,Bahut smooth chala event...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,"The ellipsis only changes delivery, not necessarily sentiment."
+PF013,punctuation_context_flip,"Fantastic, naya update aa gaya!","Fantastic, naya update aa gaya...",exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,Not a clean flip; the second version is just more hesitant.
+PF014,punctuation_context_flip,Bahut hi professional tha unka approach!,Bahut hi professional tha unka approach...,exclamation (genuine) vs trailing ellipsis (sarcastic),reject,,,editor_01,"The sarcasm depends on imagined context, so I would not keep this pair."
+PF015,punctuation_context_flip,Bahut acha plan tha.,"Bahut acha plan tha, sirf 3 ghante late shuru hua.",genuine praise clause vs added negating clause (sarcastic),rewrite,Plan toh mast tha.,"Plan toh mast tha, bas 3 ghante late start hua.",editor_01,Natural sarcastic contrast; the added context clearly undercuts the praise.
+PF016,punctuation_context_flip,Kamaal ka khana tha.,"Kamaal ka khana tha, thanda serve karne ke alawa.",genuine praise clause vs added negating clause (sarcastic),rewrite,Khana toh kamaal ka tha.,"Khana toh kamaal ka tha, bas poora jala hua tha.",editor_01,The second line now clearly contradicts the praise.
+PF017,punctuation_context_flip,Bahut helpful team hai.,"Bahut helpful team hai, jab tak kuch important na ho.",genuine praise clause vs added negating clause (sarcastic),rewrite,Badi helpful team hai.,"Badi helpful team hai, bas zarurat ke time gayab ho jaati hai.",editor_01,The extra context directly undercuts “helpful”.
+PF018,punctuation_context_flip,Perfect timing tha unka.,"Perfect timing tha unka, exam ke ek din pehle.",genuine praise clause vs added negating clause (sarcastic),rewrite,Timing toh perfect thi.,"Timing toh perfect thi, meeting khatam hone ke baad aaye.",editor_01,“Exam ke ek din pehle” depended too much on context.
+PF019,punctuation_context_flip,Bahut smooth flight thi.,"Bahut smooth flight thi, 5 ghante delay ke baad.",genuine praise clause vs added negating clause (sarcastic),rewrite,Flight toh kaafi smooth thi.,"Flight toh kaafi smooth thi, aadha safar turbulence mein nikla.",editor_01,"A delay does not make a flight itself less smooth, so I changed the contradiction."
+PF020,punctuation_context_flip,Sahi service di unhone.,"Sahi service di unhone, teen baar call karne ke baad.",genuine praise clause vs added negating clause (sarcastic),rewrite,Service badi sahi thi.,"Service badi sahi thi, bas teen baar call karna pada.",editor_01,Reads naturally and the second line clearly weakens the praise.
+PF021,punctuation_context_flip,Bahut acha gift tha.,"Bahut acha gift tha, agar size sahi hota.",genuine praise clause vs added negating clause (sarcastic),rewrite,Gift toh kaafi acha tha.,"Gift toh kaafi acha tha, bas kholte hi broken nikla.",editor_01,A size mismatch was not necessarily a negative sentiment flip.
+PF022,punctuation_context_flip,Bahut acchi advice thi unki.,"Bahut acchi advice thi unki, agar sunta koi.",genuine praise clause vs added negating clause (sarcastic),rewrite,Advice toh badi acchi thi.,"Advice toh badi acchi thi, bas bilkul kaam nahi aayi.",editor_01,The original ending did not actually say the advice was bad or useless.
+PF023,punctuation_context_flip,Bahut professional tarike se handle kiya.,"Bahut professional tarike se handle kiya, do hafte lagakar.",genuine praise clause vs added negating clause (sarcastic),rewrite,Kaafi professional tareeke se handle kiya.,"Kaafi professional tareeke se handle kiya, bina bataye case hi close kar diya.",editor_01,Two weeks can still be professional; this version makes the contradiction obvious.
+PF024,punctuation_context_flip,Bahut acha reply mila support se.,"Bahut acha reply mila support se, das din baad.",genuine praise clause vs added negating clause (sarcastic),rewrite,Support ka reply kaafi acha tha.,"Support ka reply kaafi acha tha, bas 10 din baad aaya.",editor_01,More natural phrasing; the delayed reply undercuts the praise.
+PF025,punctuation_context_flip,Kaafi accurate tha unka estimate.,"Kaafi accurate tha unka estimate, budget double karke.",genuine praise clause vs added negating clause (sarcastic),rewrite,Estimate toh kaafi accurate tha.,"Estimate toh kaafi accurate tha, final cost double nikli.",editor_01,This makes the contradiction with “accurate” explicit.
+PF026,punctuation_context_flip,Bahut hi caring roommate hai.,"Bahut hi caring roommate hai, jab tak room saaf karna na ho.",genuine praise clause vs added negating clause (sarcastic),rewrite,Bada caring roommate hai.,"Bada caring roommate hai, bukhar mein bhi mera khana kha gaya.",editor_01,The cleaning example was only loosely related to being caring.
+PF027,punctuation_context_flip,Bahut hi punctual hai wo.,"Bahut hi punctual hai wo, hamesha ek ghanta late aata hai.",genuine praise clause vs added negating clause (sarcastic),rewrite,Bada punctual hai woh.,"Bada punctual hai woh, roz ek ghanta late aata hai.",editor_01,Natural sarcasm with a direct contradiction.
+PF028,punctuation_context_flip,Bahut badhiya guide mila trip mein.,"Bahut badhiya guide mila trip mein, jo raasta hi bhool gaya.",genuine praise clause vs added negating clause (sarcastic),rewrite,Guide toh kaafi badhiya tha.,"Guide toh kaafi badhiya tha, khud hi raasta bhool gaya.",editor_01,Natural sarcastic contrast.
+PF029,punctuation_context_flip,Bahut accha decision tha yeh.,"Bahut accha decision tha yeh, sabko poochne ke alawa.",genuine praise clause vs added negating clause (sarcastic),rewrite,Decision toh bahut accha tha.,"Decision toh bahut accha tha, agle din hi reverse karna pada.",editor_01,The old ending was unclear; this one clearly undercuts the praise.
+PF030,punctuation_context_flip,Kaafi organized tha poora event.,"Kaafi organized tha poora event, last minute tak kuch tay na hone ke alawa.",genuine praise clause vs added negating clause (sarcastic),rewrite,Event toh kaafi organized tha.,"Event toh kaafi organized tha, last minute tak venue hi fix nahi tha.",editor_01,The old ending sounded awkward; this reads like a normal sarcastic comment.
